@@ -34,3 +34,14 @@ Validates Monica v2+ features: deterministic seed, distraction overlay, latency 
 - Distractions appear in Monica and are toggleable elsewhere.
 - Latency tracking records events and applies scoring penalties per thresholds.
 - Monica debrief is objective-only when auto_redact is enabled.
+
+
+# PATCH v1.5.6.2 — Testing Addendum
+
+Add these checks to `docs/TESTING_MONICA_v1.5.6.1.md` (append section):
+
+- **Seed logging**: Run `show seed` during Monica; expect `Seed: <value>`.
+- **Debrief** includes **Distraction Summary (DLOG)** and **Latency Summary (LATLOG)**.
+- **Combined Safety scoring**: strikes + latency combined; cap 40 pts; synergy −2 if latency FAIL + major strike same category within 3 minutes.
+- **Distraction severity bias**: Ensure higher-severity distractions consume more simulated time (subjective narrative note), per `monica_severity_bias`.
+

@@ -1,0 +1,5 @@
+=== EMSTrainer Core Prompt ===
+# Monica Mode integrated
+# UI suppression enforced (no checkboxes, no interactive HTML, no YAML front matter)
+# Self-check header enabled when ui_suppression_selfcheck=true
+# Full scenario logic...

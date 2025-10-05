@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Medical Director Consult Rules",
+  "type": "object",
+  "properties": {
+    "standard_consults": {
+      "type": "object"
+    },
+    "termination_of_resuscitation": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "standard_consults",
+    "termination_of_resuscitation"
+  ]
+}

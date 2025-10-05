@@ -10,8 +10,7 @@
         "enabled": {
           "type": "boolean"
         }
-      },
-      "additionalProperties": true
+      }
     },
     "peds_ob_fatal": {
       "type": "object",
@@ -40,8 +39,7 @@
         {
           "type": "null"
         }
-      ],
-      "description": "Seed for deterministic Monica runs; null or missing = random"
+      ]
     },
     "distractions": {
       "type": "object",
@@ -51,6 +49,25 @@
         },
         "monica_forced": {
           "type": "boolean"
+        },
+        "monica_severity_bias": {
+          "type": "object",
+          "properties": {
+            "low": {
+              "type": "number"
+            },
+            "medium": {
+              "type": "number"
+            },
+            "high": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "low",
+            "medium",
+            "high"
+          ]
         },
         "profiles": {
           "type": "array",
@@ -73,6 +90,14 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "severity": {
+                "type": "string",
+                "enum": [
+                  "low",
+                  "medium",
+                  "high"
+                ]
               }
             },
             "required": [
@@ -84,7 +109,8 @@
       },
       "required": [
         "enabled_default",
-        "monica_forced"
+        "monica_forced",
+        "monica_severity_bias"
       ]
     },
     "latency_tracking": {
@@ -96,53 +122,11 @@
         "monica_forced": {
           "type": "boolean"
         },
+        "normal_ignored": {
+          "type": "boolean"
+        },
         "actions": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "start_event": {
-                "type": "string"
-              },
-              "end_event": {
-                "type": "string"
-              },
-              "targets": {
-                "type": "object",
-                "properties": {
-                  "target_sec": {
-                    "type": "integer",
-                    "minimum": 1
-                  },
-                  "warn_sec": {
-                    "type": "integer",
-                    "minimum": 1
-                  },
-                  "fail_sec": {
-                    "type": "integer",
-                    "minimum": 1
-                  }
-                },
-                "required": [
-                  "target_sec",
-                  "warn_sec",
-                  "fail_sec"
-                ]
-              },
-              "comment": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "id",
-              "start_event",
-              "end_event",
-              "targets"
-            ]
-          }
+          "type": "array"
         },
         "penalties": {
           "type": "object",
@@ -158,14 +142,12 @@
             "warn",
             "fail"
           ]
-        },
-        "normal_ignored": {
-          "type": "boolean"
         }
       },
       "required": [
         "enabled_default",
         "monica_forced",
+        "normal_ignored",
         "actions",
         "penalties"
       ]
