@@ -2,16 +2,55 @@
 .DS_Store
 .AppleDouble
 .LSOverride
-
-# macOS folder attributes
 Icon?
 ._*
 .Spotlight-V100
 .Trashes
 .fseventsd
 .VolumeIcon.icns
-
-# macOS metadata files
 *.icloud
 *.icloud*
+
+# Pages and Office artifacts
+*.pages~
+*.docx~
+*.tmp
+~$*
+
+# VS Code
+.vscode/
+
+# Xcode
+*.xcuserstate
+*.xcworkspace
+*.xcodeproj
+*.xcassets
+DerivedData/
+build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+
+# Git
+*.orig
+*.rej
+*.swp
+*.swo
+
+# Logs and temp
+*.log
+*.bak
+*.tmp
+*.temp
+*.cache
+
+# Node / Python / Ruby (if used)
+node_modules/
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.rbc
+.bundle/
 
