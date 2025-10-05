@@ -1,0 +1,44 @@
+{
+  "spec_version": "1.0",
+  "type": "scenario",
+  "scenario_id": "SCN-ACS-001",
+  "title": "Chest Pain – Possible ACS",
+  "author": "Instructor Name",
+  "created_at_utc": "2025-10-05T16:15:30Z",
+  "difficulty": "intermediate",
+  "run_id": "RUN-2025-10-05-01",
+  "tags": ["cardiac", "adult", "12-lead"],
+  "vitals_trend": [
+    { "t": 0,   "hr": 104, "rr": 22, "spo2": 95, "bp_sys": 152, "bp_dia": 94, "etco2": 32 },
+    { "t": 300, "hr": 98,  "rr": 20, "spo2": 96, "bp_sys": 148, "bp_dia": 92, "etco2": 34 }
+  ],
+  "assessment_points": [
+    { "id": "AP-1", "prompt": "Primary impression and immediate life threats?", "max_points": 4 },
+    { "id": "AP-2", "prompt": "Identify need for 12‑lead and aspirin",          "max_points": 6 }
+  ],
+  "expected_interventions": [
+    { "id": "INT-ASA",    "name": "Aspirin",     "dose": "324 mg PO", "window_s": [0, 900], "points": 4 },
+    { "id": "INT-12LEAD", "name": "12‑lead ECG",                     "window_s": [0, 420], "points": 4 }
+  ],
+  "rubric": {
+    "total_points": 20,
+    "sections": [
+      { "section": "Primary Assessment", "weight": 0.3, "criteria": [
+        { "id": "C-AIRWAY", "desc": "Airway assessed/managed appropriately", "points": 3 }
+      ]},
+      { "section": "Interventions", "weight": 0.5, "criteria": [
+        { "id": "C-ASA", "desc": "ASA 324 mg given when no contraindications", "points": 4 },
+        { "id": "C-12LEAD", "desc": "12‑lead captured early and interpreted",  "points": 4 }
+      ]},
+      { "section": "Clinical Reasoning", "weight": 0.2, "criteria": [
+        { "id": "C-DIFF", "desc": "Considers STEMI/NSTEMI/angina differentials", "points": 5 }
+      ]}
+    ]
+  },
+  "policy": {
+    "late_window_s": 600,
+    "clock_skew_s": 600,
+    "pediatric_ob_policy": "per-difficulty-defaults-v1"
+  },
+  "attachments": []
+}
