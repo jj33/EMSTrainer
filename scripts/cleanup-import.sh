@@ -77,12 +77,10 @@ for f in "$IMPORT_DIR"/*.pages; do
   run_cmd "mv \"$f\" \"$SOURCE_DIR/\""
 done
 
-# Docx → needs-convert
+# Docx → source
 for f in "$IMPORT_DIR"/*.docx; do
   [[ -e "$f" ]] || continue
-  run_cmd "mv \"$f\" \"$NEEDS_CONVERT_DIR/\""
-  echo "[REMINDER] Convert $(basename "$f") to .pages and move into docs/source/"
-done
+  run_cmd "mv \"$f\" \"$SOURCE_DIR/\""
 
 # PDFs → assets
 for f in "$IMPORT_DIR"/*.pdf; do

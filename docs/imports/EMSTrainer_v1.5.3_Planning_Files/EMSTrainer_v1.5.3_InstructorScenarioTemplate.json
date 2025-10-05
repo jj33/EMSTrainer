@@ -1,0 +1,32 @@
+{
+  "scenario_id": "trauma_001",
+  "title": "MVC with abdominal trauma",
+  "mode": "Standard",
+  "initial_vitals": {
+    "HR": 120,
+    "BP": "88/54",
+    "SpO2": 90
+  },
+  "vitals_trend": "auto",
+  "curveballs": [
+    "secondary_patient",
+    "equipment_failure"
+  ],
+  "consults_allowed": 2,
+  "scene_dynamics": [
+    "bystanders",
+    "weather"
+  ],
+  "time_pressure": true,
+  "documentation_prompt": true,
+  "voice_of_patient": true,
+  "resource_constraints": {
+    "O2": "500 psi",
+    "IV_kits": 1
+  },
+  "expected_interventions": [
+    "O2",
+    "IV",
+    "rapid transport"
+  ]
+}
