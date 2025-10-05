@@ -122,3 +122,41 @@ Patient can talk, moan, or refuse care based on condition.
 Adds realism and communication practice.
 
 **Status:** ❌ Not yet implemented
+---
+
+### 🫀 Cardiac Arrest Termination Timing Segment
+**Purpose:** Simulates real-world decision-making during prolonged resuscitation efforts.
+
+**Logic Block:**
+- **Timer Start:** Begins at time of cardiac arrest recognition.
+- **Checkpoint Prompts:**
+  - At **10 minutes**: prompt for rhythm check, ROSC status, and consideration of reversible causes.
+  - At **20 minutes**: prompt for discussion of termination criteria (e.g., asystole, no ROSC, no shockable rhythm).
+  - At **25+ minutes**: trigger **“Call Medical Director”** prompt if termination is being considered.
+- **Termination Decision:**
+  - Based on local protocol logic (can be customized per agency).
+  - If termination is chosen, require justification (e.g., downtime, no response to interventions, end-tidal CO₂ <10).
+- **Outcome Pathways:**
+  - ROSC → continue scenario
+  - Termination → document time, notify family, initiate post-mortem care
+
+**Status:** ❌ Not yet implemented
+
+---
+
+### 👥 Student Module: Partner Availability & Certification Levels
+**Purpose:** Adds realism by simulating team dynamics and skill limitations.
+
+**Feature Logic:**
+- **Partner Selection:**
+  - Students choose from a list of available partners (e.g., “EMT Alex,” “Paramedic Jamie,” “EMR Taylor”).
+  - Each partner has a defined **certification level** and **skill set**.
+- **Impact on Scenario:**
+  - Limits available interventions (e.g., EMR can’t start IVs or push meds).
+  - Affects decision-making (e.g., “You need to intubate. Your partner is an EMT. What do you do?”)
+- **Optional Randomization:**
+  - Instructor can enable random partner assignment for added challenge.
+- **Future Expansion:**
+  - Partner fatigue, skill proficiency, or error simulation
+
+**Status:** ❌ Not yet implemented

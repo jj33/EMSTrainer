@@ -1,0 +1,53 @@
+{
+  "policy_defaults": {
+    "normal": {
+      "mode": "normal",
+      "enforce_time": false,
+      "show_feedback": true
+    },
+    "hard": {
+      "mode": "hard",
+      "enforce_time": false,
+      "show_feedback": true
+    },
+    "monica": {
+      "mode": "monica",
+      "enforce_time": true,
+      "show_feedback": true
+    }
+  },
+  "segments_common": [
+    {
+      "id": "on_scene_time",
+      "start_event": "arrive_scene",
+      "end_event": "depart_scene",
+      "targets": {
+        "target_sec": 600,
+        "hard_max_sec": 900
+      },
+      "comment": "Keep on-scene time \u226410:00; >15:00 is unacceptable in time-critical cases."
+    }
+  ],
+  "segments_anaphylaxis": [
+    {
+      "id": "time_to_first_epi",
+      "start_event": "recognize_anaphylaxis",
+      "end_event": "epi_administered",
+      "targets": {
+        "target_sec": 180,
+        "hard_max_sec": 300
+      },
+      "comment": "Prompt epinephrine improves outcomes in anaphylaxis."
+    },
+    {
+      "id": "time_to_transport_decision",
+      "start_event": "recognize_anaphylaxis",
+      "end_event": "transport_decision",
+      "targets": {
+        "target_sec": 240,
+        "hard_max_sec": 420
+      },
+      "comment": "Decide on transport early once critical condition is recognized."
+    }
+  ]
+}
