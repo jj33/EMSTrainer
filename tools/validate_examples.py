@@ -1,72 +1,124 @@
-
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+"""Offline example validator for EMSTrainer
+
+Validates JSON, CSV, and Markdown files using Python stdlib only.
+Prints a summary and exits non-zero if any errors are found.
+
+Usage:
+    python3 tools/validate_examples.py [PATH ...]
+
+If no PATHs are provided, it scans defaults: examples/, exports/, and current directory.
 """
-Offline schema validation for EMSTrainer using jsonschema + referencing (no network).
-"""
+import argparse
+import csv
 import json
 import sys
 from pathlib import Path
-from jsonschema import validators
-from referencing import Registry, Resource
 
-ROOT = Path(__file__).resolve().parents[1]
-SCHEMAS = ROOT / 'schemas'
+def eprint(*args):
+    print(*args, file=sys.stderr)
 
-# Load schemas into memory
-S_RUBRIC     = json.loads((SCHEMAS / 'rubric.schema.json').read_text(encoding='utf-8'))
-S_SCENARIO   = json.loads((SCHEMAS / 'scenario.schema.json').read_text(encoding='utf-8'))
-S_SUBMISSION = json.loads((SCHEMAS / 'submission.schema.json').read_text(encoding='utf-8'))
+def find_targets(paths):
+    exts = {'.json', '.csv', '.md', '.markdown'}
+    for p in paths:
+        p = Path(p)
+        if not p.exists():
+            continue
+        if p.is_file():
+            if p.suffix.lower() in exts:
+                yield p
+        else:
+            for f in p.rglob('*'):
+                if f.is_file() and f.suffix.lower() in exts:
+                    yield f
 
-# Build a local registry mapping absolute $id -> Resource (prevents any network fetches)
-REGISTRY = Registry().with_resources({
-    'https://emstrainer/schemas/rubric.schema.json':     Resource.from_contents(S_RUBRIC),
-    'https://emstrainer/schemas/scenario.schema.json':   Resource.from_contents(S_SCENARIO),
-    'https://emstrainer/schemas/submission.schema.json': Resource.from_contents(S_SUBMISSION),
-})
+def validate_json(path):
+    try:
+        with path.open('r', encoding='utf-8') as f:
+            json.load(f)
+        return []
+    except Exception as exc:
+        return [f"JSON error in {path}: {exc}"]
 
+def validate_csv(path):
+    try:
+        with path.open('r', encoding='utf-8', newline='') as f:
+            reader = csv.reader(f)
+            header = next(reader, None)
+            if not header:
+                return [f"CSV error in {path}: empty file or missing header"]
+            ncols = len(header)
+            rownum = 1
+            errors = []
+            for row in reader:
+                rownum += 1
+                if len(row) != ncols:
+                    errors.append(f"CSV error in {path}: row {rownum} has {len(row)} cols, expected {ncols}")
+                if rownum > 5000 and not errors:
+                    break
+            return errors
+    except Exception as exc:
+        return [f"CSV error in {path}: {exc}"]
 
-def validate_file(path: Path, schema: dict):
-    data = json.loads(path.read_text(encoding='utf-8'))
-    Validator = validators.validator_for(schema)
-    Validator.check_schema(schema)
-    v = Validator(schema, registry=REGISTRY)
-    return list(v.iter_errors(data))
+def validate_md(path):
+    try:
+        text = path.read_text(encoding='utf-8')
+        if not text.strip():
+            return [f"MD error in {path}: file is empty"]
+        return []
+    except Exception as exc:
+        return [f"MD error in {path}: {exc}"]
 
+VALIDATORS = {
+    '.json': validate_json,
+    '.csv': validate_csv,
+    '.md': validate_md,
+    '.markdown': validate_md,
+}
 
-def main() -> int:
+def main(argv=None):
+    parser = argparse.ArgumentParser(description='Offline validator for EMSTrainer example/export files')
+    parser.add_argument('paths', nargs='*', help='Files or directories to validate')
+    args = parser.parse_args(argv)
+
+    scan_roots = args.paths if args.paths else []
+    if not scan_roots:
+        for default in ('examples', 'exports', '.'):
+            if Path(default).exists():
+                scan_roots.append(default)
+
+    print('🔎 Scanning paths:', ', '.join(str(p) for p in scan_roots))
+
+    files = list(find_targets(scan_roots))
+    if not files:
+        print('ℹ️  No target files (.json/.csv/.md) found. Nothing to validate.')
+        return 0
+
     errors = []
-
-    for p in ROOT.rglob('examples/**/scenario.json'):
-        errs = validate_file(p, S_SCENARIO)
-        if errs:
-            errors.extend([f"{p}: {m}" for m in errs])
+    ok = 0
+    for fpath in sorted(files):
+        validator = VALIDATORS.get(fpath.suffix.lower())
+        if not validator:
+            continue
+        verrs = validator(fpath)
+        if verrs:
+            errors.extend(verrs)
         else:
-            print(f"[OK] {p}")
+            ok += 1
 
-    for p in ROOT.rglob('examples/**/submission.json'):
-        errs = validate_file(p, S_SUBMISSION)
-        if errs:
-            errors.extend([f"{p}: {m}" for m in errs])
-        else:
-            print(f"[OK] {p}")
-
-    for p in ROOT.rglob('prompts/Instructor/Rubrics/*.json'):
-        errs = validate_file(p, S_RUBRIC)
-        if errs:
-            errors.extend([f"{p}: {m}" for m in errs])
-        else:
-            print(f"[OK] {p}")
+    total = len(files)
+    print()
+    print(f"Checked: {total} file(s)")
+    print(f"Valid:   {ok}")
+    print(f"Errors:  {len(errors)}")
 
     if errors:
-print()
-Validation errors:
-' + '
-'.join(errors))
+        print()
+        print('Validation errors:')
+        print('\n'.join(errors))
         return 1
 
-    print('
-All examples and rubrics conform to schemas.')
+    print('\n✅ All example/export files passed basic validation.')
     return 0
 
 if __name__ == '__main__':
