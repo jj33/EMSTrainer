@@ -26,6 +26,6 @@ This package provides:
 
 ## Notes
 - The linter modifies only text-like files: `.txt`, `.md`, `.markdown`, `.prompt`.
-- It converts `- [ ] Option` and `- [x] Option` (and similar) to `• Option`.
+- It converts `• Option` and `• Option` (and similar) to `• Option`.
 - It removes interactive HTML tags but keeps inner text.
 - It strips YAML front matter at file start.

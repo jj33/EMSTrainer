@@ -17,7 +17,7 @@ All notable changes to this project are documented here. Dates are in YYYY-MM-DD
   - Termination timing + Med Director call hooks (when enabled via config).
   - Compressed responses in Monica for high-signal interaction.
 - **Linter & CI tools** (to remove UI clickables):
-  - `tools/lint_emstrainer_prompts.py` – removes Markdown task-list checkboxes, strips interactive HTML (`<button>`, `<details>`, etc.), and YAML front matter.
+  - `tools/lint_emstrainer_prompts.py` – removes Markdown task-list checkboxes, strips interactive HTML (``, ``, etc.), and YAML front matter.
   - `tools/run_lint.sh` – local wrapper; supports positional root (`.`).
   - `tools/lint_ci.sh` – CI one-shot; dry-run fails PRs (exit code 2) if changes needed; `--apply` auto-fixes with `.bak`.
 - **Config keys** in `assets/instructor_config.json`:
