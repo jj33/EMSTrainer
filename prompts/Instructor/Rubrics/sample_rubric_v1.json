@@ -1,0 +1,27 @@
+{
+  "total_points": 20,
+  "sections": [
+    {
+      "section": "Interventions",
+      "weight": 0.5,
+      "criteria": [
+        { "id": "C-ASA", "desc": "ASA 324 mg given when no contraindications", "points": 4 },
+        { "id": "C-12LEAD", "desc": "12‑lead captured early and interpreted", "points": 4 }
+      ]
+    },
+    {
+      "section": "Primary Assessment",
+      "weight": 0.3,
+      "criteria": [
+        { "id": "C-AIRWAY", "desc": "Airway assessed/managed appropriately", "points": 3 }
+      ]
+    },
+    {
+      "section": "Clinical Reasoning",
+      "weight": 0.2,
+      "criteria": [
+        { "id": "C-DIFF", "desc": "Considers STEMI/NSTEMI/angina differentials", "points": 5 }
+      ]
+    }
+  ]
+}

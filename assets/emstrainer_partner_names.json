@@ -1,0 +1,104 @@
+{
+  "partners": [
+    {
+      "name": "Amrita",
+      "cert_level": "EMT"
+    },
+    {
+      "name": "Bri",
+      "cert_level": "EMT"
+    },
+    {
+      "name": "Cody",
+      "cert_level": "Paramedic"
+    },
+    {
+      "name": "Dalton",
+      "cert_level": "EMR"
+    },
+    {
+      "name": "Elizabeth",
+      "cert_level": "Paramedic"
+    },
+    {
+      "name": "Gwen",
+      "cert_level": "Critical Care Paramedic"
+    },
+    {
+      "name": "Jennifer",
+      "cert_level": "AEMT"
+    },
+    {
+      "name": "Joe",
+      "cert_level": "EMR"
+    },
+    {
+      "name": "Jordan",
+      "cert_level": "AEMT"
+    },
+    {
+      "name": "Julia",
+      "cert_level": "EMT"
+    },
+    {
+      "name": "Kailee",
+      "cert_level": "Critical Care Paramedic"
+    },
+    {
+      "name": "Kalli",
+      "cert_level": "Paramedic"
+    },
+    {
+      "name": "Kayla",
+      "cert_level": "AEMT"
+    },
+    {
+      "name": "Kevin",
+      "cert_level": "EMR"
+    },
+    {
+      "name": "Krista",
+      "cert_level": "AEMT"
+    },
+    {
+      "name": "Lucas",
+      "cert_level": "EMR"
+    },
+    {
+      "name": "Macee",
+      "cert_level": "EMR"
+    },
+    {
+      "name": "Mike",
+      "cert_level": "AEMT"
+    },
+    {
+      "name": "Monica",
+      "cert_level": "Paramedic"
+    },
+    {
+      "name": "Raeann",
+      "cert_level": "Paramedic"
+    },
+    {
+      "name": "Sean",
+      "cert_level": "EMR"
+    },
+    {
+      "name": "Stone",
+      "cert_level": "Critical Care Paramedic"
+    },
+    {
+      "name": "Tyler",
+      "cert_level": "Critical Care Paramedic"
+    },
+    {
+      "name": "Wendy",
+      "cert_level": "EMR"
+    },
+    {
+      "name": "Joel",
+      "cert_level": "Critical Care Paramedic"
+    }
+  ]
+}

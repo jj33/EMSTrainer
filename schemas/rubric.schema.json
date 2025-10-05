@@ -1,0 +1,38 @@
+{
+  "$id": "https://emstrainer/schemas/rubric.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EMSTrainer Rubric",
+  "type": "object",
+  "required": ["total_points", "sections"],
+  "properties": {
+    "total_points": { "type": "number", "minimum": 0 },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["section", "weight", "criteria"],
+        "properties": {
+          "section": { "type": "string", "minLength": 1 },
+          "weight":  { "type": "number", "minimum": 0, "maximum": 1 },
+          "criteria": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["id", "desc", "points"],
+              "properties": {
+                "id":     { "type": "string", "minLength": 1 },
+                "desc":   { "type": "string", "minLength": 1 },
+                "points": { "type": "number", "minimum": 0 }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
