@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EMSTrainer Student Submission (plaintext, pre-encryption)",
+  "type": "object",
+  "required": [ "spec_version", "type", "scenario_id", "student_id", "submitted_at_utc", "events" ],
+  "properties": {
+    "spec_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+$" },
+    "type":         { "const": "submission" },
+    "scenario_id":  { "type": "string", "pattern": "^[A-Z0-9-_.]{3,}$" },
+    "run_id":       { "type": "string" },
+    "student_id":   { "type": "string", "minLength": 1 },
+    "submitted_at_utc": { "type": "string", "format": "date-time" },
+    "events": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "title": "Intervention Event",
+            "type": "object",
+            "required": ["event", "id", "at_s"],
+            "properties": {
+              "event":   { "const": "intervention" },
+              "id":      { "type": "string", "pattern": "^[A-Z0-9-_.]+$" },
+              "at_s":    { "type": "number", "minimum": 0 },
+              "dose":    { "type": "string" },
+              "success": { "type": "boolean" },
+              "notes":   { "type": "string" }
+            },
+            "additionalProperties": false
+          },
+          {
+            "title": "Assessment Response",
+            "type": "object",
+            "required": ["event", "id", "at_s", "answer"],
+            "properties": {
+              "event":  { "const": "assessment" },
+              "id":     { "type": "string", "pattern": "^[A-Z0-9-_.]+$" },
+              "at_s":   { "type": "number", "minimum": 0 },
+              "answer": { "type": "string" }
+            },
+            "additionalProperties": false
+          },
+          {
+            "title": "Note",
+            "type": "object",
+            "required": ["event", "at_s", "text"],
+            "properties": {
+              "event": { "const": "note" },
+              "at_s":  { "type": "number", "minimum": 0 },
+              "text":  { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "media_type", "b64"],
+        "properties": {
+          "name":       { "type": "string" },
+          "media_type": { "type": "string", "pattern": "^[a-zA-Z0-9]+/[a-zA-Z0-9-+.]+$" },
+          "b64":        { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
