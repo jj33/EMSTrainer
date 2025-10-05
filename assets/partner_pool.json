@@ -1,0 +1,88 @@
+{
+  "partners": [
+    {
+      "name": "Alex",
+      "cert_level": "EMT"
+    },
+    {
+      "name": "Brianna",
+      "cert_level": "Paramedic"
+    },
+    {
+      "name": "Casey",
+      "cert_level": "AEMT"
+    },
+    {
+      "name": "Drew",
+      "cert_level": "EMR"
+    },
+    {
+      "name": "Emerson",
+      "cert_level": "Paramedic"
+    },
+    {
+      "name": "Frank",
+      "cert_level": "EMT"
+    },
+    {
+      "name": "Harper",
+      "cert_level": "Paramedic"
+    },
+    {
+      "name": "Isaac",
+      "cert_level": "AEMT"
+    },
+    {
+      "name": "Jordan",
+      "cert_level": "EMR"
+    },
+    {
+      "name": "Kai",
+      "cert_level": "Paramedic"
+    },
+    {
+      "name": "Logan",
+      "cert_level": "EMT"
+    },
+    {
+      "name": "Morgan",
+      "cert_level": "Paramedic"
+    },
+    {
+      "name": "Noah",
+      "cert_level": "AEMT"
+    },
+    {
+      "name": "Olivia",
+      "cert_level": "EMR"
+    },
+    {
+      "name": "Parker",
+      "cert_level": "Paramedic"
+    },
+    {
+      "name": "Quinn",
+      "cert_level": "EMT"
+    },
+    {
+      "name": "Riley",
+      "cert_level": "Paramedic"
+    },
+    {
+      "name": "Sawyer",
+      "cert_level": "AEMT"
+    },
+    {
+      "name": "Taylor",
+      "cert_level": "EMR"
+    },
+    {
+      "name": "Zoe",
+      "cert_level": "Paramedic"
+    },
+    {
+      "name": "Joel",
+      "cert_level": "EMT"
+    }
+  ]
+}
