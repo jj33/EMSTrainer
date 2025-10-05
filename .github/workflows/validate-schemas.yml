@@ -1,3 +1,4 @@
+
 name: Validate schemas & examples
 
 on:
@@ -26,37 +27,47 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install jsonschema==4.22.0
+          pip install jsonschema==4.22.0 referencing==0.35.1
 
-      - name: Validate examples against schemas
+      - name: Validate examples against schemas (offline registry)
         run: |
           python - << 'PY'
           import json, sys, pathlib
-          from jsonschema import Draft202012Validator
+          from jsonschema import validators
+          from referencing import Registry, Resource
 
-          root = pathlib.Path(".")
-          s_scenario = json.loads((root/"schemas"/"scenario.schema.json").read_text())
-          s_submission = json.loads((root/"schemas"/"submission.schema.json").read_text())
-          s_rubric = json.loads((root/"schemas"/"rubric.schema.json").read_text())
+          root = pathlib.Path('.')
+          schemas = root / 'schemas'
+
+          s_rubric     = json.loads((schemas/'rubric.schema.json').read_text())
+          s_scenario   = json.loads((schemas/'scenario.schema.json').read_text())
+          s_submission = json.loads((schemas/'submission.schema.json').read_text())
+
+          registry = Registry().with_resources({
+            'https://emstrainer/schemas/rubric.schema.json':     Resource.from_contents(s_rubric),
+            'https://emstrainer/schemas/scenario.schema.json':   Resource.from_contents(s_scenario),
+            'https://emstrainer/schemas/submission.schema.json': Resource.from_contents(s_submission),
+          })
 
           def validate_file(path, schema):
-              data = json.loads(path.read_text())
-              validator = Draft202012Validator(schema)
-              errs = sorted(validator.iter_errors(data), key=lambda e: e.path)
-              return [f"{path}: {e.message}" for e in errs]
+            data = json.loads(path.read_text())
+            V = validators.validator_for(schema)
+            V.check_schema(schema)
+            v = V(schema, registry=registry)
+            return list(v.iter_errors(data))
 
           errors = []
-          for p in root.rglob("examples/**/scenario.json"):
-              errors += validate_file(p, s_scenario)
-          for p in root.rglob("examples/**/submission.json"):
-              errors += validate_file(p, s_submission)
-          for p in root.rglob("prompts/Instructor/Rubrics/*.json"):
-              errors += validate_file(p, s_rubric)
+          for p in root.rglob('examples/**/scenario.json'):
+            errors += [f"{p}: {e.message}" for e in validate_file(p, s_scenario)]
+          for p in root.rglob('examples/**/submission.json'):
+            errors += [f"{p}: {e.message}" for e in validate_file(p, s_submission)]
+          for p in root.rglob('prompts/Instructor/Rubrics/*.json'):
+            errors += [f"{p}: {e.message}" for e in validate_file(p, s_rubric)]
 
           if errors:
-              print("\\n".join(errors))
-              sys.exit(1)
+            print('
+'.join(errors))
+            sys.exit(1)
           else:
-              print("All example files conform to schemas.")
+            print('All example files conform to schemas.')
           PY
-
