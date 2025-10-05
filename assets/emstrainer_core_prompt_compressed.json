@@ -1,0 +1,42 @@
+{
+  "description": "EMSTrainer Core Prompt with Partner Logic",
+  "version": "v1.5.3",
+  "features": {
+    "monica_mode": false,
+    "curveball_enabled": false,
+    "cardiac_termination_logic": true,
+    "med_director_call_enabled": true,
+    "partner_module_enabled": true,
+    "provider_level": "Paramedic",
+    "partner_assignment": {
+      "partner_name": "Jamie",
+      "cert_level": ""
+    },
+    "partner_behavior": {
+      "autonomous_actions": false,
+      "requires_student_direction": true,
+      "scope_validation": true
+    }
+  },
+  "logic": {
+    "partner_certification_assignment": {
+      "if_instructor_specified": "use instructor-defined cert_level",
+      "if_student_defines": "use student-defined cert_level",
+      "if_unspecified": {
+        "student_is_paramedic": "assign EMT",
+        "student_is_emt": "assign Paramedic"
+      }
+    },
+    "partner_interaction": {
+      "default_state": "passive",
+      "activation": "only responds to direct commands",
+      "examples": [
+        "Jamie, start CPR.",
+        "Jamie, give 1mg Epi IV.",
+        "Jamie, check the blood pressure."
+      ],
+      "invalid_command_response": "Jamie looks at you, waiting for a clear instruction.",
+      "scope_violation_response": "Jamie says, 'I\u2019m not certified to do that.'"
+    }
+  }
+}
