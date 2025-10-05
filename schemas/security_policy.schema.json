@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Security Policy & Submission Naming",
+  "type": "object",
+  "properties": {
+    "hash_algorithm": {
+      "type": "string"
+    },
+    "timestamp_format": {
+      "type": "string"
+    },
+    "submission_filename": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "hash_algorithm",
+    "timestamp_format",
+    "submission_filename"
+  ]
+}

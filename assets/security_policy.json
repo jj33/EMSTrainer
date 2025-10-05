@@ -1,0 +1,7 @@
+{
+  "hash_algorithm": "sha256",
+  "timestamp_format": "iso8601z",
+  "submission_filename": "{run}_{student}_{mode}_{ts}_{short_hash}.txt",
+  "retention_hours": 24,
+  "crypto_erase_on_handoff": true
+}
