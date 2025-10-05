@@ -1,1 +1,194 @@
-{"schema": "This is a placeholder schema for module_toggles.schema.json"}
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://emstrainer/schema/module_toggles.schema.json",
+  "title": "Module Toggles",
+  "type": "object",
+  "properties": {
+    "curveball": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "peds_ob_fatal": {
+      "type": "object",
+      "properties": {
+        "default": {
+          "type": "boolean"
+        }
+      }
+    },
+    "time_pressure": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "monica_seed": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Seed for deterministic Monica runs; null or missing = random"
+    },
+    "distractions": {
+      "type": "object",
+      "properties": {
+        "enabled_default": {
+          "type": "boolean"
+        },
+        "monica_forced": {
+          "type": "boolean"
+        },
+        "profiles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "weight": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "cooldown_sec": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "examples": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "id",
+              "weight"
+            ]
+          }
+        }
+      },
+      "required": [
+        "enabled_default",
+        "monica_forced"
+      ]
+    },
+    "latency_tracking": {
+      "type": "object",
+      "properties": {
+        "enabled_default": {
+          "type": "boolean"
+        },
+        "monica_forced": {
+          "type": "boolean"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "start_event": {
+                "type": "string"
+              },
+              "end_event": {
+                "type": "string"
+              },
+              "targets": {
+                "type": "object",
+                "properties": {
+                  "target_sec": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "warn_sec": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "fail_sec": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
+                },
+                "required": [
+                  "target_sec",
+                  "warn_sec",
+                  "fail_sec"
+                ]
+              },
+              "comment": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "start_event",
+              "end_event",
+              "targets"
+            ]
+          }
+        },
+        "penalties": {
+          "type": "object",
+          "properties": {
+            "warn": {
+              "type": "integer"
+            },
+            "fail": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "warn",
+            "fail"
+          ]
+        },
+        "normal_ignored": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "enabled_default",
+        "monica_forced",
+        "actions",
+        "penalties"
+      ]
+    },
+    "auto_redact": {
+      "type": "object",
+      "properties": {
+        "monica_default": {
+          "type": "boolean"
+        },
+        "normal_default": {
+          "type": "boolean"
+        },
+        "hard_default": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "monica_default",
+        "normal_default",
+        "hard_default"
+      ]
+    }
+  },
+  "additionalProperties": true
+}
