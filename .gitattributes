@@ -1,0 +1,4 @@
+# Treat encrypted files as binary
+*.emsx binary linguist-generated=true
+*.subx binary linguist-generated=true
+
