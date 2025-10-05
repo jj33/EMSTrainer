@@ -1,7 +1,7 @@
 # EMSTrainer
 
 **Branch:** `dev`  
-**Current prompt:** [`prompts/EMSTrainer_Core_Prompt_v1.5.6.1.txt`](prompts/EMSTrainer_Core_Prompt_v1.5.6.1.txt)
+**Current prompt:** [`prompts/EMSTrainer_Core_Prompt_v1.5.6.1.txt`](prompts/EMSTrainer_Core_Prompt.txt)
 
 ## Overview
 EMSTrainer is a Copilot-driven EMS training assistant with three learner modes (Scenario, Test Questions, Study Guide) and an instructor timing overlay. The **student-facing logic** lives entirely in the **core prompt**; **instructor overrides** are supplied via JSON assets.
@@ -48,5 +48,58 @@ It reports **missing**, **unexpected**, and **mismatched** paths relative to rep
 ## Versioning
 See [`CHANGELOG.md`](CHANGELOG.md) for full details.
 
+
+#### **prompts/**
+- **EMSTrainer_Core_Prompt.txt**  
+  This is the **canonical student-facing prompt**. All updates to student logic, scenario handling, and difficulty settings should be made here.  
+  - Includes Scenario, Test, and Study modes.
+  - Supports Monica Mode (super-hard difficulty + timer).
+  - Handles vitals trending, pediatric/OB fatality policy, and compressed prompt option.
+
+#### **assets/**
+- **instructor_config.json**  
+  Stores instructor-defined overrides, such as:
+  - Scenario toggles (Curveball, Monica Mode, Termination Timing).
+  - Provider level configuration (EMR, EMT, AEMT, Paramedic, CCP).
+  - Partner logic (certification level, task delegation rules).
+- **emstrainer_partner_names.json**  
+  Contains partner names and randomized certification levels for scenario realism.
+
+---
+
+### **Versioning Policy**
+- **Canonical File:**  
+  `prompts/EMSTrainer_Core_Prompt.txt` is the single source of truth for student-facing logic.
+- **History:**  
+  Older versions are **not retained in the repo**. Use Git history for rollback if needed.
+- **Instructor Config:**  
+  Instructor overrides and settings live in JSON files under `assets/`. These files are version-controlled.
+
+---
+
+### **Role Separation**
+- **Student Workflow:**  
+  Driven by `EMSTrainer_Core_Prompt.txt`. Students interact only with this logic.
+- **Instructor Workflow:**  
+  Instructor Scenario Creation and grading logic are handled separately via JSON/Python assets.  
+  - Encryption and timestamping are applied to both instructor and student files to prevent tampering.
+  - Auto-grading supported with secure naming conventions for submissions.
+
+---
+
+### **Special Features**
+- **Monica Mode:**  
+  Enables maximum difficulty with a timer and Curveball module.
+- **Partner Logic:**  
+  Students define their role and partner certification level.  
+  - Default: Paramedic → EMT partner; EMT → Paramedic partner.
+  - Partner acts only when directed by the student.
+
+---
+
+### **Contribution Guidelines**
+- **Do not edit archived files** (none exist in repo; use Git history if needed).
+- **Update only EMSTrainer_Core_Prompt.txt** for student logic.
+- Instructor configs should be modified via JSON in `assets/`.
 ---
 *Updated 2025-10-05*

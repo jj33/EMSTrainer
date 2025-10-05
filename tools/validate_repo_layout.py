@@ -1,73 +1,81 @@
-
 #!/usr/bin/env python3
 """
 Validate local repo layout against expected file paths for EMSTrainer v1.5.6.1
-Usage: python3 tools/validate_repo_layout.py
+Usage:
+  python3 tools/validate_repo_layout.py
+Exits with code 1 if any required paths are missing; 0 otherwise.
 """
-import os, json, sys
+import json
+import sys
+from pathlib import Path
 
-BASE = os.path.abspath(os.path.dirname(__file__) + '/..')
-EXPECTED_PATH = os.path.join(BASE, 'tools', 'expected_layout_v1.5.6.1.json')
+BASE = Path(__file__).resolve().parent.parent
+EXPECTED_PATH = BASE / 'tools' / 'expected_layout_v1.5.6.1.json'
 
-with open(EXPECTED_PATH,'r') as f:
-    expected = json.load(f)
+try:
+    with EXPECTED_PATH.open('r', encoding='utf-8') as f:
+        expected = json.load(f)
+except FileNotFoundError:
+    print(f"ERROR: Expected layout file not found: {EXPECTED_PATH}")
+    sys.exit(2)
 
-missing, unexpected = [], []
+missing = []
+unexpected = []
 
-# Check expected
+# Check required files
 for folder, files in expected.items():
     if folder == 'root':
         for fn in files:
-            p = os.path.join(BASE, fn)
-            if not os.path.exists(p):
-                missing.append(fn)
+            p = BASE / fn
+            if not p.exists():
+                missing.append(str(fn))
     else:
         for fn in files:
-            p = os.path.join(BASE, folder, fn)
-            if not os.path.exists(p):
-                missing.append(os.path.join(folder, fn))
+            p = BASE / folder / fn
+            if not p.exists():
+                missing.append(str(Path(folder) / fn))
 
-# Scan for unexpected top-level critical folders/files (optional strictness)
-critical_dirs = set(['prompts','docs','assets','schemas'])
+# Scan for unexpected files (informational):
+# restrict to prompts/assets/schemas; allow extra instructor JSON files in assets and any extra docs
+critical_dirs = {'prompts', 'assets', 'schemas'}
 for d in critical_dirs:
-    dp = os.path.join(BASE, d)
-    if os.path.isdir(dp):
-        for root, _, files in os.walk(dp):
-            relroot = os.path.relpath(root, BASE)
-            for fn in files:
-                rel = os.path.join(relroot, fn)
-                # Allow extra docs by default; flag only if under assets/schemas/prompts
-                if relroot.startswith('assets') or relroot.startswith('schemas') or relroot.startswith('prompts'):
-                    # if not in expected, mark unexpected
-                    if relroot == 'prompts' and fn.endswith('.txt') and fn not in expected.get('prompts', []):
-                        unexpected.append(rel)
-                    elif relroot == 'assets' and fn not in expected.get('assets', []):
-                        # allow additional instructor configs ending with .json
-                        if not fn.endswith('.json') and fn != 'README.md':
-                            unexpected.append(rel)
-                    elif relroot == 'schemas' and fn not in expected.get('schemas', []):
-                        unexpected.append(rel)
+    dp = BASE / d
+    if dp.is_dir():
+        for p in dp.rglob('*'):
+            if p.is_file():
+                rel = p.relative_to(BASE)
+                rel_root = rel.parts[0]
+                if rel_root == 'prompts':
+                    allowed = set(expected.get('prompts', []))
+                    if p.suffix == '.txt' and rel.name not in allowed:
+                        unexpected.append(str(rel))
+                elif rel_root == 'assets':
+                    allowed = set(expected.get('assets', []))
+                    # allow extra .json (instructor overrides) and README.md
+                    if rel.name not in allowed and not rel.name.endswith('.json') and rel.name != 'README.md':
+                        unexpected.append(str(rel))
+                elif rel_root == 'schemas':
+                    allowed = set(expected.get('schemas', []))
+                    if rel.name not in allowed:
+                        unexpected.append(str(rel))
 
-print("
-=== EMSTrainer Layout Validation (v1.5.6.1) ===")
+print("\n=== EMSTrainer Layout Validation (v1.5.6.1) ===")
 print(f"Base: {BASE}")
+
 if missing:
-    print("
-Missing:")
+    print("\nMissing:")
     for m in missing:
-        print(" -", m)
+        print(f" - {m}")
 else:
-    print("
-Missing: None")
+    print("\nMissing: None")
 
 if unexpected:
-    print("
-Unexpected (informational):")
+    print("\nUnexpected (informational):")
     for u in unexpected:
-        print(" -", u)
+        print(f" - {u}")
 else:
-    print("
-Unexpected: None (or only allowed extras)")
+    print("\nUnexpected: None (or only allowed extras)")
 
-# Exit code non-zero if missing any required paths
+# Exit non-zero if missing any required paths
 sys.exit(1 if missing else 0)
+
