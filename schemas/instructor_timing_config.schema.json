@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Instructor Timing Config",
+  "type": "object",
+  "properties": {
+    "policy": {
+      "type": "object"
+    },
+    "segments": {
+      "type": "array"
+    },
+    "consequences": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "policy",
+    "segments",
+    "consequences"
+  ]
+}

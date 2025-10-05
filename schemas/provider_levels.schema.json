@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Provider Level Capability Map",
+  "type": "object",
+  "properties": {
+    "levels": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "levels"
+  ]
+}

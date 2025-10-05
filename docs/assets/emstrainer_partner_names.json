@@ -1,0 +1,7 @@
+[
+  { "name": "Joel", "cert": "Paramedic" },
+  { "name": "Alex", "cert": "EMT" },
+  { "name": "Sam", "cert": "AEMT" },
+  { "name": "Taylor", "cert": "EMT" },
+  { "name": "Morgan", "cert": "EMR" }
+]
