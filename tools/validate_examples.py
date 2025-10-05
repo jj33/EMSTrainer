@@ -59,7 +59,7 @@ def main() -> int:
             print(f"[OK] {p}")
 
     if errors:
-        print('
+print()
 Validation errors:
 ' + '
 '.join(errors))
