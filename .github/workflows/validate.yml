@@ -3,13 +3,11 @@ name: Validate examples & exports
 on:
   pull_request:
     branches: [ "dev" ]
-  # Manual trigger if you want to run it on demand
   workflow_dispatch:
 
 permissions:
   contents: read
 
-# Avoid duplicate runs on the same branch/PR
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.event.pull_request.head.sha || github.ref }}
   cancel-in-progress: true
@@ -75,9 +73,3 @@ jobs:
             exports/demo/demo_acs_export.csv
             exports/demo/demo_acs_export.md
           if-no-files-found: error
-on:
-  pull_request:
-    branches: [ "dev" ]
-  schedule:
-    - cron: "17 4 * * *"  # daily at 04:17 UTC
-  workflow_dispatch:
