@@ -1,0 +1,31 @@
+{
+    "monica_mode": true,
+    "curveball_enabled": true,
+    "cardiac_termination_logic": true,
+    "med_director_call_enabled": true,
+    "partner_module_enabled": true,
+    "provider_level": "Paramedic",
+    "available_partners": [
+        {
+            "name": "Alex",
+            "cert_level": "EMT"
+        },
+        {
+            "name": "Jamie",
+            "cert_level": "Paramedic"
+        },
+        {
+            "name": "Taylor",
+            "cert_level": "EMR"
+        }
+    ],
+    "environment_dynamics": false,
+    "resource_constraints": false,
+    "communication_challenges": false,
+    "documentation_prompt": false,
+    "voice_of_patient": false,
+    "vitals_trending": true,
+    "time_pressure_enabled": true,
+    "patient_family_interaction": true,
+    "medical_director_consult": true
+}
