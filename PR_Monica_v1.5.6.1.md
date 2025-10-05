@@ -68,11 +68,11 @@ This PR promotes the latest Monica-mode enhancements to `main` and aligns the re
 - **Determinism vs. randomness:** expose `monica_seed` and log in `TLOG.meta` for audit.
 
 ## Checklist
-- [x] Core prompt updated to v1.5.6.1
-- [x] Assets present and validated
-- [x] Schemas present and validate assets
-- [x] Docs updated (testing guide + index + README)
-- [x] Validator passes (`Missing: None`)
+• Core prompt updated to v1.5.6.1
+• Assets present and validated
+• Schemas present and validate assets
+• Docs updated (testing guide + index + README)
+• Validator passes (`Missing: None`)
 
 --
 Maintainer: please **Squash & Merge** into `main` once acceptance criteria pass.

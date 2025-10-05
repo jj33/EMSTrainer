@@ -14,7 +14,7 @@ This release integrates **Monica Mode** directly into the canonical student prom
   - **Compressed** responses in Monica for high-signal interaction.
 
 - **UI Clickables Suppression**
-  - Explicit policy to avoid Markdown task lists (`- [ ]`, `- [x]`), HTML widgets (`<button>`, `<details>`, `<form>`, etc.), and YAML front matter.
+  - Explicit policy to avoid Markdown task lists (`•`, `•`), HTML widgets (``, ``, ``, etc.), and YAML front matter.
   - **Self-check header** printed once at scenario start (toggle with `ui_suppression_selfcheck`):
     ```
     [UI-SAFE ✓] Clickables suppressed; task lists disabled; HTML widgets disabled.
@@ -63,7 +63,7 @@ This release integrates **Monica Mode** directly into the canonical student prom
    ```
 
 ## Known Considerations
-- If any prompt or doc still emits `- [ ]` / `- [x]` or contains interactive HTML, the linter will flag it. Run `--apply` to auto-fix and re-commit.
+- If any prompt or doc still emits `•` / `•` or contains interactive HTML, the linter will flag it. Run `--apply` to auto-fix and re-commit.
 - If your workflow references `assets/emstrainer_partner_names.json`, ensure it exists and matches the expected schema for the Instructor UI.
 
 ## Thanks
