@@ -1,0 +1,37 @@
+
+<!-- EMSTrainer Export Template v1 (Markdown) -->
+# EMSTrainer — Feedback Report (Student Copy)
+
+**Scenario:** {{scenario_id}} — {{scenario_title}}  
+**Run ID:** {{run_id}}  
+**Student:** {{student_id}}  
+**Graded (UTC):** {{timestamp_utc}}  
+**Spec Version:** {{spec_version}}
+
+## Summary
+**Score:** {{score}} / {{out_of}} (**{{percent}}%**)
+
+### Notes at a glance
+{{#notes}}
+- {{.}}
+{{/notes}}
+{{^notes}}
+- No instructor notes.
+{{/notes}}
+
+---
+
+## Section Breakdown
+{{#sections}}
+**{{name}}** — {{awarded}} / {{out_of}}
+{{#criteria}}
+- {{id}} — {{awarded}} / {{points}} {{summary}}
+{{/criteria}}
+
+{{/sections}}
+
+{{#include_verification}}
+---
+## Verification
+{{> verify_block}}
+{{/include_verification}}

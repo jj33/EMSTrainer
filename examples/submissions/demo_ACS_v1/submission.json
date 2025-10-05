@@ -1,0 +1,15 @@
+{
+  "spec_version": "1.0",
+  "type": "submission",
+  "scenario_id": "SCN-ACS-001",
+  "run_id": "RUN-2025-10-05-01",
+  "student_id": "STU-4421",
+  "submitted_at_utc": "2025-10-05T17:10:04Z",
+  "events": [
+    { "event": "intervention", "id": "INT-12LEAD", "at_s": 240, "success": true },
+    { "event": "intervention", "id": "INT-ASA",    "at_s": 420, "dose": "324 mg PO", "success": true },
+    { "event": "assessment", "id": "AP-1", "at_s": 120, "answer": "Chest pain, ABCs intact; monitor, O2 prn, IV access." },
+    { "event": "assessment", "id": "AP-2", "at_s": 260, "answer": "Early 12-lead and ASA" }
+  ],
+  "attachments": []
+}
