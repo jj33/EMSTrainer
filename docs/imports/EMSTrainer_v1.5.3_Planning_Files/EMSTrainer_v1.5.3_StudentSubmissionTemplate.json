@@ -1,0 +1,30 @@
+{
+  "student_id": "student_001",
+  "scenario_id": "trauma_001",
+  "timestamped_actions": [
+    {
+      "time": "00:01",
+      "action": "assess airway"
+    },
+    {
+      "time": "00:03",
+      "action": "administer O2"
+    }
+  ],
+  "consults_used": 1,
+  "soap_summary": "Pt found supine, GCS 13, O2 applied, IV started...",
+  "curveballs_encountered": [
+    "equipment_failure"
+  ],
+  "interventions_performed": [
+    "O2",
+    "IV"
+  ],
+  "vitals_trend": {
+    "HR": 110,
+    "BP": "92/60",
+    "SpO2": 94
+  },
+  "completion_time": "00:12",
+  "timestamp": "2025-10-05T10:45:00"
+}
