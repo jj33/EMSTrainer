@@ -1,4 +1,8 @@
-# macOS system files
+# ==========================
+# EMSTrainer .gitignore
+# ==========================
+
+# --- macOS system files ---
 .DS_Store
 .AppleDouble
 .LSOverride
@@ -11,16 +15,13 @@ Icon?
 *.icloud
 *.icloud*
 
-# Pages and Office artifacts
-*.pages~
-*.docx~
-*.tmp
-~$*
-
-# VS Code
+# --- Editor / IDE ---
 .vscode/
+.idea/
+*.swp
+*.swo
 
-# Xcode
+# --- Xcode (if used) ---
 *.xcuserstate
 *.xcworkspace
 *.xcodeproj
@@ -32,25 +33,41 @@ build/
 *.mode2v3
 *.perspectivev3
 
-# Git
-*.orig
-*.rej
-*.swp
-*.swo
-
-# Logs and temp
+# --- Logs & temp files ---
 *.log
 *.bak
 *.tmp
 *.temp
 *.cache
 
-# Node / Python / Ruby (if used)
-node_modules/
-.env
+# --- Git merge/rebase artifacts ---
+*.orig
+*.rej
+
+# --- Office / Apple Pages artifacts ---
+*.pages~
+*.docx~
+~$*
+
+# --- Python (if used for scripts) ---
 __pycache__/
 *.pyc
 *.pyo
-*.rbc
-.bundle/
+*.pyd
+*.egg-info/
+.eggs/
+dist/
+build/
+venv/
+.venv/
+.env
 
+# --- Node.js (if used later) ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Ruby (if used later) ---
+.bundle/
+.r
