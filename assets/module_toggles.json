@@ -1,0 +1,105 @@
+{
+  "curveball": {
+    "enabled": true
+  },
+  "peds_ob_fatal": {
+    "default": false
+  },
+  "time_pressure": {
+    "enabled": true
+  },
+  "monica_seed": null,
+  "distractions": {
+    "enabled_default": false,
+    "monica_forced": true,
+    "profiles": [
+      {
+        "id": "bystander_interruption",
+        "weight": 3,
+        "cooldown_sec": 120,
+        "examples": [
+          "A family member asks repeated questions.",
+          "Bystander insists on a specific hospital."
+        ]
+      },
+      {
+        "id": "radio_chatter",
+        "weight": 2,
+        "cooldown_sec": 90,
+        "examples": [
+          "Dispatch radio burst overlaps your patch.",
+          "Unit calling with non-urgent traffic."
+        ]
+      },
+      {
+        "id": "environment_noise",
+        "weight": 2,
+        "cooldown_sec": 120,
+        "examples": [
+          "Power tools nearby drown out speech.",
+          "Alarm beeping intermittently."
+        ]
+      }
+    ]
+  },
+  "latency_tracking": {
+    "enabled_default": false,
+    "monica_forced": true,
+    "actions": [
+      {
+        "id": "bvm_effect_latency",
+        "start_event": "bvm_started",
+        "end_event": "etco2_improved",
+        "targets": {
+          "target_sec": 30,
+          "warn_sec": 45,
+          "fail_sec": 60
+        },
+        "comment": "Time from BVM start to measurable ETCO2 improvement"
+      },
+      {
+        "id": "oxygen_nrb_effect_latency",
+        "start_event": "oxygen_nrb",
+        "end_event": "spo2_trending_up",
+        "targets": {
+          "target_sec": 60,
+          "warn_sec": 90,
+          "fail_sec": 120
+        },
+        "comment": "Time from NRB oxygen to improving SpO2 trend"
+      },
+      {
+        "id": "defib_ready_latency",
+        "start_event": "monitor_on",
+        "end_event": "first_rhythm_view",
+        "targets": {
+          "target_sec": 20,
+          "warn_sec": 30,
+          "fail_sec": 45
+        },
+        "comment": "Time from monitor on to first rhythm analysis"
+      },
+      {
+        "id": "iv_to_med_ready_latency",
+        "start_event": "iv_access",
+        "end_event": "med_ready",
+        "targets": {
+          "target_sec": 60,
+          "warn_sec": 90,
+          "fail_sec": 120
+        },
+        "comment": "Time from IV access to medication ready for administration"
+      }
+    ],
+    "penalties": {
+      "warn": -3,
+      "fail": -6
+    },
+    "normal_ignored": true
+  },
+  "auto_redact": {
+    "monica_default": true,
+    "normal_default": false,
+    "hard_default": false
+  }
+}
