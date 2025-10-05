@@ -1,0 +1,17 @@
+{
+  "monica_mode": true,
+  "ui_suppression_selfcheck": true,
+  "monica": {
+    "timer_seconds": 900,
+    "curveball_enabled": true,
+    "peds_ob_strict": true,
+    "aggressive_trending": true,
+    "compressed_prompt": true,
+    "termination_timing": { "enabled": true, "med_director_call_required": true },
+    "monica_lock": true
+  },
+  "curveball": { "min_seconds": 180, "max_seconds": 720 },
+  "provider_level": "Paramedic",
+  "student_role": "Paramedic",
+  "partner": { "name": "(default)", "cert": "EMT", "acts_only_on_order": true }
+}
