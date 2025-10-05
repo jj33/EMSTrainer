@@ -1,0 +1,23 @@
+{
+  "standard_consults": {
+    "enabled": true,
+    "max_per_scenario": 2,
+    "hint_style": "conceptual_only",
+    "min_gap_sec_between_consults": 120
+  },
+  "termination_of_resuscitation": {
+    "require_consult": true,
+    "evidence_requirements": [
+      "non_shockable_or_persistent_pulseless_rhythm",
+      "no_rosc_after_multiple_cycles",
+      "no_reversible_causes_remain",
+      "transport_time_unfavorable"
+    ],
+    "time_on_scene_min_target": 1200,
+    "time_on_scene_min_hard": 1500
+  },
+  "patch_penalties": {
+    "connect_delay_sec": 30,
+    "on_hold_delay_sec": 15
+  }
+}
