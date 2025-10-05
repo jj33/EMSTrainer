@@ -1,64 +1,52 @@
 # EMSTrainer
 
-EMSTrainer is a structured, versioned repository of EMS training materials designed to support paramedic students, instructors, and AI-assisted study workflows. It provides clean, organized source documents, study guides, and prompts — all optimized for non-commercial educational use.
+**Branch:** `dev`  
+**Current prompt:** [`prompts/EMSTrainer_Core_Prompt_v1.5.6.1.txt`](prompts/EMSTrainer_Core_Prompt_v1.5.6.1.txt)
+
+## Overview
+EMSTrainer is a Copilot-driven EMS training assistant with three learner modes (Scenario, Test Questions, Study Guide) and an instructor timing overlay. The **student-facing logic** lives entirely in the **core prompt**; **instructor overrides** are supplied via JSON assets.
+
+## Quick Start
+1. Ensure you are on the `dev` branch and pull latest.
+2. Review or edit config under [`assets/`](assets/).
+3. Use the **core prompt** above with Microsoft Copilot (GPT-5 enabled). Select **Scenario**, **Test Questions**, or **Study Guide**; optionally set **difficulty**.
+4. For Monica evaluation, set difficulty to **Monica**.
+
+## Folders
+- `prompts/` — core prompt(s) by version.  
+  ↳ **Current:** [`EMSTrainer_Core_Prompt_v1.5.6.1.txt`](prompts/EMSTrainer_Core_Prompt_v1.5.6.1.txt)
+- `assets/` — instructor-configurable JSON (timing, provider levels, partners, module toggles, security policy). See [`assets/README.md`](assets/README.md).
+- `schemas/` — JSON Schemas validating asset formats.
+- `docs/` — guides for testers and maintainers.  
+  ↳ **Start here:** [`docs/TESTING_MONICA_v1.5.6.1.md`](docs/TESTING_MONICA_v1.5.6.1.md)
+- `tools/` — helper scripts (e.g., repo layout validator).
+
+## Monica Mode Highlights (v1.5.6.1)
+- **Deterministic seed** (`module_toggles.monica_seed`) for reproducible runs.
+- **Distractions overlay** forced **ON** in Monica; weighted, cooldown-limited; consumes simulated time only.
+- **Latency tracking** forced **ON** in Monica; **ignored in Normal**; toggleable in Hard.
+- **Objective-only debrief** (auto-redaction) in Monica by default.
+
+## Configure via Assets
+Edit the following as needed (validate with schemas):
+- `assets/instructor_timing_config.json` — Monica timing preset; segments and consequences. 
+- `assets/module_toggles.json` — `monica_seed`, `distractions`, `latency_tracking`, `auto_redact`, etc.  
+- `assets/provider_levels.json` — provider scope maps.  
+- `assets/emstrainer_partner_names.json` — partner pool.  
+- `assets/security_policy.json` — filename template and retention policy.
+
+## Testing
+See [`docs/TESTING_MONICA_v1.5.6.1.md`](docs/TESTING_MONICA_v1.5.6.1.md) for acceptance criteria and regression checks.
+
+## Validating Repo Layout
+Run the layout validator to compare your working copy to the expected structure for this release:
+```bash
+python3 tools/validate_repo_layout.py
+```
+It reports **missing**, **unexpected**, and **mismatched** paths relative to repo root.
+
+## Versioning
+See [`CHANGELOG.md`](CHANGELOG.md) for full details.
 
 ---
-
-## 📘 What This Project Contains
-
-- ✅ Editable source documents (`.pages`) for EMS training
-- ✅ Exported assets (`.pdf`) for printing and distribution
-- ✅ Versioned imports from external sources
-- ✅ Cleanup tooling to normalize and organize content
-- ✅ Contributor guidelines for expanding the library
-
----
-
-## 🧭 How It Works
-
-1. **Import** new materials into `docs/imports/<version>/`
-2. **Run cleanup** with `scripts/cleanup-import.sh <version> --apply`
-3. **Convert `.docx` to `.pages`** and move to `docs/source/`
-4. **Export `.pdf`** versions to `assets/`
-5. **Commit and tag** each cleaned version
-
-See [`docs/README.md`](docs/README.md) for full documentation.
-
----
-
-## 🧪 For Educators & Students
-
-All materials are free to use for **non-commercial educational purposes**. You may:
-
-- Copy and distribute PDFs
-- Adapt source documents
-- Reference or remix content in your own study guides
-
-Each exported document includes a license badge and footer referencing this project.
-
----
-
-## 🤝 Contributing
-
-Want to add new scenarios, prompts, or guides?
-
-- See [`CONTRIBUTING.md`](CONTRIBUTING.md)
-- Follow the versioned import and cleanup workflow
-- Submit a pull request with your additions
-
----
-
-## 🛠 Tooling
-
-- `scripts/cleanup-import.sh` — organizes imported files
-- `.gitignore` — filters out macOS and editor artifacts
-- `docs/source/README.md` — explains how to structure source documents
-- `docs/assets/README.md` — explains exported PDFs
-
----
-
-## 📎 License
-
-This project is licensed under [CC BY-NC 4.0](LICENSE). You may use and adapt materials for non-commercial educational purposes with attribution.
-
-Badge and footer are automatically included in all future document exports.
+*Updated 2025-10-05*
