@@ -71,3 +71,18 @@ yarn-error.log*
 # --- Ruby (if used later) ---
 .bundle/
 .r
+
+# Encrypted packs (keep out of git by default)
+*.emsx
+*.subx
+
+# Allow encrypted examples for docs only
+!examples/**/encrypted/*.emsx
+!examples/**/encrypted/*.subx
+
+# OS/editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
