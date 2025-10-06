@@ -1,0 +1,59 @@
+{
+    "scenario_id": "code_blackout",
+    "title": "Code Blackout",
+    "mode": "Scenario",
+    "monica_mode": true,
+    "ui_suppression_selfcheck": true,
+    "compressed_prompt": true,
+    "monica": {
+        "timer_seconds": 900,
+        "curveball_enabled": true,
+        "peds_ob_strict": false,
+        "aggressive_trending": true,
+        "compressed_prompt": true,
+        "termination_timing": {
+            "enabled": true,
+            "med_director_call_required": true
+        },
+        "monica_lock": true
+    },
+    "curveball": {
+        "min_seconds": 480,
+        "max_seconds": 540,
+        "description": "Generator explodes at T-08:00, causing minor burns and scene chaos"
+    },
+    "dispatch": {
+        "time": "03:17",
+        "location": "Rural residence (no exact address)",
+        "chief_complaint": "Unresponsive male, unknown downtime"
+    },
+    "setting": "Dimly lit rural home during a power outage. No lights, no heat, and no cell service. Generator fumes present. Family is panicked.",
+    "patient": {
+        "age": 58,
+        "gender": "Male",
+        "history": [
+            "CAD",
+            "HTN",
+            "Recent flu-like symptoms"
+        ],
+        "appearance": "Supine on floor, cyanotic, agonal respirations. No obvious trauma.",
+        "initial_vitals": {
+            "HR": "38, irregular",
+            "RR": "6, shallow",
+            "BP": "78/40",
+            "SpO2": "82%",
+            "ETCO2": "18 mmHg",
+            "Temp": "95.2\u00b0F",
+            "BGL": "68 mg/dL",
+            "Pupils": "Sluggish, unequal",
+            "Skin": "Cool, mottled"
+        }
+    },
+    "partner": {
+        "name": "Coach",
+        "cert": "EMT",
+        "acts_only_on_order": true
+    },
+    "provider_level": "Paramedic",
+    "student_role": "Paramedic"
+}
