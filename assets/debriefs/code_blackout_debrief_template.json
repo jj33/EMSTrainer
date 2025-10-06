@@ -1,8 +1,64 @@
 {
   "scenario_id": "code_blackout",
-  "monica_seed": "20251006-001053",
-  "outcome_summary": "placeholder",
-  "key_decision_analysis": "placeholder",
-  "timestamped_action_log": [],
-  "educational_rationale": "placeholder"
+  "run_id": "<auto>",
+  "student_id": "<student_or_session_id>",
+  "timestamps": {
+    "dispatch_received": null,
+    "arrival_on_scene": null,
+    "assessment_start": null,
+    "blackout_event": null,
+    "o2_started": null,
+    "cpap_started": null,
+    "first_nitro": null,
+    "airway_advanced": null,
+    "arrest_time": null,
+    "first_compression": null,
+    "first_shock": null,
+    "rosc_time": null,
+    "transport_start": null,
+    "ed_arrival": null
+  },
+  "metrics": {
+    "time_to_o2_seconds": null,
+    "time_to_cpap_seconds": null,
+    "time_to_first_nitro_seconds": null,
+    "arrest_occurred": null,
+    "defib_shocks_count": 0,
+    "o2_used_liters_est": null,
+    "suction_minutes_used": null,
+    "monitor_battery_minutes_remaining_at_handoff": null,
+    "spo2_min": null,
+    "etco2_max": null
+  },
+  "outcome": {
+    "arrived_with_pulse": null,
+    "arrived_spontaneous_resp": null,
+    "final_spo2": null,
+    "final_rr": null,
+    "final_bp": null
+  },
+  "constraints_violations": [],
+  "notes": "",
+  "auto_score": {
+    "passed": null,
+    "score": null,
+    "rubric": [
+      {
+        "criterion": "O2 or CPAP within 2 min",
+        "weight": 3
+      },
+      {
+        "criterion": "Transport decision after stabilization",
+        "weight": 2
+      },
+      {
+        "criterion": "Appropriate nitro use if indicated",
+        "weight": 1
+      },
+      {
+        "criterion": "Capnography used for advanced airway/BVM",
+        "weight": 1
+      }
+    ]
+  }
 }
