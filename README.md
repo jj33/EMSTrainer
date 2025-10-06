@@ -2,23 +2,47 @@
 
 **Branch:** `dev`  
 **Current prompt:** [`prompts/EMSTrainer_Core_Prompt_v1.5.6.1.txt`](prompts/EMSTrainer_Core_Prompt.txt)
+**Current Student Prompt:** [`prompts/EMSTrainer_Core_Prompt.txt`](prompts/EMSTrainer_Core_Prompt.txt)  
+**Current Instructor Prompt:** [`prompts/EMSTrainer_Instructor_Prompt.txt`](prompts/EMSTrainer_Instructor_Prompt.txt) *(In Development)*
 
 ## Overview
 EMSTrainer is a Copilot-driven EMS training assistant with three learner modes (Scenario, Test Questions, Study Guide) and an instructor timing overlay. The **student-facing logic** lives entirely in the **core prompt**; **instructor overrides** are supplied via JSON assets.
 
+### Two-Part System
+- **Student Side:** Run scenarios, practice skills, receive immediate feedback
+- **Instructor Side:** Create scenarios, deploy to students, collect results, auto-grade submissions
+
 ## Quick Start
+
+### For Students:
 1. Ensure you are on the `dev` branch and pull latest.
-2. Review or edit config under [`assets/`](assets/).
-3. Use the **core prompt** above with Microsoft Copilot (GPT-5 enabled). Select **Scenario**, **Test Questions**, or **Study Guide**; optionally set **difficulty**.
-4. For Monica evaluation, set difficulty to **Monica**.
+
+
+
+2. Load [`prompts/EMSTrainer_Core_Prompt.txt`](prompts/EMSTrainer_Core_Prompt.txt) into your AI assistant (Copilot, ChatGPT, Claude).
+3. Select **Scenario**, **Test Questions**, or **Study Guide** mode.
+4. Choose difficulty: Easy, Standard, Hard, or **Monica Mode** (super hard with timer).
+
+### For Instructors:
+1. Load [`prompts/EMSTrainer_Instructor_Prompt.txt`](prompts/EMSTrainer_Instructor_Prompt.txt) into your AI assistant.
+2. Create scenarios, deploy to students, and auto-grade submissions.
+3. Review templates in [`docs/imports/EMSTrainer_v1.5.3_Planning_Files/`](docs/imports/EMSTrainer_v1.5.3_Planning_Files/).
 
 ## Folders
-- `prompts/` — core prompt(s) by version.  
-  ↳ **Current:** [`EMSTrainer_Core_Prompt_v1.5.6.1.txt`](prompts/EMSTrainer_Core_Prompt_v1.5.6.1.txt)
+
+
+- `prompts/` — Student and Instructor prompt files.  
+  ↳ **Student:** [`EMSTrainer_Core_Prompt.txt`](prompts/EMSTrainer_Core_Prompt.txt)  
+  ↳ **Instructor:** [`EMSTrainer_Instructor_Prompt.txt`](prompts/EMSTrainer_Instructor_Prompt.txt) *(v1.6 - In Development)*
 - `assets/` — instructor-configurable JSON (timing, provider levels, partners, module toggles, security policy). See [`assets/README.md`](assets/README.md).
 - `schemas/` — JSON Schemas validating asset formats.
 - `docs/` — guides for testers and maintainers.  
-  ↳ **Start here:** [`docs/TESTING_MONICA_v1.5.6.1.md`](docs/TESTING_MONICA_v1.5.6.1.md)
+
+  ↳ **Student Testing:** [`docs/TESTING_MONICA_v1.5.6.1.md`](docs/TESTING_MONICA_v1.5.6.1.md)  
+  ↳ **Instructor Guide:** [`docs/imports/EMSTrainer_v1.5.3_Planning_Files/`](docs/imports/EMSTrainer_v1.5.3_Planning_Files/) *(Templates)*
+- `planning/` — Feature roadmaps and development tracking.  
+  ↳ [`planning/EMSTrainer_Feature_Document.md`](planning/EMSTrainer_Feature_Document.md)  
+  ↳ [`planning/EMS_Trainer_Future_Ideas_with_Status.md`](planning/EMS_Trainer_Future_Ideas_with_Status.md)
 - `tools/` — helper scripts (e.g., repo layout validator).
 
 ## Monica Mode Highlights (v1.5.6.1)
@@ -53,8 +77,16 @@ See [`CHANGELOG.md`](CHANGELOG.md) for full details.
 - **EMSTrainer_Core_Prompt.txt**  
   This is the **canonical student-facing prompt**. All updates to student logic, scenario handling, and difficulty settings should be made here.  
   - Includes Scenario, Test, and Study modes.
-  - Supports Monica Mode (super-hard difficulty + timer).
+
+  - Supports four difficulty levels: Easy, Standard, Hard, and Monica Mode (super-hard difficulty + timer).
   - Handles vitals trending, pediatric/OB fatality policy, and compressed prompt option.
+
+- **EMSTrainer_Instructor_Prompt.txt** *(v1.6 - In Development)*  
+  Chat-based interface for instructors to:
+  - Create and customize training scenarios
+  - Deploy scenarios to students
+  - Collect and auto-grade student submissions
+  - Generate performance summaries and reports
 
 #### **assets/**
 - **instructor_config.json**  
