@@ -31,64 +31,94 @@ jobs:
           echo "base_ref=${{ github.base_ref }}"
           echo "head_ref=${{ github.head_ref }}"
           echo "actor=${{ github.actor }}"
-          echo "Listing schema and scenario directories (if present):"
+          echo "---- List schema dir ----"
           ls -al assets/schema || true
-          ls -al assets/scenarios || true
+          echo "---- List assets dir ----"
           ls -al assets || true
+          echo "---- List scenarios dir ----"
+          ls -al assets/scenarios || true
 
       - name: Set up Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: 'node'  # latest stable on the runner
+          node-version: 'node'  # latest stable on runner
 
       - name: Install Ajv CLI
         run: npm i -g ajv-cli@5
 
-      # ----------------------------
-      # Instructor scenarios (schema-conformant)
-      # Only run if both the schema and one or more *_instructor.json files exist
-      # ----------------------------
+      # -----------------------------------------
+      # Validate known pairs (guarded by hashFiles)
+      # -----------------------------------------
+
+      - name: Validate partner pool
+        if: ${{ hashFiles('assets/schema/partner_pool.schema.json') != '' && hashFiles('assets/partner_pool.json') != '' }}
+        run: |
+          echo "Validating assets/partner_pool.json against assets/schema/partner_pool.schema.json"
+          ajv validate --spec=draft2020 \
+            -s assets/schema/partner_pool.schema.json \
+            -d assets/partner_pool.json
+
+      - name: Validate provider levels
+        if: ${{ hashFiles('assets/schema/provider_levels.schema.json') != '' && hashFiles('assets/provider_levels.json') != '' }}
+        run: |
+          echo "Validating assets/provider_levels.json against assets/schema/provider_levels.schema.json"
+          ajv validate --spec=draft2020 \
+            -s assets/schema/provider_levels.schema.json \
+            -d assets/provider_levels.json
+
+      - name: Validate module toggles
+        if: ${{ hashFiles('assets/schema/module_toggles.schema.json') != '' && hashFiles('assets/module_toggles.json') != '' }}
+        run: |
+          echo "Validating assets/module_toggles.json against assets/schema/module_toggles.schema.json"
+          ajv validate --spec=draft2020 \
+            -s assets/schema/module_toggles.schema.json \
+            -d assets/module_toggles.json
+
+      - name: Validate instructor timing config
+        if: ${{ hashFiles('assets/schema/instructor_timing_config.schema.json') != '' && hashFiles('assets/instructor_timing_config.json') != '' }}
+        run: |
+          echo "Validating assets/instructor_timing_config.json against assets/schema/instructor_timing_config.schema.json"
+          ajv validate --spec=draft2020 \
+            -s assets/schema/instructor_timing_config.schema.json \
+            -d assets/instructor_timing_config.json
+
+      - name: Validate med director rules
+        if: ${{ hashFiles('assets/schema/med_director_rules.schema.json') != '' && hashFiles('assets/med_director_rules.json') != '' }}
+        run: |
+          echo "Validating assets/med_director_rules.json against assets/schema/med_director_rules.schema.json"
+          ajv validate --spec=draft2020 \
+            -s assets/schema/med_director_rules.schema.json \
+            -d assets/med_director_rules.json
+
+      - name: Validate security policy
+        if: ${{ hashFiles('assets/schema/security_policy.schema.json') != '' && hashFiles('assets/security_policy.json') != '' }}
+        run: |
+          echo "Validating assets/security_policy.json against assets/schema/security_policy.schema.json"
+          ajv validate --spec=draft2020 \
+            -s assets/schema/security_policy.schema.json \
+            -d assets/security_policy.json
+
+      # -----------------------------------------
+      # Optional: Instructor scenarios (if you add later)
+      # Requires assets/schema/instructor_scenario.schema.json and *_instructor.json
+      # -----------------------------------------
       - name: Validate instructor scenarios
         if: ${{ hashFiles('assets/schema/instructor_scenario.schema.json') != '' && hashFiles('assets/scenarios/*_instructor.json') != '' }}
         run: |
-          echo "Validating instructor scenarios against assets/schema/instructor_scenario.schema.json"
+          echo "Validating assets/scenarios/*_instructor.json against assets/schema/instructor_scenario.schema.json"
           ajv validate --spec=draft2020 \
             -s assets/schema/instructor_scenario.schema.json \
             -d "assets/scenarios/*_instructor.json"
 
-      # ----------------------------
-      # Partner names (strict format)
-      # Only run if both the schema and the data file exist
-      # ----------------------------
-      - name: Validate partner names
-        if: ${{ hashFiles('assets/schema/partner_names.schema.json') != '' && hashFiles('assets/emstrainer_partner_names.json') != '' }}
-        run: |
-          echo "Validating assets/emstrainer_partner_names.json against assets/schema/partner_names.schema.json"
-          ajv validate --spec=draft2020 \
-            -s assets/schema/partner_names.schema.json \
-            -d assets/emstrainer_partner_names.json
-
-      # ----------------------------
-      # Student submissions (if you collect them in-repo)
-      # Only run if both the schema and any submission files exist
-      # ----------------------------
-      - name: Validate student submissions
-        if: ${{ hashFiles('assets/schema/student_submission.schema.json') != '' && hashFiles('submissions/**/*.json') != '' }}
-        run: |
-          echo "Validating submissions/**/*.json against assets/schema/student_submission.schema.json"
-          ajv validate --spec=draft2020 \
-            -s assets/schema/student_submission.schema.json \
-            -d "submissions/**/*.json"
-
-      # ----------------------------
+      # -----------------------------------------
       # Syntax-only check for student-run JSON (no schema yet)
-      # ----------------------------
+      # -----------------------------------------
       - name: Syntax check - student-run scenario(s)
         run: |
           if [ -f code_blackout_scenario.json ]; then
             python - <<'PY'
 import json
-with open("code_blackout_scenario.json", "r", encoding="utf-8") as f:
+with open("code_blackout_scenario.json","r",encoding="utf-8") as f:
     json.load(f)
 print("code_blackout_scenario.json syntax OK")
 PY
