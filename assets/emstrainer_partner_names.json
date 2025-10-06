@@ -99,6 +99,14 @@
     {
       "name": "Joel",
       "cert_level": "Critical Care Paramedic"
+    },
+    {
+      "name": "Skyler",
+      "cert_level": "Air Care Paramedic"
+    },
+    {
+      "name": "Hawk",
+      "cert_level": "Air Care Paramedic"
     }
   ]
 }
