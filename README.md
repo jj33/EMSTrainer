@@ -12,38 +12,47 @@ EMSTrainer is a Copilot-driven EMS training assistant with three learner modes (
 - **Student Side:** Run scenarios, practice skills, receive immediate feedback
 - **Instructor Side:** Create scenarios, deploy to students, collect results, auto-grade submissions
 
+## Requirements
+
+### ⚠️ IMPORTANT: GPT-5 Required
+
+**EMSTrainer requires GPT-5** (available in Microsoft Copilot or ChatGPT) for medical accuracy.
+
+- **Why GPT-5?** Medical knowledge depth, protocol accuracy, and clinical reasoning
+- **How to enable:** Open Copilot/ChatGPT settings and manually enable GPT-5
+- **DO NOT use:** GPT-4o mini or earlier models (insufficient medical accuracy)
+
 ## Quick Start
 
 ### For Students:
-1. Ensure you are on the `dev` branch and pull latest.
-
-
-
-2. Load [`prompts/EMSTrainer_Core_Prompt.txt`](prompts/EMSTrainer_Core_Prompt.txt) into your AI assistant (Copilot, ChatGPT, Claude).
-3. Select **Scenario**, **Test Questions**, or **Study Guide** mode.
-4. Choose difficulty: Easy, Standard, Hard, or **Monica Mode** (super hard with timer).
+1. **Enable GPT-5** in your AI assistant (see Requirements above)
+2. Drag and drop [`prompts/EMSTrainer_Core.txt`](prompts/EMSTrainer_Core.txt) into Copilot/ChatGPT
+3. For scenarios: Also load [`prompts/EMSTrainer_Scenario_Mode.txt`](prompts/EMSTrainer_Scenario_Mode.txt)
+4. Choose your mode: **Test Questions**, **Study Guide**, or **Scenario**
+5. Select difficulty: Easy, Standard, Hard, or **Monica Mode**
 
 ### For Instructors:
 1. Load [`prompts/EMSTrainer_Instructor_Prompt.txt`](prompts/EMSTrainer_Instructor_Prompt.txt) into your AI assistant.
 2. Create scenarios, deploy to students, and auto-grade submissions.
 3. Review templates in [`docs/imports/EMSTrainer_v1.5.3_Planning_Files/`](docs/imports/EMSTrainer_v1.5.3_Planning_Files/).
 
-## Folders
+## Repository Structure
 
+**prompts/** - Load these into GPT-5
+- [`EMSTrainer_Core.txt`](prompts/EMSTrainer_Core.txt) (16k) - Foundation + Test/Study
+- [`EMSTrainer_Scenario_Mode.txt`](prompts/EMSTrainer_Scenario_Mode.txt) (23k) - Scenarios
 
-- `prompts/` — Student and Instructor prompt files.  
-  ↳ **Student:** [`EMSTrainer_Core_Prompt.txt`](prompts/EMSTrainer_Core_Prompt.txt)  
-  ↳ **Instructor:** [`EMSTrainer_Instructor_Prompt.txt`](prompts/EMSTrainer_Instructor_Prompt.txt) *(v1.6 - In Development)*
-- `assets/` — instructor-configurable JSON (timing, provider levels, partners, module toggles, security policy). See [`assets/README.md`](assets/README.md).
-- `schemas/` — JSON Schemas validating asset formats.
-- `docs/` — guides for testers and maintainers.  
+**docs/** - Quick Start Guides
+- [`Student_Quick_Start_Guide.md`](docs/Student_Quick_Start_Guide.md)
+- [`Instructor_Quick_Start_Guide.md`](docs/Instructor_Quick_Start_Guide.md)
 
-  ↳ **Student Testing:** [`docs/TESTING_MONICA_v1.5.6.1.md`](docs/TESTING_MONICA_v1.5.6.1.md)  
-  ↳ **Instructor Guide:** [`docs/imports/EMSTrainer_v1.5.3_Planning_Files/`](docs/imports/EMSTrainer_v1.5.3_Planning_Files/) *(Templates)*
-- `planning/` — Feature roadmaps and development tracking.  
-  ↳ [`planning/EMSTrainer_Feature_Document.md`](planning/EMSTrainer_Feature_Document.md)  
-  ↳ [`planning/EMS_Trainer_Future_Ideas_with_Status.md`](planning/EMS_Trainer_Future_Ideas_with_Status.md)
-- `tools/` — helper scripts (e.g., repo layout validator).
+**examples/** - Sample Scenarios
+- [`scenario_cardiac_arrest_vf.json`](examples/scenario_cardiac_arrest_vf.json) - Standard
+- [`scenario_mvc_trauma_monica.json`](examples/scenario_mvc_trauma_monica.json) - Monica Mode
+
+**assets/** - Config files ([`README`](assets/README.md))
+**planning/** - Feature tracking ([`Features`](planning/EMSTrainer_Feature_Document.md) | [`Roadmap`](planning/EMS_Trainer_Future_Ideas_with_Status.md))
+**schemas/** - JSON validation
 
 ## Monica Mode Highlights (v1.5.6.1)
 - **Deterministic seed** (`module_toggles.monica_seed`) for reproducible runs.
