@@ -229,6 +229,72 @@ Instructor prompt includes: "As instructor, generate..."
 
 ---
 
+### Equipment Setup & Timing Considerations
+**Purpose:** Add realistic equipment setup delays and "did you remember" grading.
+
+**Equipment Features:**
+
+**LUCAS Device:**
+- Allow use after proper setup (positioning, securing)
+- Setup time: 30-45 seconds
+- Grading: Did student verbalize proper placement?
+- Hidden check: Device positioned correctly before activation
+
+**Capnography (EtCO2):**
+- Requires activation on monitor (Zoll, etc.)
+- Calibration time: ~15 seconds before usable
+- Student must verbalize: "Partner, enable capnography on the monitor"
+- Timing penalty if not activated early
+- Grading: Did student remember to enable?
+
+**Other Equipment Delays:**
+- 12-lead acquisition: 20-30 seconds
+- Monitor startup/reboot: 30-45 seconds  
+- IV pump programming: 15-30 seconds
+- Ventilator setup: 60-90 seconds
+
+**Hidden Grading Items:**
+- Did student account for equipment delays in timing?
+- Did student delegate setup tasks appropriately?
+- Did student have backup plan if equipment delayed?
+
+**Status:** 📋 Planned (v1.7)
+
+---
+
+### Instructor Scenario Editor (In-Prompt)
+**Purpose:** Allow instructors to load, modify, and save scenarios without editing JSON files.
+
+**Workflow:**
+1. Instructor drops scenario JSON into chat
+2. AI displays all variables in readable format
+3. Instructor makes changes via natural language:
+   - "Change difficulty to Hard"
+   - "Add a curveball at 8 minutes"
+   - "Increase initial heart rate to 140"
+4. AI validates changes
+5. AI writes updated scenario to new file
+
+**Benefits:**
+- No JSON editing required
+- Immediate validation
+- Easy customization for local protocols
+- Quick scenario variants
+
+**Example:**
+```
+Instructor: [drops cardiac_arrest_vf.json]
+AI: "Loaded scenario. Current settings: Standard difficulty, VF arrest..."
+Instructor: "Change to Monica Mode and add equipment failure curveball"
+AI: "Updated. Monica Mode enabled, added monitor failure at T-07:30. Save as?"
+Instructor: "cardiac_arrest_vf_monica.json"
+AI: [creates new file]
+```
+
+**Status:** 📋 Planned (v1.7)
+
+---
+
 ### Scenario & Results Encryption
 **Purpose:** Prevent students from reading scenarios ahead or tampering with results.
 
