@@ -1,6 +1,12 @@
-# EMS Trainer v1.5.3 – Future Ideas with Implementation Status
+# EMS Trainer – Future Ideas with Implementation Status
 
-This document outlines proposed enhancements for EMS Trainer v1.5.3, along with their implementation status based on features already present in v1.5.2.
+This document outlines proposed enhancements for EMS Trainer, along with their implementation status.
+
+## Version Roadmap
+- **v1.5.6** - Current release with difficulty modes and Monica Mode
+- **v1.6** - Instructor features (chat-based scenario creation and grading)
+- **v1.7** - Security and encryption
+- **v1.8+** - Advanced instructor tools and web dashboard
 
 ---
 
@@ -160,3 +166,53 @@ Adds realism and communication practice.
   - Partner fatigue, skill proficiency, or error simulation
 
 **Status:** ❌ Not yet implemented
+
+---
+
+## 📚 Instructor Features (v1.6 Development)
+
+### Instructor Chat-Based Workflow
+**Purpose:** Enable non-technical instructors to create, deploy, and grade scenarios via AI chat interface.
+
+**Features:**
+- **Scenario Creation:** Natural language commands to generate scenario JSON files
+- **Scenario Deployment:** Formatted output for email or file distribution to students
+- **Results Collection:** Accept student submission JSON files
+- **Automated Grading:** Score submissions against rubric with integrity checking (hash-based)
+- **Summary Generation:** Create instructor-friendly performance reports
+
+**Design Philosophy:**
+- Chat-based interface (works in Copilot, ChatGPT, Claude, Cursor)
+- No coding required for instructors
+- No command-line knowledge needed
+- Simple copy/paste or file-based workflows
+
+**Components:**
+1. **Instructor Prompt File:** `prompts/EMSTrainer_Instructor_Prompt.txt`
+2. **Scenario Templates:** JSON schemas in `docs/imports/`
+3. **Hash Validation:** Basic integrity checking to detect tampering
+4. **Grading Rubrics:** Auto-scoring logic based on expected interventions
+
+**Status:** 🛠️ In Development (v1.6)
+
+---
+
+### Scenario & Results Encryption
+**Purpose:** Prevent students from reading scenarios ahead or tampering with results.
+
+**Features:**
+- AES-256 encryption of scenario files
+- Digital signatures for tamper detection
+- Per-student unique encrypted scenarios
+- Encrypted submission validation
+
+**Design Considerations:**
+- Adds complexity - deferred to v1.7
+- Phase 1 uses hash-based integrity checking as interim solution
+- Full encryption when core workflow is stable
+
+**Status:** 📅 Planned (v1.7)
+
+---
+
+*Updated 2025-10-06*
