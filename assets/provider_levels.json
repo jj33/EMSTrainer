@@ -1,0 +1,33 @@
+{
+  "jurisdiction": "Example County EMS",
+  "version": "1.0.0",
+  "effective_date": "2025-01-01",
+  "notes": "Example configuration showing EMT with AEMT skills and Paramedic with some CCP capabilities",
+  "provider_levels": {
+    "EMT": {
+      "base": "EMT_national",
+      "add_skills": [
+        "iv_access",
+        "io_access",
+        "limited_medication_administration",
+        "12_lead_acquisition"
+      ],
+      "remove_skills": [],
+      "notes": "Local EMTs trained to AEMT level minus advanced airways (King, i-gel). Can start IVs, give limited meds per protocol, acquire 12-leads.",
+      "protocol_reference": "County Protocol 2025 Section 3.2"
+    },
+    "Paramedic": {
+      "base": "Paramedic_national",
+      "add_skills": [
+        "ventilator_management",
+        "critical_care_medications"
+      ],
+      "remove_skills": [
+        "surgical_airway_cricothyrotomy",
+        "ecmo_management"
+      ],
+      "notes": "Paramedics can run vents and administer some critical care medications, but cricothyrotomy and ECMO are not in scope",
+      "protocol_reference": "County Protocol 2025 Section 4.5"
+    }
+  }
+}

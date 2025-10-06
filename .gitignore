@@ -72,6 +72,27 @@ yarn-error.log*
 .bundle/
 .r
 
+# --- Build artifacts & packages ---
+# Ignore zip files by default
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# But allow release packages in root
+!EMSTrainer_Student_*.zip
+!EMSTrainer_Instructor_*.zip
+
+# Build directories
+/tmp/
+/temp/
+/dist/
+/release/
+/packages/
+*_package/
+*_Package/
+
 # Encrypted packs (keep out of git by default)
 *.emsx
 *.subx
