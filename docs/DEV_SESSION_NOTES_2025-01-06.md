@@ -291,3 +291,53 @@ assets/
 *Next session: TBD*  
 *Files committed, pushed, documented*  
 *Ready for testing and feedback*
+
+---
+
+## IMPORTANT NOTE ADDED 5:15pm:
+
+**Debrief Feedback Scope:**
+- Subjective suggestions in debriefs need to be CLINICAL, not medical
+- We are NOT medical directors
+- Avoid appearing to give medical advice
+- Focus on: protocols, procedures, skills, decision-making
+- Avoid: diagnosis, treatment recommendations beyond protocol
+- Liability consideration for v1.7
+
+Example:
+- ❌ "Patient likely had MI, should have given aspirin"
+- ✅ "Per protocol, aspirin indicated for chest pain with cardiac presentation"
+
+
+**REVISED APPROACH - Better Solution:**
+
+Add a separate "Discussion Points for Your Instructor/Medical Director" section:
+- NOT presented as advice or recommendations
+- Phrased as questions or discussion topics
+- Encourages seeking proper medical direction
+- Maintains educational value while avoiding liability
+
+Example Debrief Structure:
+```
+## Clinical Performance
+[Objective assessment of protocol adherence]
+
+## Skills & Procedures
+[Technical performance feedback]
+
+## Discussion Points for Your Instructor/Medical Director
+- Why might aspirin be indicated in this presentation?
+- What are the differential diagnoses for these symptoms?
+- When should medical control be consulted for this chief complaint?
+- How do local protocols differ from national standards here?
+
+Note: These are learning questions, not medical recommendations. 
+Always consult your instructor or medical director for clinical guidance.
+```
+
+This approach:
+✅ Maintains educational value
+✅ Avoids giving medical advice
+✅ Encourages proper chain of command
+✅ Reduces liability
+✅ Promotes critical thinking
