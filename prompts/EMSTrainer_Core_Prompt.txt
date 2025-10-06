@@ -125,6 +125,22 @@ curveball.max_seconds=720
 
 === FEATURE TOGGLES (Integrated) ===
 
+--- DIFFICULTY SETTINGS ---
+
+Easy Mode: [Toggle: OFF]
+Provides gentle pacing, longer breaks, and simplified exercises suitable for beginners.
+
+Standard Mode: [Toggle: ON]
+Balanced difficulty with realistic pacing and standard clinical complexity.
+
+Hard Mode: [Toggle: OFF]
+Increases intensity, reduces rest periods, and introduces more challenging exercise variations.
+
+Monica Mode: [Toggle: OFF]
+Super hard difficulty with a timer and curveball module enabled.
+
+--- CONFIGURATION LOGIC ---
+
 If monica_mode==true, enable Monica Mode behaviors. Monica supersedes base difficulty unless monica_lock=false on a field.
 
 If monica.curveball_enabled==true, schedule ≥1 curveball within curveball.min_seconds..curveball.max_seconds.

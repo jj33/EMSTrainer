@@ -1,73 +1,128 @@
-
-name: Validate schemas & examples
+name: JSON Schema Validation
 
 on:
   pull_request:
-    branches: [ "dev" ]
+    branches: [ dev, main ]
     paths:
-      - "schemas/**"
-      - "examples/**"
-      - "prompts/**"
-      - "specs/**"
+      - '**/*.json'
+      - '.github/workflows/validate-schemas.yml'
   push:
-    branches: [ "dev" ]
+    branches:
+      - dev
+      - main
+      - 'feat/**'
+      - 'fix/**'
+      - 'chore/**'
+    paths:
+      - '**/*.json'
+      - '.github/workflows/validate-schemas.yml'
 
 jobs:
-  validate:
+  validate-json:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Show event/branch context
+        run: |
+          echo "event_name=${{ github.event_name }}"
+          echo "ref=${{ github.ref }}"
+          echo "base_ref=${{ github.base_ref }}"
+          echo "head_ref=${{ github.head_ref }}"
+          echo "actor=${{ github.actor }}"
+          echo "---- List schema dir ----"
+          ls -al assets/schema || true
+          echo "---- List assets dir ----"
+          ls -al assets || true
+          echo "---- List scenarios dir ----"
+          ls -al assets/scenarios || true
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
         with:
-          python-version: "3.11"
+          node-version: 'node'  # latest stable on runner
 
-      - name: Install dependencies
+      - name: Install Ajv CLI
+        run: npm i -g ajv-cli@5
+
+      # -----------------------------------------
+      # Validate known pairs (guarded by hashFiles)
+      # -----------------------------------------
+
+      - name: Validate partner pool
+        if: ${{ hashFiles('assets/schema/partner_pool.schema.json') != '' && hashFiles('assets/partner_pool.json') != '' }}
         run: |
-          python -m pip install --upgrade pip
-          pip install jsonschema==4.22.0 referencing==0.35.1
+          echo "Validating assets/partner_pool.json against assets/schema/partner_pool.schema.json"
+          ajv validate --spec=draft2020 \
+            -s assets/schema/partner_pool.schema.json \
+            -d assets/partner_pool.json
 
-      - name: Validate examples against schemas (offline registry)
+      - name: Validate provider levels
+        if: ${{ hashFiles('assets/schema/provider_levels.schema.json') != '' && hashFiles('assets/provider_levels.json') != '' }}
         run: |
-          python - << 'PY'
-          import json, sys, pathlib
-          from jsonschema import validators
-          from referencing import Registry, Resource
+          echo "Validating assets/provider_levels.json against assets/schema/provider_levels.schema.json"
+          ajv validate --spec=draft2020 \
+            -s assets/schema/provider_levels.schema.json \
+            -d assets/provider_levels.json
 
-          root = pathlib.Path('.')
-          schemas = root / 'schemas'
+      - name: Validate module toggles
+        if: ${{ hashFiles('assets/schema/module_toggles.schema.json') != '' && hashFiles('assets/module_toggles.json') != '' }}
+        run: |
+          echo "Validating assets/module_toggles.json against assets/schema/module_toggles.schema.json"
+          ajv validate --spec=draft2020 \
+            -s assets/schema/module_toggles.schema.json \
+            -d assets/module_toggles.json
 
-          s_rubric     = json.loads((schemas/'rubric.schema.json').read_text())
-          s_scenario   = json.loads((schemas/'scenario.schema.json').read_text())
-          s_submission = json.loads((schemas/'submission.schema.json').read_text())
+      - name: Validate instructor timing config
+        if: ${{ hashFiles('assets/schema/instructor_timing_config.schema.json') != '' && hashFiles('assets/instructor_timing_config.json') != '' }}
+        run: |
+          echo "Validating assets/instructor_timing_config.json against assets/schema/instructor_timing_config.schema.json"
+          ajv validate --spec=draft2020 \
+            -s assets/schema/instructor_timing_config.schema.json \
+            -d assets/instructor_timing_config.json
 
-          registry = Registry().with_resources({
-            'https://emstrainer/schemas/rubric.schema.json':     Resource.from_contents(s_rubric),
-            'https://emstrainer/schemas/scenario.schema.json':   Resource.from_contents(s_scenario),
-            'https://emstrainer/schemas/submission.schema.json': Resource.from_contents(s_submission),
-          })
+      - name: Validate med director rules
+        if: ${{ hashFiles('assets/schema/med_director_rules.schema.json') != '' && hashFiles('assets/med_director_rules.json') != '' }}
+        run: |
+          echo "Validating assets/med_director_rules.json against assets/schema/med_director_rules.schema.json"
+          ajv validate --spec=draft2020 \
+            -s assets/schema/med_director_rules.schema.json \
+            -d assets/med_director_rules.json
 
-          def validate_file(path, schema):
-            data = json.loads(path.read_text())
-            V = validators.validator_for(schema)
-            V.check_schema(schema)
-            v = V(schema, registry=registry)
-            return list(v.iter_errors(data))
+      - name: Validate security policy
+        if: ${{ hashFiles('assets/schema/security_policy.schema.json') != '' && hashFiles('assets/security_policy.json') != '' }}
+        run: |
+          echo "Validating assets/security_policy.json against assets/schema/security_policy.schema.json"
+          ajv validate --spec=draft2020 \
+            -s assets/schema/security_policy.schema.json \
+            -d assets/security_policy.json
 
-          errors = []
-          for p in root.rglob('examples/**/scenario.json'):
-            errors += [f"{p}: {e.message}" for e in validate_file(p, s_scenario)]
-          for p in root.rglob('examples/**/submission.json'):
-            errors += [f"{p}: {e.message}" for e in validate_file(p, s_submission)]
-          for p in root.rglob('prompts/Instructor/Rubrics/*.json'):
-            errors += [f"{p}: {e.message}" for e in validate_file(p, s_rubric)]
+      # -----------------------------------------
+      # Optional: Instructor scenarios (if you add later)
+      # Requires assets/schema/instructor_scenario.schema.json and *_instructor.json
+      # -----------------------------------------
+      - name: Validate instructor scenarios
+        if: ${{ hashFiles('assets/schema/instructor_scenario.schema.json') != '' && hashFiles('assets/scenarios/*_instructor.json') != '' }}
+        run: |
+          echo "Validating assets/scenarios/*_instructor.json against assets/schema/instructor_scenario.schema.json"
+          ajv validate --spec=draft2020 \
+            -s assets/schema/instructor_scenario.schema.json \
+            -d "assets/scenarios/*_instructor.json"
 
-          if errors:
-            print('
-'.join(errors))
-            sys.exit(1)
-          else:
-            print('All example files conform to schemas.')
-          PY
+      # -----------------------------------------
+      # Syntax-only check for student-run JSON (no schema yet)
+      # -----------------------------------------
+      - name: Syntax check - student-run scenario(s)
+        run: |
+          if [ -f code_blackout_scenario.json ]; then
+            python - <<'PY'
+import json
+with open("code_blackout_scenario.json","r",encoding="utf-8") as f:
+    json.load(f)
+print("code_blackout_scenario.json syntax OK")
+PY
+          else
+            echo "No top-level student-run scenario file found."
+          fi
+
