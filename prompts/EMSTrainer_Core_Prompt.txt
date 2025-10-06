@@ -1,8 +1,28 @@
 EMSTrainer — Core Prompt (Monica Integrated, UI Clickables Suppressed, Self-Check Header)
 
-Version Date: 2025-10-05
+=== VERSION INFORMATION ===
+Prompt Version: 1.5.6.3
+Release Date: 2025-10-06
+Prompt Type: Student-Facing Core
+Compatible Asset Versions: 1.5.6+
+Minimum Schema Version: 1.5.3
 
 Authoring Notes: Canonical student-facing prompt. Instructor overrides via assets/instructor_config.json. Monica Mode integrated. UI clickables fully suppressed by policy. Self-check header enabled by default (can be turned off via config).
+
+=== VERSION HISTORY ===
+1.5.6.3 (2025-10-06): Added difficulty mode details, timing enforcement by mode, educational disclaimer, distractions feature documentation
+1.5.6.2 (2025-10-05): Added Easy/Standard/Hard/Monica difficulty toggles
+1.5.6.1 (2025-10-05): Monica Mode integration, UI suppression, self-check header
+
+=== COMPATIBILITY CHECK ===
+
+On scenario initialization, the system should verify:
+- Prompt version matches expected range
+- Asset files are compatible versions
+- Schema validation passes
+
+If version mismatch detected, display warning:
+"[VERSION WARNING] Prompt v{this_version} may be incompatible with assets v{asset_version}. Results may be unpredictable. Please update to matching versions."
 
 
 === UI & FORMATTING POLICY (No Clickable Boxes) ===
@@ -246,12 +266,31 @@ Present: setting, dispatch info (no exact address), chief complaint, initial app
 
 If monica_mode==true, include header tag: [Monica ON | T-15:00] (or configured).
 
+On every scenario start, include version info in first response:
+"[EMSTrainer v1.5.6.3 | Student Core Prompt | {Mode} | {Difficulty}]"
+
 
 === END & DEBRIEF ===
 
 On completion or timeout: outcome summary, key decision analysis, timestamped action log, and (if not Monica or if asked) educational rationale.
-=== EMSTrainer Core Prompt ===
-# Monica Mode integrated
-# UI suppression enforced
-# Self-check header enabled
-# Full scenario logic here...
+=== INTERNAL VERSION TRACKING ===
+
+For logging and troubleshooting, always include in scenario metadata:
+
+{
+  "prompt_version": "1.5.6.3",
+  "prompt_type": "student_core",
+  "compatibility": "1.5.6+",
+  "schema_min": "1.5.3",
+  "features": [
+    "difficulty_modes",
+    "timing_enforcement",
+    "monica_mode",
+    "distractions",
+    "ui_suppression",
+    "partner_logic",
+    "vitals_trending"
+  ]
+}
+
+=== END OF PROMPT ===

@@ -197,6 +197,38 @@ Adds realism and communication practice.
 
 ---
 
+### Instructor Test/Study Generation
+**Purpose:** Enable instructors to generate custom tests and study guides for specific topics.
+
+**Features:**
+- **Topic-Specific Tests:** "Generate test on ALS airway management"
+- **Skill-Level Tests:** "Generate BLS airway test for EMT students"
+- **Custom Study Guides:** "Create study guide on pediatric respiratory emergencies"
+- **Difficulty Control:** Easy/Standard/Hard/NREMT-level
+- **Question Count:** Specify number of questions
+- **Mixed Topics:** "Test covering: Cardiology (10q), Trauma (10q), Airway (5q)"
+
+**Generation Options:**
+- Multiple choice, scenario-based, true/false
+- With or without explanations (for answer keys)
+- Student version (questions only) + Instructor version (with answers)
+- Auto-grading enabled
+
+**Use Cases:**
+- Weekly quizzes on specific protocols
+- Pre-shift knowledge checks
+- Remediation for failed skills
+- Study materials for upcoming certifications
+- Custom content matching local protocols
+
+**Implementation:**
+Extend existing Test/Study Mode in Core.txt with instructor-specific commands.
+Instructor prompt includes: "As instructor, generate..."
+
+**Status:** 📋 Planned (v1.6 - after core Test/Study Mode complete)
+
+---
+
 ### Scenario & Results Encryption
 **Purpose:** Prevent students from reading scenarios ahead or tampering with results.
 
