@@ -22,6 +22,8 @@ This document outlines the current and planned features for EMSTrainer, includin
 | Results Collection        | Collect student submission JSONs for grading                               | v1.6    | In Progress|
 | Automated Grading         | Auto-grade submissions against rubrics with integrity checking             | v1.6    | In Progress|
 | Summary Generation        | Generate performance reports and class summaries                           | v1.6    | In Progress|
+| Instructor Test Generator | Generate custom tests on specific topics ("test on ALS airway")           | v1.6    | Planned    |
+| Instructor Study Generator| Generate study guides for specific skills/protocols                        | v1.6    | Planned    |
 | Scenario Encryption       | Encrypt scenarios to prevent student tampering or preview                  | v1.7    | Planned    |
 | Results Encryption        | Encrypt student submissions for security and integrity                     | v1.7    | Planned    |
 | Instructor Dashboard      | Web-based central hub for managing trainees, sessions, and feedback        | v1.8    | Planned    |
