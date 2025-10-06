@@ -22,6 +22,13 @@ EMSTrainer is a Copilot-driven EMS training assistant with three learner modes (
 - **How to enable:** Open Copilot/ChatGPT settings and manually enable GPT-5
 - **DO NOT use:** GPT-4o mini or earlier models (insufficient medical accuracy)
 
+### 📱 Mobile Use
+
+**Keyboard recommended** for mobile devices - typing scenarios and orders with on-screen keyboard is limiting. Consider:
+- Bluetooth keyboard for tablets/phones
+- Laptop/desktop for best experience
+- Voice-to-text as alternative (though less precise for medical terms)
+
 ## Quick Start
 
 ### For Students:
