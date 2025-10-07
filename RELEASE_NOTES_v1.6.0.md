@@ -5,30 +5,23 @@
 
 ---
 
-## 🎉 Major Release: Modular Architecture & Deployment Packages
+## 📦 Download the Right Package
 
-This release represents a significant milestone for EMSTrainer with complete instructor and student deployment packages, comprehensive testing, and a proven stable baseline.
+**👨‍🏫 For Instructors:**
+- Download: `EMSTrainer_Instructor_v1.6.0.zip` (40KB)
+- Includes: Scenario creation, test generation, grading, class summaries
+
+**👨‍🎓 For Students:**
+- Download: `EMSTrainer_Student_v1.6.0.zip` (28KB)
+- Includes: Scenario player, study guides, practice questions
+
+**Both packages are standalone and complete.**
 
 ---
 
-## 📦 What's Included
+## 🎉 Major Release: Modular Architecture & Deployment Packages
 
-### Deployment Packages
-- **Instructor Package** (40KB) - Complete system for EMS instructors
-- **Student Package** (28KB) - Everything students need to practice
-
-### Documentation
-- Instructor Quick Start Guide
-- Instructor Reference Guide (NEW!)
-- Student Quick Start Guide
-- What's New in v1.6.0
-- Comprehensive READMEs for both packages
-
-### Testing & Validation
-- ✅ 30-student stress test completed (100% pass rate)
-- ✅ Regression baseline established
-- ✅ Validation scripts included
-- ✅ All data integrity checks passed
+This release represents a significant milestone for EMSTrainer with complete instructor and student deployment packages, comprehensive testing, and a proven stable baseline.
 
 ---
 
@@ -44,8 +37,8 @@ This release represents a significant milestone for EMSTrainer with complete ins
 ### 2. Four Difficulty Modes
 - **Easy:** Learning-focused, hints provided, no penalties
 - **Standard:** NREMT-level, realistic, balanced
-- **Hard:** Challenging, strict timing, equipment failures
-- **Monica:** Extreme difficulty for experienced providers
+- **Hard:** Challenging, strict timing, equipment failures (20-25%)
+- **Monica:** Extreme difficulty for experienced providers (30-35% failures)
 
 ### 3. ACP Provider Level
 - Air Care Paramedic support
@@ -81,40 +74,19 @@ This release represents a significant milestone for EMSTrainer with complete ins
 
 ---
 
-## 🔧 Technical Improvements
+## 📊 Validation Results - 30 Student Stress Test
 
-### Testing Framework
-- Automated validation scripts
-- Regression testing capability
-- 30-student stress test baseline
-- Grade distribution validation
-- Data integrity checking
+### Grade Distribution (Perfect Match)
+- A: 8 students (26.7%)
+- B: 4 students (13.3%)
+- C: 5 students (16.7%)
+- D: 13 students (43.3%)
 
-### Deployment System
-- Professional deployment packages
-- Comprehensive documentation
-- Example scenarios included
-- Ready for instructor distribution
-
-### GitHub Actions
-- Automatic PDF generation on release
-- Manual trigger capability
-- Artifact uploads
-- Release attachment automation
-
----
-
-## 📊 Validation Results
-
-### Stress Test (30 Students)
-- **Grade Distribution:** Perfect match to expected
-  - A: 8 students (26.7%)
-  - B: 4 students (13.3%)
-  - C: 5 students (16.7%)
-  - D: 13 students (43.3%)
+### Quality Metrics
 - **Data Integrity:** 100% (all hashes matched)
 - **ROSC Rate:** 60% (realistic outcome)
 - **Mean Score:** 70.0/100
+- **Pass Rate:** 56.7% (≥70 points)
 
 ### Common Strengths Identified
 1. Rhythm checks at proper intervals (100%)
@@ -124,7 +96,7 @@ This release represents a significant milestone for EMSTrainer with complete ins
 ### Common Challenges Identified
 1. Hands-off time during transitions (100%)
 2. Documentation completeness (80%)
-3. First shock timing (40% missed)
+3. First shock timing (40% missed <2min)
 4. Airway management details (40%)
 5. Post-ROSC preparation (40%)
 
@@ -132,25 +104,35 @@ This release represents a significant milestone for EMSTrainer with complete ins
 
 ## 🎓 For Instructors
 
+### What's in the Instructor Package
+- EMSTrainer_Core.txt
+- EMSTrainer_Instructor_Prompt.txt
+- EMSTrainer_Scenario_Mode.txt
+- Instructor_Quick_Start_Guide.md
+- Instructor_Reference_Guide.md (NEW!)
+- README_INSTRUCTOR.txt
+- 2 Example scenarios (Standard & Monica Mode)
+
 ### Quick Start (5 minutes)
 1. Download Instructor Package
-2. Open GPT-5 (Copilot/ChatGPT)
-3. Drag-and-drop prompt files
-4. Create your first scenario
+2. Open GPT-5 (Copilot or ChatGPT)
+3. Drag-and-drop: Core.txt
+4. Drag-and-drop: Instructor_Prompt.txt
+5. Type: "Create a cardiac arrest scenario for paramedic students"
 
 ### What You Can Do
 - Create custom scenarios (all difficulty levels)
 - Generate test questions on any topic
 - Create study guides for students
 - Deploy scenarios via email
-- Auto-grade submissions
-- Generate class performance summaries
+- Auto-grade submissions with detailed feedback
+- Generate class performance summaries with teaching recommendations
 
 ### Example Commands
 ```
 "Create respiratory distress scenario for EMT students, Standard difficulty"
 "Generate 10 questions on ALS airway for paramedics"
-"Grade this submission: [paste JSON]"
+"Grade this submission: [paste student JSON]"
 "Generate class summary for all 30 students"
 ```
 
@@ -158,74 +140,95 @@ This release represents a significant milestone for EMSTrainer with complete ins
 
 ## 👨‍🎓 For Students
 
-### Quick Start (5 minutes)
-1. Download Student Package
-2. Open GPT-5 (Copilot/ChatGPT)
-3. Drag-and-drop prompt files
-4. Load scenario from instructor
-5. Type: "Start scenario"
-
-### What You Can Do
-- Run instructor-assigned scenarios
-- Practice with realistic timing
-- Get detailed feedback
-- Generate study guides
-- Create practice questions
-- Upload test results for targeted practice
-
----
-
-## 📋 Files in This Release
-
-### Instructor Package
-- EMSTrainer_Core.txt
-- EMSTrainer_Instructor_Prompt.txt
-- EMSTrainer_Scenario_Mode.txt
-- Instructor_Quick_Start_Guide.md
-- Instructor_Reference_Guide.md
-- README_INSTRUCTOR.txt
-- Example scenarios (2)
-
-### Student Package
+### What's in the Student Package
 - EMSTrainer_Core.txt
 - EMSTrainer_Scenario_Mode.txt
 - Student_Quick_Start_Guide.md
 - WHATS_NEW_v1.6.0.md
 - README_STUDENT.txt
 
-### Testing & Validation
-- validate_test_results.py
-- 30-student regression baseline
-- Test documentation
-- SHA-256 checksums
+### Quick Start (5 minutes)
+1. Download Student Package
+2. Open GPT-5 (Copilot or ChatGPT)
+3. Drag-and-drop: Core.txt
+4. Drag-and-drop: Scenario_Mode.txt
+5. Load scenario from instructor
+6. Type: "Start scenario"
+
+### What You Can Do
+- Run instructor-assigned scenarios
+- Practice with realistic timing and vitals
+- Get detailed feedback on performance
+- Generate study guides on any topic
+- Create practice questions
+- Upload PlatinumPlanner results for targeted practice
+
+---
+
+## 🔧 Technical Improvements
+
+### Testing Framework
+- Automated validation scripts (validate_test_results.py)
+- Regression testing capability
+- 30-student stress test baseline
+- Grade distribution validation
+- Data integrity checking (SHA-256 checksums)
+
+### Deployment System
+- Professional deployment packages
+- Comprehensive documentation (3 guides + READMEs)
+- Example scenarios included
+- Ready for immediate distribution
+
+### GitHub Actions
+- Automatic PDF generation on release
+- Manual trigger capability
+- Artifact uploads
+- Release attachment automation
 
 ---
 
 ## 🔜 Coming in v1.7
 
 ### Planned Features
-- Equipment timing delays (LUCAS 30-45s, EtCO₂ 15s)
-- Scenario encryption (AES-256)
-- In-prompt scenario editor
-- Digital signatures
-- Enhanced reporting
-- First responders multi-agency scenarios
+- Equipment timing delays (LUCAS 30-45s, EtCO₂ 15s calibration)
+- Scenario encryption (AES-256 with digital signatures)
+- In-prompt scenario editor (load, modify, save)
+- Enhanced reporting (trends, analytics)
+- First responders multi-agency scenarios (Fire/Police/FR)
+- Instructor test/study generator ("Generate test on ALS airway")
 
 ---
 
 ## 💡 Known Limitations
 
-- Manual file management (no database yet)
-- Single-threaded grading
+### Current System
+- Manual file management (no database)
+- Single-threaded grading (one at a time)
 - Hash validation theoretical (not enforced in chat)
 - No real-time clock access (must ask user for time)
-- Large combined files (>200KB) may cause provider errors
+- Large combined files (>200KB) may cause HTTP 400 errors
 
 ### Workarounds Provided
-- Local validation scripts
-- Individual file processing
-- Clear documentation
-- Example workflows
+- Local validation scripts for offline testing
+- Individual file processing to avoid size limits
+- Clear documentation with examples
+- Tested workflow with example scenarios
+
+---
+
+## ⚠️ Requirements
+
+### For Both Instructors and Students
+- **GPT-5 required** (medical accuracy essential)
+- Copilot (free tier works) or ChatGPT
+- Ability to drag-and-drop files into chat
+- **No coding knowledge needed** - everything through conversation
+
+### Recommended
+- Markdown viewer for documentation (optional)
+- Reference materials (protocols, drug guides)
+- Quiet environment for scenarios (students)
 
 ---
 
@@ -234,35 +237,85 @@ This release represents a significant milestone for EMSTrainer with complete ins
 - **Testing:** 30 synthetic students (Copilot-generated)
 - **Validation:** 100% pass rate on all integrity checks
 - **Beta Testers:** 5 active testers providing feedback
-- **Named After:** Monica (challenging instructor/concept)
+- **Monica Mode:** Named after challenging instructor/concept
+- **Development:** Solo developer with AI assistance (Claude 3.5 Sonnet)
 
 ---
 
-## 📞 Support
+## 📞 Support & Documentation
 
-- **Documentation:** See included Quick Start Guides
-- **Issues:** GitHub Issues
-- **Questions:** Contact maintainer
-- **Project:** github.com/jj33/EMSTrainer
+### Included Documentation
+- **Instructor Quick Start Guide** - Step-by-step setup and examples
+- **Instructor Reference Guide** - Quick lookup while working
+- **Student Quick Start Guide** - Complete usage instructions
+- **README files** - Comprehensive guides in each package
+- **What's New** - Feature overview and highlights
 
----
+### Getting Help
+- Read the included README files first
+- Check Quick Start Guides for step-by-step instructions
+- Review example scenarios for templates
+- GitHub Issues for bug reports
+- Contact maintainer for questions
 
-## ⚠️ Requirements
-
-- **GPT-5 required** for medical accuracy
-- Copilot (free tier works) or ChatGPT
-- Ability to drag-and-drop files
-- No coding knowledge needed
+### Project Links
+- **Repository:** github.com/jj33/EMSTrainer
+- **Issues:** github.com/jj33/EMSTrainer/issues
+- **Releases:** github.com/jj33/EMSTrainer/releases
 
 ---
 
 ## 🚀 Getting Started
 
-1. **Download** the appropriate package (Instructor or Student)
-2. **Unzip** the package
-3. **Read** the README file
-4. **Load** prompts into GPT-5
-5. **Start** creating or practicing!
+### For Instructors
+1. Download `EMSTrainer_Instructor_v1.6.0.zip`
+2. Unzip and read `README_INSTRUCTOR.txt`
+3. Load prompts into GPT-5
+4. Create your first scenario
+5. Deploy to students via email
+
+### For Students
+1. Download `EMSTrainer_Student_v1.6.0.zip`
+2. Unzip and read `README_STUDENT.txt`
+3. Load prompts into GPT-5
+4. Get scenario from instructor
+5. Practice and improve!
+
+---
+
+## 📋 Complete Feature List
+
+### Instructor Features
+- ✅ Custom scenario creation (all provider levels)
+- ✅ Test question generation (any topic, any difficulty)
+- ✅ Study guide creation
+- ✅ Email deployment templates
+- ✅ Auto-grading with rubrics
+- ✅ Class performance summaries
+- ✅ Teaching recommendations
+- ✅ Individual student reports
+
+### Student Features
+- ✅ Interactive scenario player
+- ✅ 4 difficulty modes (Easy → Monica)
+- ✅ Dynamic vitals responding to care
+- ✅ Equipment failure simulation
+- ✅ Detailed performance feedback
+- ✅ Timing analysis
+- ✅ Study guide generation
+- ✅ Practice question creation
+- ✅ PlatinumPlanner integration
+
+### System Features
+- ✅ 6 provider levels (EMR → CCP)
+- ✅ Continuous scene safety assessment
+- ✅ Hidden grading criteria
+- ✅ Industry timing standards
+- ✅ SOAP note documentation
+- ✅ Partner interaction tracking
+- ✅ Multi-agency scenarios (Fire/Police)
+- ✅ Curveballs and special events
+- ✅ Hash validation (integrity checking)
 
 ---
 
@@ -271,4 +324,5 @@ This release represents a significant milestone for EMSTrainer with complete ins
 **Version:** 1.6.0  
 **Build Date:** 2025-01-07  
 **Branch:** dev → main  
-**Commit:** See GitHub release page
+**Tested:** 30 students, 100% validation pass  
+**Status:** Production ready
