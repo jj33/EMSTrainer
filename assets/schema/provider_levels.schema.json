@@ -1,119 +1,45 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://emstrainer/schema/provider_levels.schema.json",
-  "title": "EMSTrainer Provider Levels Configuration",
-  "description": "Local scope customization for provider certification levels",
+  "title": "Provider Levels Local Scope Overrides",
+  "description": "Local jurisdiction scope customization for provider levels",
   "type": "object",
   "properties": {
     "jurisdiction": {
       "type": "string",
-      "description": "Name of jurisdiction (county, state, agency)",
-      "examples": ["County EMS", "State Protocol", "Agency Name"]
-    },
-    "version": {
-      "type": "string",
-      "description": "Configuration version",
-      "pattern": "^\\d+\\.\\d+\\.\\d+$"
-    },
-    "effective_date": {
-      "type": "string",
-      "format": "date",
-      "description": "Date these scope definitions take effect"
+      "description": "Name of jurisdiction or agency"
     },
     "provider_levels": {
       "type": "object",
-      "description": "Provider level scope overrides",
-      "additionalProperties": {
-        "type": "object",
-        "properties": {
-          "base": {
-            "type": "string",
-            "enum": ["EMR_national", "EMT_national", "AEMT_national", "Paramedic_national", "ACP_national", "CCP_national"],
-            "description": "Base national standard to start from"
-          },
-          "add_skills": {
-            "type": "array",
-            "description": "Skills to add beyond base scope",
-            "items": {
-              "type": "string"
+      "description": "Provider level definitions with local modifications",
+      "patternProperties": {
+        "^(EMR|EMT|AEMT|Paramedic|ACP|CCP)$": {
+          "type": "object",
+          "properties": {
+            "base": {
+              "type": "string",
+              "enum": ["EMR_national", "EMT_national", "AEMT_national", "Paramedic_national", "ACP_national", "CCP_national"],
+              "description": "National standard baseline to start from"
             },
-            "examples": [
-              ["iv_access", "io_access", "12_lead_acquisition"],
-              ["cricothyrotomy", "rsi", "blood_products"]
-            ]
-          },
-          "remove_skills": {
-            "type": "array",
-            "description": "Skills to remove from base scope",
-            "items": {
-              "type": "string"
+            "add_skills": {
+              "type": "array",
+              "items": {"type": "string"},
+              "description": "Additional skills beyond national standard"
             },
-            "examples": [
-              ["surgical_airway", "ecmo_management"],
-              ["cardioversion", "pacing"]
-            ]
+            "remove_skills": {
+              "type": "array",
+              "items": {"type": "string"},
+              "description": "Skills restricted below national standard"
+            },
+            "notes": {
+              "type": "string",
+              "description": "Explanation of local variations"
+            }
           },
-          "notes": {
-            "type": "string",
-            "description": "Explanation of local scope differences"
-          },
-          "protocol_reference": {
-            "type": "string",
-            "description": "Reference to local protocol document"
-          }
-        },
-        "required": ["base"]
-      }
-    },
-    "skill_definitions": {
-      "type": "object",
-      "description": "Optional: Define custom skill names and descriptions",
-      "additionalProperties": {
-        "type": "object",
-        "properties": {
-          "skill_id": {
-            "type": "string",
-            "description": "Unique skill identifier (snake_case)"
-          },
-          "display_name": {
-            "type": "string",
-            "description": "Human-readable skill name"
-          },
-          "description": {
-            "type": "string",
-            "description": "What this skill entails"
-          },
-          "category": {
-            "type": "string",
-            "enum": ["airway", "breathing", "circulation", "medications", "assessment", "procedures"],
-            "description": "Skill category"
-          }
+          "required": ["base"]
         }
       }
     }
   },
-  "required": ["jurisdiction", "provider_levels"],
-  "examples": [
-    {
-      "jurisdiction": "Example County EMS",
-      "version": "1.0.0",
-      "effective_date": "2025-01-01",
-      "provider_levels": {
-        "EMT": {
-          "base": "EMT_national",
-          "add_skills": ["iv_access", "io_access", "12_lead_acquisition", "limited_medication_administration"],
-          "remove_skills": [],
-          "notes": "Local EMTs trained to AEMT level minus advanced airways",
-          "protocol_reference": "County Protocol 2025 Section 3.2"
-        },
-        "Paramedic": {
-          "base": "Paramedic_national",
-          "add_skills": ["ventilator_management", "critical_care_medications"],
-          "remove_skills": ["surgical_airway_cricothyrotomy", "ecmo_management"],
-          "notes": "Can run vents and some CC meds, but not ECMO or crich",
-          "protocol_reference": "County Protocol 2025 Section 4.5"
-        }
-      }
-    }
-  ]
+  "required": ["jurisdiction", "provider_levels"]
 }

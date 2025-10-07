@@ -1,0 +1,337 @@
+{
+  "scenario_id": "mvc_trauma_monica_001",
+  "title": "MVC with Chest Trauma - Monica Mode",
+  "version": "1.0",
+  "created_date": "2025-01-06",
+  "created_by": "instructor_demo",
+  "scenario_hash": "sha256:example_hash_monica",
+  
+  "provider_level": "Paramedic",
+  "student_role": "Paramedic",
+  "difficulty": "Monica",
+  "mode": "Scenario",
+  
+  "monica_settings": {
+    "timer_seconds": 900,
+    "curveball_enabled": true,
+    "aggressive_trending": true,
+    "distractions_forced": true,
+    "latency_tracking": true,
+    "compressed_prompt": true,
+    "auto_redact_debrief": true
+  },
+  
+  "learning_objectives": [
+    "Rapid trauma assessment",
+    "Recognition of life threats",
+    "Multi-system management",
+    "Adaptability under pressure",
+    "Load-and-go decision making"
+  ],
+  
+  "dispatch": {
+    "time": "22:47",
+    "location": "Rural highway, single vehicle off road",
+    "chief_complaint": "MVC, entrapped patient, unknown injuries",
+    "age": 25,
+    "gender": "Male",
+    "additional_info": "Rainy night, no street lights, PD and Fire 10 minutes out"
+  },
+  
+  "scene": {
+    "safety_status": "questionable",
+    "environment": "Dark rural road, heavy rain, vehicle off embankment",
+    "hazards": ["unstable_vehicle", "poor_visibility", "weather", "traffic"],
+    "bystanders_present": false,
+    "family_present": false,
+    "scene_will_deteriorate": true
+  },
+  
+  "patient": {
+    "age": 25,
+    "gender": "Male",
+    "appearance": "Restrained, airbag deployed, confused, pale, diaphoretic",
+    "position": "Driver's seat, partially entrapped",
+    "history": "Unknown",
+    "medications_found": null,
+    "allergies": "Unknown",
+    "mechanism": "Single vehicle, estimated 50+ MPH, struck tree, significant intrusion"
+  },
+  
+  "initial_vitals": {
+    "HR": "132 irregular",
+    "BP": "86/58",
+    "RR": "28 shallow",
+    "SpO2": 88,
+    "temp": "Unknown",
+    "EtCO2": null,
+    "pupils": "Equal, reactive but sluggish",
+    "skin": "Pale, diaphoretic, cool",
+    "GCS": 13,
+    "lung_sounds": "Diminished left side",
+    "chest": "Steering wheel impact, tenderness",
+    "abdomen": "Rigid, guarding"
+  },
+  
+  "vitals_trending": {
+    "enabled": true,
+    "decompensation_rate": "aggressive",
+    "improvement_conditions": [
+      "oxygen_applied",
+      "c_spine_protected",
+      "rapid_extrication",
+      "iv_fluids",
+      "pneumothorax_decompressed"
+    ],
+    "progression": {
+      "2min_no_O2": {
+        "SpO2": 82,
+        "RR": 32,
+        "work_of_breathing": "increased"
+      },
+      "5min_delayed_care": {
+        "HR": 148,
+        "BP": "76/42",
+        "SpO2": 80,
+        "LOC": "decreasing",
+        "note": "Patient decompensating rapidly"
+      },
+      "curveball_triggered": {
+        "rhythm": "wide_complex_tachycardia_VT",
+        "BP": "68/38",
+        "LOC": "unresponsive",
+        "note": "Tension pneumothorax developing"
+      },
+      "appropriate_interventions": {
+        "post_decompression": {
+          "SpO2": 94,
+          "RR": 24,
+          "BP": "96/62",
+          "improvement": "noticeable"
+        }
+      }
+    }
+  },
+  
+  "partner": {
+    "name": "Elizabeth",
+    "cert": "EMT",
+    "acts_only_on_order": true,
+    "communication_style": "professional_terse",
+    "will_report_problems": true
+  },
+  
+  "expected_interventions": [
+    {
+      "action": "scene_safety_assessment",
+      "required": true,
+      "points": 5,
+      "time_window": 30,
+      "grading_note": "Assess vehicle stability, traffic hazard"
+    },
+    {
+      "action": "c_spine_protection",
+      "required": true,
+      "points": 10,
+      "time_window": 60,
+      "grading_note": "Manual stabilization, c-collar when accessible"
+    },
+    {
+      "action": "rapid_trauma_assessment",
+      "required": true,
+      "points": 10,
+      "time_window": 120,
+      "grading_note": "ABCs, identify life threats"
+    },
+    {
+      "action": "high_flow_oxygen",
+      "required": true,
+      "points": 10,
+      "time_window": 90,
+      "grading_note": "Address hypoxia immediately"
+    },
+    {
+      "action": "coordinate_extrication",
+      "required": true,
+      "points": 5,
+      "time_window": 180,
+      "grading_note": "Work with fire for rapid extrication"
+    },
+    {
+      "action": "iv_access_bilateral",
+      "required": true,
+      "points": 10,
+      "time_window": 300,
+      "grading_note": "Large bore access for fluid resuscitation"
+    },
+    {
+      "action": "recognize_tension_pneumo",
+      "required": true,
+      "points": 15,
+      "time_window": 60,
+      "grading_note": "Identify during curveball, act immediately"
+    },
+    {
+      "action": "needle_decompression",
+      "required": true,
+      "points": 15,
+      "time_window": 120,
+      "grading_note": "Life-saving intervention"
+    },
+    {
+      "action": "manage_vt_with_pulse",
+      "required": true,
+      "points": 10,
+      "time_window": 180,
+      "grading_note": "Cardioversion or amiodarone per protocol"
+    },
+    {
+      "action": "load_and_go_decision",
+      "required": true,
+      "points": 10,
+      "time_window": 600,
+      "grading_note": "Trauma center transport, on-scene <10 min"
+    }
+  ],
+  
+  "curveballs": [
+    {
+      "id": "vt_with_pulse_and_tension_pneumo",
+      "type": "patient_complication",
+      "timing": 480,
+      "trigger": "timer",
+      "description": "Patient develops wide-complex tachycardia (VT) with weak pulse AND tension pneumothorax",
+      "narrative": "T-07:00 - Suddenly the monitor alarms. Wide-complex tachycardia at 180. You feel a weak, thready pulse. The patient's SpO2 drops to 78%. Jugular veins are distended. Trachea deviated to the right. Absent breath sounds left chest. BP crashes to 68/38.",
+      "scene_changes": {
+        "stress_level": "maximum",
+        "time_pressure": "critical"
+      },
+      "student_must_address": true,
+      "expected_actions": [
+        "recognize_tension_pneumothorax",
+        "needle_decompression_left_chest",
+        "manage_unstable_vt",
+        "consider_cardioversion_or_amiodarone"
+      ],
+      "grading_impact": {
+        "points_available": 25,
+        "failure_penalty": -20,
+        "critical": true
+      }
+    }
+  ],
+  
+  "narrative_events": [
+    {
+      "id": "equipment_failure_iv",
+      "type": "equipment_failure",
+      "timing": "random",
+      "probability": 0.35,
+      "trigger": "iv_attempt",
+      "description": "First IV attempt fails - infiltration or blown vein",
+      "narrative": "Your partner reports: 'Left AC blown, switching to right hand.'",
+      "time_penalty_seconds": 45
+    },
+    {
+      "id": "fire_delayed",
+      "type": "resource_delay",
+      "timing": 300,
+      "trigger": "timer",
+      "description": "Fire department delayed due to weather",
+      "narrative": "Dispatch updates: 'Fire is delayed, weather conditions. ETA now 15 minutes. Advise if you need additional resources.'",
+      "scene_changes": {
+        "stress_level": "high",
+        "decision_required": "rapid_extrication_vs_wait"
+      }
+    },
+    {
+      "id": "weather_deteriorates",
+      "type": "environmental_change",
+      "timing": 360,
+      "trigger": "timer",
+      "description": "Rain intensifies, lightning close",
+      "narrative": "The rain becomes a downpour. Lightning strikes nearby. Your flashlight beam barely penetrates the rain. Everything is slippery.",
+      "scene_changes": {
+        "visibility": "very_poor",
+        "working_conditions": "difficult",
+        "equipment_complications": "wet_slippery"
+      }
+    }
+  ],
+  
+  "environmental_stressors": {
+    "weather": "heavy_rain_throughout",
+    "lighting": "dark_rural_flashlight_only",
+    "temperature": "cold_wet",
+    "obstacles": ["vehicle_instability", "embankment", "mud", "traffic"],
+    "noise": ["rain", "wind", "distant_traffic"],
+    "stress_multiplier": 2.0
+  },
+  
+  "grading_rubric": {
+    "scene_safety": 10,
+    "airway_c_spine": 15,
+    "breathing_oxygenation": 15,
+    "circulation_shock": 15,
+    "curveball_management": 25,
+    "communication": 10,
+    "timing_decisions": 10,
+    "total": 100
+  },
+  
+  "hidden_grading": {
+    "medication_5_rights": {
+      "enabled": true,
+      "points": 10
+    },
+    "scene_safety_continuous": {
+      "enabled": true,
+      "points": 10
+    },
+    "closed_loop_orders": {
+      "enabled": true,
+      "points": 5
+    }
+  },
+  
+  "timing_standards": {
+    "on_scene_time": {
+      "target": 600,
+      "hard_max": 720,
+      "enforcement": "hard_fail_if_exceeded",
+      "consequence": "Patient codes if >12 min on scene"
+    },
+    "time_to_oxygen": {
+      "target": 90,
+      "hard_max": 180,
+      "critical": true
+    },
+    "time_to_decompression": {
+      "target": 120,
+      "hard_max": 180,
+      "critical": true,
+      "consequence": "Patient arrests if delayed"
+    }
+  },
+  
+  "instructor_notes": "EXTREME Monica Mode scenario. Multiple life threats, equipment failures, environmental chaos, and a brutal curveball combining VT with tension pneumothorax. Designed to humble confident providers. On-scene time strictly enforced. Weather and equipment create maximum pressure.",
+  
+  "success_criteria": {
+    "minimum_score": 70,
+    "critical_actions": [
+      "needle_decompression",
+      "manage_vt",
+      "load_and_go_under_12min"
+    ],
+    "rosc_achievable": true,
+    "patient_survivable": "if_interventions_timely"
+  },
+  
+  "debrief_focus": [
+    "Curveball recognition and management",
+    "Timing decisions under pressure",
+    "Load-and-go vs stay-and-play",
+    "Multi-system trauma prioritization",
+    "Equipment failure adaptation"
+  ]
+}

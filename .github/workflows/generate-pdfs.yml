@@ -1,0 +1,45 @@
+name: Generate PDFs for Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  generate-pdfs:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Create PDF directory
+        run: mkdir -p docs/pdf
+      
+      - name: Convert Markdown to PDF
+        uses: baileyjm02/markdown-to-pdf@v1
+        with:
+          input_dir: docs
+          output_dir: docs/pdf
+          images_dir: docs/assets
+          # Convert these specific files
+          input_path: |
+            docs/Instructor_Quick_Start_Guide.md
+            docs/Instructor_Reference_Guide.md
+            docs/Student_Quick_Start_Guide.md
+            docs/WHATS_NEW_v1.6.0.md
+            README.md
+      
+      - name: Upload PDFs as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation-pdfs
+          path: docs/pdf/*.pdf
+      
+      - name: Attach PDFs to release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v1
+        with:
+          files: docs/pdf/*.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
