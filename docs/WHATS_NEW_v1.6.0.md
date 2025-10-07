@@ -1,327 +1,217 @@
 # What's New in EMSTrainer v1.6.0
 
-**Release Date:** 2025-01-06  
+**Release Date:** January 6, 2025  
 **Branch:** feat/strict-json-code-blackout
 
 ---
 
-## Major Changes
+## 🎯 Major Changes
 
-### 🏗️ Modular Architecture
+### Modular Architecture
+- **Split monolithic prompt** into focused, drag-and-drop modules
+- **Core.txt (16k):** Foundation + Test/Study modes  
+- **Scenario_Mode.txt (23k):** Complex scenarios with all features
+- **No more character limits** - drag files into Copilot/ChatGPT!
 
-**Old (v1.5.x):** Single monolithic prompt file  
-**New (v1.6.0):** Modular, focused prompt files
-
-- **EMSTrainer_Core.txt (16k):** Foundation + Test/Study modes
-- **EMSTrainer_Scenario_Mode.txt (23k):** Complex scenarios with vitals, Monica Mode
-
-**Benefits:**
-- Easier to maintain and update
-- Students load only what they need
-- No character limit concerns (drag-and-drop files)
-- Clear separation of concerns
+### GPT-5 Required
+- **Medical accuracy requirement** - GPT-5 mandatory for clinical content
+- Earlier models (GPT-4o mini, etc.) lack necessary medical knowledge
+- Clearly documented in README and guides
 
 ---
 
-## New Features
+## ✨ New Features
 
-### 🎓 Enhanced Difficulty System
+### Provider Levels
+- **Air Care Paramedic (ACP)** added between Paramedic and CCP
+- Includes cricothyrotomy, RSI, blood products, flight physiology
+- Local scope customization via `provider_levels.json`
+- Delta notation (Base + additions/subtractions) for efficiency
 
-Four explicit difficulty modes with clear behaviors:
+### Difficulty Modes (Explicit)
+- **Easy:** Learning-focused, no penalties, supportive environment
+- **Standard:** NREMT-level, realistic, balanced difficulty  
+- **Hard:** Strict timing, consequences, challenging scenarios
+- **Monica:** Extreme difficulty - "pants on fire" mode for overconfident providers
 
-**Easy Mode:**
-- Learning-focused, supportive environment
-- Timing tracked but NOT penalized
-- Hints and scaffolding provided
-- No equipment failures or complications
-- Perfect for new students
-
-**Standard Mode:**
-- NREMT-level realistic practice
-- Timing graded in debrief (affects score)
-- Moderate support
-- Industry-standard expectations
-- Best for most training
-
-**Hard Mode:**
-- Strict timing with penalties
-- Environmental stressors
-- Equipment failures (20-25% probability)
-- Minimal support
-- Tests real-world readiness
-
-**Monica Mode:**
-- EXTREME difficulty ("pants on fire")
-- ALL modules forced ON at max intensity
-- Timer with HARD FAIL at timeout
-- Curveballs guaranteed
-- Designed to humble the overconfident
-
----
-
-### 👨‍⚕️ Air Care Paramedic (ACP) Level
-
-New provider level between Paramedic and CCP:
-
-**Skills Added:**
-- Cricothyrotomy
-- RSI (Rapid Sequence Intubation)
-- Blood products administration
-- Flight physiology considerations
-
-**Cannot (Standard):**
-- Advanced ventilator management
-- ECMO
-
-Reflects real-world air medical provider scope.
-
----
-
-### 🚨 Continuous Scene Safety Assessment
-
-**Game Changer:** Scenarios can now START unsafe!
-
-**Features:**
-- Initial scene safety check required
-- Scenes can deteriorate during care
-- Students must recognize and respond
-- Unsafe starts require staging for PD/Fire
+### Scene Safety (Continuous Assessment)
+- **Not a one-time check** - continuous reassessment required
+- Scenarios can **start unsafe** (require staging for PD)
+- Dynamic scene degradation during care
 - Hidden grading criteria (15 points)
+- Examples: Hostile crowds, unsafe structures, weapons present
 
-**Example:**
-"Body visible inside house, no PD on scene, suspicious circumstances..."
-Correct: Stage and wait for PD
-Incorrect: Enter scene = SCENARIO FAILED
+### Dynamic Equipment Failures
+- **IV Access:** First attempt can fail (blown vein, infiltration)
+- **Monitor Issues:** Battery dies, leads disconnect, screen failures  
+- **O2 Equipment:** Regulator failures, tank pressure issues
+- **Airway Equipment:** Suction failures, laryngoscope issues
+- Probability by difficulty: 0% (Easy) → 35% (Monica)
+- Realistic time penalties (30-60 seconds)
 
----
+### Hidden Grading Criteria
+- **5 Rights Medication Check** (10 pts): Right Patient, Drug, Dose, Route, Time
+- **AIDET Communication** (10 pts): Acknowledge, Introduce, Duration, Explanation, Thank you
+- **Scene Safety Reassessment** (15 pts): Continuous throughout scenario
+- Not announced to students - discovered through debriefs
 
-### 🔧 Dynamic Equipment Failures
-
-Realistic equipment issues based on difficulty:
-
-**Failure Types:**
-- **IV Access:** Vein blows, infiltration (first attempt fails)
-- **Monitor:** Battery dies, lead malfunction
-- **Oxygen:** Regulator fails, tank pressure low
-- **Airway:** Suction fails, laryngoscope light dies
-
-**Probability:**
-- Easy: 0%
-- Standard: 10-15%
-- Hard: 20-25%
-- Monica: 30-35%
-
-Timing penalties applied, students must adapt.
+### Enhanced Debriefs
+- **Markdown source** for editing/archiving
+- **PDF output** for student distribution
+- **Timing analysis** table with target vs actual
+- **Partner interactions** in timestamped timeline
+- **Standardized filename:** `[Date]_[ScenarioID]_Debrief_[StudentID].md`
 
 ---
 
-### 🎯 Hidden Grading Criteria
+## 📚 Documentation
 
-Students graded on things they may not realize:
+### Quick Start Guides
+- **Student Quick Start Guide** - Comprehensive onboarding (Test/Study/Scenario modes)
+- **Instructor Quick Start Guide** - Workflow and scenario creation
+- Mobile keyboard recommendation added
 
-**5 Rights Medication Check (10 pts):**
-- Right Patient
-- Right Drug
-- Right Dose
-- Right Route
-- Right Time
-
-**AIDET Communication (10 pts):**
-- Acknowledge patient
-- Introduce self and role
-- Duration (how long)
-- Explanation (what you're doing)
-- Thank you
-
-**Scene Safety Reassessment (15 pts):**
-- Continuous assessment throughout scenario
-- Not just initial check
+### Example Scenarios
+- **Standard ACLS:** `scenario_cardiac_arrest_vf.json`
+- **Monica Mode Trauma:** `scenario_mvc_trauma_monica.json` (with curveballs)
+- Complete JSON structure examples for instructors
 
 ---
 
-### 📊 Enhanced Debrief Format
+## 🔧 Technical Improvements
 
-**Structure:**
-- Scenario summary with settings
-- Timing analysis (target vs actual)
-- Timestamped action log (includes partner interactions)
-- Outcome summary
-- Grading breakdown by category
-- Hidden criteria scores revealed
-- Difficulty-specific feedback
-- NREMT prep tips
+### Hash Validation
+- SHA-256 integrity checking for scenarios
+- Detects tampering (warns instructor, doesn't auto-fail)
+- Foundation for v1.7 encryption
 
-**Output:**
-- Markdown source (.md)
-- PDF for students
-- Standardized filename: `[Date]_[ScenarioID]_Debrief_[StudentID].md`
+### Partner Pool
+- Added ACP partners: Skyler, Hawk
+- Partner interactions logged in timeline
+- Closed-loop communication tracked
 
----
-
-### 📈 Vitals Trending by Difficulty
-
-Dynamic patient response based on difficulty:
-
-**Easy:** Slow decompensation, rapid improvement, very forgiving  
-**Standard:** Realistic response to appropriate interventions  
-**Hard:** Faster decline, requires correct interventions  
-**Monica:** RAPID decompensation, minimal tolerance for errors
+### Timing Standards
+- Industry benchmarks documented
+- Enforcement varies by difficulty
+- Easy: Explained only | Standard: Graded | Hard: Penalized | Monica: Hard fail
 
 ---
 
-### 🤝 Partner Interactions in Timeline
+## 🗺️ Architecture Changes
 
-Partner actions now tracked with timestamp:
-
+### Old Structure (v1.5.x):
 ```
-| Time  | Actor   | Event                        | Notes              |
-|-------|---------|------------------------------|-------------------|
-| 13:20 | Student | "Start NRB, establish 2 IVs" | Closed-loop order |
-| 13:15 | Partner | "NRB on, attempting left AC" | Confirms and acts |
-| 13:10 | Partner | "Left AC blown, right hand"  | IV failure        |
-| 13:05 | Partner | "Right 18g established"      | Success 2nd try   |
+prompts/EMSTrainer_Core_Prompt.txt (9k+ chars, monolithic)
+```
+
+### New Structure (v1.6.0):
+```
+prompts/
+├── EMSTrainer_Core.txt (16k)
+│   ├── Foundation (provider levels, timing, grading)
+│   ├── Test Mode (PlatinumPlanner integration)
+│   └── Study Mode (targeted learning)
+└── EMSTrainer_Scenario_Mode.txt (23k)
+    ├── 4 Difficulty Modes
+    ├── Scene Safety
+    ├── Equipment Failures
+    ├── Vitals Trending
+    └── Debrief Generation
 ```
 
 ---
 
-## Documentation Updates
+## 🚀 For Students
 
-### 📚 Quick Start Guides
+### How to Use:
+1. Enable GPT-5 in Copilot/ChatGPT
+2. Drag `EMSTrainer_Core.txt` into chat
+3. For scenarios: Also drag `EMSTrainer_Scenario_Mode.txt`
+4. Start learning!
 
-**New Files:**
-- `docs/Student_Quick_Start_Guide.md` - Comprehensive student onboarding
-- `docs/Instructor_Quick_Start_Guide.md` - Instructor workflow guide
-
-**Contents:**
-- Prerequisites (GPT-5 requirement)
-- Step-by-step setup
-- Mode explanations
-- Example commands
-- Troubleshooting
-- Tips for success
+### What You Can Do:
+- **Upload test results** → Get targeted practice questions
+- **Request study guides** → AI generates focused content
+- **Run scenarios** → Choose Easy/Standard/Hard/Monica
+- **Track progress** → See improvement over time
 
 ---
 
-### 📋 Example Scenarios
+## 👨‍🏫 For Instructors
 
-**New Files:**
-- `examples/scenario_cardiac_arrest_vf.json` - Standard ACLS
-- `examples/scenario_mvc_trauma_monica.json` - Monica Mode with curveballs
+### How to Use:
+1. Enable GPT-5 in Copilot/ChatGPT
+2. Drag both prompt files into chat
+3. Say: "Create a [type] scenario for [level] students"
+4. Deploy, collect, auto-grade!
 
-Use as templates or modify for your needs.
-
----
-
-## Technical Improvements
-
-### 🔐 Local Provider Scope Customization
-
-**Problem:** EMS scope varies by jurisdiction  
-**Solution:** `assets/provider_levels.json` override file
-
-**Example:**
-Your EMT can do IV/IO but not advanced airways? Override:
-```json
-{
-  "EMT": {
-    "base": "EMT_national",
-    "add_skills": ["iv_access", "io_access", "12_lead_acquisition"],
-    "remove_skills": []
-  }
-}
-```
+### What You Can Do:
+- **Create scenarios** via natural language (no JSON editing)
+- **Customize difficulty** and timing standards
+- **Deploy to students** (email or file distribution)
+- **Auto-grade submissions** with comprehensive analytics
+- **Generate summaries** of class performance
 
 ---
 
-### 📏 Character Limits Eliminated
+## 🔮 Coming in v1.7
 
-**Old Problem:** 8000 character limit for copy/paste  
-**New Solution:** Drag-and-drop files into Copilot/ChatGPT
+### Planned Features:
+- **Equipment Setup Timing:** LUCAS device (30-45s), EtCO2 calibration (15s)
+- **In-Prompt Scenario Editor:** Load, modify, save scenarios without JSON editing
+- **Full Encryption:** AES-256 for scenarios and results
+- **Instructor Test/Study Generator:** "Generate test on ALS airway"
 
-No more chunking or splitting!
-
----
-
-### 🗂️ Repository Cleanup
-
-**Removed:**
-- Old monolithic prompt file
-- GitHub workflow validations (will add back later if needed)
-
-**Organized:**
-- Clear folder structure
-- Example scenarios
-- Comprehensive documentation
+### Under Consideration:
+- Complete conversation transcripts (student ↔ patient ↔ partner)
+- Voice of patient (dynamic dialogue generation)
+- Integrated documentation prompts (SOAP at scenario end)
+- Communication challenges (radio static, delays)
 
 ---
 
-## Breaking Changes
+## 📊 Stats
 
-### ⚠️ File Name Changes
-
-**OLD (v1.5.x):**
-- `prompts/EMSTrainer_Core_Prompt.txt`
-
-**NEW (v1.6.0):**
-- `prompts/EMSTrainer_Core.txt`
-- `prompts/EMSTrainer_Scenario_Mode.txt`
-
-**Migration:** Use new files, old file deleted.
+- **Files Added:** 5 (2 prompts, 2 examples, 2 guides)
+- **Files Modified:** 10+
+- **Lines Added:** 1,300+
+- **Character Budget:** Unlimited (drag-and-drop files)
+- **Provider Levels:** 6 (EMR, EMT, AEMT, Paramedic, ACP, CCP)
+- **Difficulty Modes:** 4 (Easy, Standard, Hard, Monica)
+- **Example Scenarios:** 2 complete JSON files
 
 ---
 
-### ⚠️ GPT-5 Now Required
+## 🙏 Migration from v1.5.x
 
-**Previously:** Any model worked  
-**Now:** GPT-5 required for medical accuracy
+### Old Users (5 testers):
+1. Delete old `EMSTrainer_Core_Prompt.txt` references
+2. Download new `EMSTrainer_Core.txt` and `Scenario_Mode.txt`
+3. Read Quick Start Guide for your role
+4. No data migration needed (fresh start)
 
-Must be manually enabled in Copilot/ChatGPT settings.
-
----
-
-## Coming Soon (v1.7 Planned)
-
-- **Scenario Encryption:** Prevent student tampering/preview
-- **Equipment Timing Delays:** LUCAS setup, EtCO2 calibration
-- **In-Prompt Scenario Editor:** Modify scenarios without editing JSON
-- **Instructor Test/Study Generation:** Create custom tests on specific topics
+### Configuration Files:
+- All `assets/*.json` files remain compatible
+- `provider_levels.json` is new (optional, for local scope customization)
 
 ---
 
-## Upgrade Instructions
+## 🐛 Known Issues
 
-### For Students:
-
-1. Delete old bookmarks/references to `EMSTrainer_Core_Prompt.txt`
-2. Enable GPT-5 in settings
-3. Load `EMSTrainer_Core.txt` (Test/Study)
-4. Optional: Load `EMSTrainer_Scenario_Mode.txt` (Scenarios)
-5. Review `docs/Student_Quick_Start_Guide.md`
-
-### For Instructors:
-
-1. Enable GPT-5 in settings
-2. Load `EMSTrainer_Core.txt`
-3. Optional: Load `EMSTrainer_Scenario_Mode.txt`
-4. Review example scenarios in `examples/`
-5. Review `docs/Instructor_Quick_Start_Guide.md`
+- Premature close errors when creating very large files in one operation (workaround: smaller chunks)
+- Tool call limits (25) in Cursor Agent Mode (workaround: say "continue")
 
 ---
 
-## Contributors
+## 📝 Credits
 
-- Architecture redesign
-- Modular prompt system
-- Scene safety features
-- Equipment failures
-- Hidden grading criteria
-- ACP provider level
-- Documentation overhaul
+- **Original Concept:** Test prep integration with PlatinumPlanner
+- **Monica Mode:** Named after team member, designed for maximum difficulty
+- **Development:** Solo developer with 5 beta testers
+- **AI Assistant:** Claude 3.5 Sonnet (Cursor) for architecture and implementation
 
 ---
 
-**Questions?** Review planning docs or contact your instructor.
+*Ready to train smarter, not harder?*
 
----
-
-*EMSTrainer v1.6.0 - Released 2025-01-06*
+See [`Student_Quick_Start_Guide.md`](Student_Quick_Start_Guide.md) or [`Instructor_Quick_Start_Guide.md`](Instructor_Quick_Start_Guide.md) to get started!

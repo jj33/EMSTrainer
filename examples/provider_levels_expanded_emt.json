@@ -1,0 +1,28 @@
+{
+  "jurisdiction": "Example_County_EMS",
+  "provider_levels": {
+    "EMT": {
+      "base": "EMT_national",
+      "add_skills": [
+        "iv_access",
+        "io_access",
+        "limited_medication_administration",
+        "12_lead_acquisition"
+      ],
+      "remove_skills": [],
+      "notes": "Local EMTs trained to AEMT level minus advanced airways. Can establish IV/IO access, administer limited meds per protocol, and acquire 12-leads."
+    },
+    "Paramedic": {
+      "base": "Paramedic_national",
+      "add_skills": [
+        "ventilator_management",
+        "critical_care_medications"
+      ],
+      "remove_skills": [
+        "surgical_airway_cricothyrotomy",
+        "ecmo_management"
+      ],
+      "notes": "Paramedics can run vents and some CC meds, but not ECMO or surgical crich. Advanced airway management via ETI and supraglottic only."
+    }
+  }
+}
