@@ -330,4 +330,93 @@ AI: [creates new file]
 
 ---
 
+### Custom Rubric Creation
+**Purpose:** Allow instructors to create and customize grading rubrics for local protocols.
+
+**Features:**
+- Natural language: "Create rubric for cardiac arrest with emphasis on medication timing"
+- Adjust point values per category
+- Add custom categories (local protocol compliance, specific skills)
+- Save rubrics for reuse
+- Apply rubric to scenario generation
+
+**Example:**
+```
+Instructor: "Create grading rubric for trauma scenario:
+- Scene safety: 20 points (high emphasis)
+- Airway: 15 points
+- Circulation/hemorrhage control: 25 points (critical)
+- Transport decision: 20 points
+- Documentation: 20 points"
+
+AI generates customized rubric matching local priorities
+```
+
+**Status:** 📅 Planned (v1.7)
+
+---
+
+### Advanced Grading System
+**Purpose:** Enhanced grading with custom criteria, partial credit, and competency tracking.
+
+**Features:**
+- **Partial Credit:** "Student attempted IV but failed - award 5/10 points"
+- **Competency Rubrics:** Track skill progression over multiple scenarios
+- **Custom Criteria:** Add local protocol requirements
+- **Weight Adjustment:** "Timing is 2x weight for this scenario"
+- **Trend Analysis:** "Show John's improvement in airway management over time"
+- **Remediation Flags:** Auto-suggest remediation topics based on failures
+
+**Example:**
+```
+Grading shows: Student failed airway management 3 scenarios in a row
+AI suggests: "Generate Easy mode airway scenario for remediation"
+```
+
+**Status:** 📅 Planned (v1.7)
+
+---
+
+### Test Scenario Flow (End-to-End Testing)
+**Purpose:** Create complete test scenarios to validate instructor → student → grading workflow.
+
+**Challenge:**
+- Dynamic scenarios vary per student interaction
+- Hash validation needs to account for dynamic elements
+- Seed consistency for reproducible testing
+
+**Solution Approach:**
+- Scenario template with seed: Fixed framework, dynamic details recorded
+- Student submission includes: original hash + actual path taken
+- Grading compares: Expected core interventions vs actual actions
+- Debrief accounts for valid variations
+
+**Test Cases Needed:**
+1. Standard cardiac arrest (happy path)
+2. Trauma with equipment failure (student adapts)
+3. Monica Mode with curveballs (high stress)
+4. Easy Mode with hints (learning path)
+5. Unsafe scene start (staging requirement)
+
+**Status:** 🔧 In Development (v1.6 - testing phase)
+
+---
+
+### Python Script Architecture Decision
+**Question:** Are Python scripts still needed with chat-based approach?
+
+**Analysis:**
+- Chat-based prompts handle: Scenario generation, grading, summaries
+- Python was for: Desktop app, web dashboard, programmatic loading
+- Current direction: Pure chat interface (no app)
+
+**Decision:**
+- ✅ Keep for v2.0: Batch operations, LMS integration, utilities
+- ✅ Archive current scripts: Not needed for v1.x chat-based system
+- ✅ Focus on: Prompt-based workflows (instructor/student)
+
+**Status:** ✅ Resolved (v1.6 - chat-based architecture confirmed)
+
+---
+
 *Updated 2025-01-07*

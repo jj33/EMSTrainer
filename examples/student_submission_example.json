@@ -1,0 +1,88 @@
+{
+  "student_id": "john_smith_001",
+  "student_name": "John Smith",
+  "scenario_id": "cardiac_arrest_vf_001",
+  "scenario_hash": "sha256:abc123def456",
+  "submission_timestamp": "2025-01-07T14:30:00Z",
+  "completion_time_seconds": 863,
+  "completion_time_display": "14:23",
+  
+  "timestamped_actions": [
+    {"time": "15:00", "actor": "system", "action": "Dispatch received", "notes": ""},
+    {"time": "14:45", "actor": "student", "action": "Scene size-up", "notes": "Verbalized scene safety"},
+    {"time": "14:40", "actor": "student", "action": "Initial assessment", "notes": "Checked pulse - absent"},
+    {"time": "14:35", "actor": "student", "action": "Order: Continue CPR", "notes": "To bystander"},
+    {"time": "14:30", "actor": "partner", "action": "Monitor applied", "notes": "VF confirmed"},
+    {"time": "14:25", "actor": "student", "action": "Defibrillation 200J", "notes": "First shock"},
+    {"time": "14:24", "actor": "student", "action": "Resume CPR immediately", "notes": ""},
+    {"time": "12:25", "actor": "student", "action": "Order: Establish IV access", "notes": "To partner"},
+    {"time": "12:15", "actor": "partner", "action": "18g IV left AC", "notes": "Established"},
+    {"time": "12:10", "actor": "student", "action": "Epinephrine 1mg IV", "notes": "After 2nd rhythm check"},
+    {"time": "10:10", "actor": "student", "action": "Defibrillation 200J", "notes": "Second shock"},
+    {"time": "10:09", "actor": "system", "action": "ROSC achieved", "notes": "Sinus tach 118"},
+    {"time": "09:00", "actor": "student", "action": "12-lead ECG", "notes": "Acquired"},
+    {"time": "07:30", "actor": "student", "action": "Maintain O2", "notes": "SpO2 96%"},
+    {"time": "05:00", "actor": "student", "action": "Transport initiated", "notes": "Level 1 trauma center"},
+    {"time": "00:37", "actor": "student", "action": "Hospital report", "notes": "Complete handoff"}
+  ],
+  
+  "interventions_performed": [
+    "scene_safety_assessment",
+    "verify_arrest_check_pulse",
+    "continue_cpr",
+    "attach_monitor_pads",
+    "identify_vf_shockable",
+    "defibrillation",
+    "resume_cpr_immediately",
+    "establish_iv_access",
+    "epinephrine_1mg",
+    "defibrillation_second",
+    "post_rosc_12_lead",
+    "maintain_oxygenation",
+    "transport_decision"
+  ],
+  
+  "vitals_progression": {
+    "initial": {"rhythm": "VF", "BP": "undetectable", "SpO2": "undetectable"},
+    "post_rosc": {"rhythm": "Sinus tach 118", "BP": "102/68", "SpO2": "96%", "EtCO2": "32"}
+  },
+  
+  "medication_5_rights_verbalized": {
+    "epinephrine": {
+      "right_patient": true,
+      "right_drug": true,
+      "right_dose": true,
+      "right_route": true,
+      "right_time": true,
+      "verbalization": "Epinephrine 1mg IV push for cardiac arrest, post 2nd rhythm check"
+    }
+  },
+  
+  "communication_aidet": {
+    "acknowledge": false,
+    "introduce": false,
+    "duration": false,
+    "explanation": false,
+    "thank_you": false,
+    "notes": "Patient unconscious - AIDET not applicable for arrest"
+  },
+  
+  "scene_safety_reassessment": {
+    "initial": true,
+    "continuous": true,
+    "count": 1,
+    "notes": "Scene remained safe, no reassessment triggers"
+  },
+  
+  "curveballs_encountered": [],
+  "equipment_failures": [],
+  
+  "student_notes": "Standard ACLS protocol followed. ROSC achieved after second shock. Patient remained stable post-ROSC with good vitals.",
+  
+  "soap_documentation": {
+    "subjective": "67M witnessed collapse at mall, bystander CPR in progress",
+    "objective": "Initial rhythm VF, CPR continuous, defibrillation x2, ROSC at 10:09",
+    "assessment": "Cardiac arrest - VF, ROSC achieved, likely acute MI",
+    "plan": "12-lead, maintain O2, transport to cath lab capable facility"
+  }
+}
