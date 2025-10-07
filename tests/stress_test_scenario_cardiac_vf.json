@@ -1,0 +1,51 @@
+{
+  "scenario_id": "cardiac_vf_001",
+  "title": "Cardiac Arrest - Ventricular Fibrillation - Stress Test",
+  "provider_level": "Paramedic",
+  "difficulty": "Standard",
+  "time_limit": 900,
+  "instructor": "Cody",
+  "student_count": 30,
+  "test_purpose": "Validate instructor->student->grading workflow at scale",
+  "learning_objectives": [
+    "Execute ACLS protocol",
+    "Timely defibrillation",
+    "High-quality CPR",
+    "Medication administration",
+    "Post-ROSC care"
+  ],
+  "initial_vitals": {
+    "HR": "VF",
+    "BP": "Unmeasurable",
+    "SpO2": 72,
+    "RR": "Apneic",
+    "temp": "98.4F",
+    "skin": "Cool, pale",
+    "GCS": 3
+  },
+  "scene_description": "Shopping mall food court, moderate crowd, security present, scene safe.",
+  "vitals_trending": {
+    "enabled": true,
+    "decompensation_rate": "moderate",
+    "improvement_conditions": ["Defibrillation", "Epinephrine", "Airway management"]
+  },
+  "expected_interventions": [
+    {"action": "Defibrillation", "required": true, "points": 20, "time_window": 120},
+    {"action": "High-quality CPR", "required": true, "points": 15, "time_window": "continuous"},
+    {"action": "Epinephrine 1mg IV/IO", "required": true, "points": 10, "time_window": 300},
+    {"action": "Airway management", "required": true, "points": 15, "time_window": 360},
+    {"action": "Rhythm checks", "required": true, "points": 10, "time_window": 120},
+    {"action": "Post-ROSC care", "required": true, "points": 15, "time_window": 600},
+    {"action": "Documentation", "required": true, "points": 15, "time_window": 900}
+  ],
+  "grading_rubric": {
+    "interventions": 50,
+    "assessment": 20,
+    "communication": 15,
+    "documentation": 15,
+    "total": 100
+  },
+  "scenario_hash": "sha256:cardiac_vf_001_20250107",
+  "created_date": "2025-01-07",
+  "instructor_notes": "Stress test: 30 students, varied performance distribution. Focus on ACLS protocol and timing."
+}
