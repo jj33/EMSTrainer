@@ -1,33 +1,54 @@
 {
-  "jurisdiction": "Example County EMS",
-  "version": "1.0.0",
-  "effective_date": "2025-01-01",
-  "notes": "Example configuration showing EMT with AEMT skills and Paramedic with some CCP capabilities",
+  "jurisdiction": "Joel_County_EMS",
+  "effective_date": "2025-01-07",
+  "notes": "Local scope variations from national standards",
   "provider_levels": {
     "EMT": {
       "base": "EMT_national",
       "add_skills": [
-        "iv_access",
+        "iv_access_peripheral",
         "io_access",
         "limited_medication_administration",
-        "12_lead_acquisition"
+        "12_lead_ecg_acquisition",
+        "glucose_monitoring",
+        "manual_defibrillation"
       ],
       "remove_skills": [],
-      "notes": "Local EMTs trained to AEMT level minus advanced airways (King, i-gel). Can start IVs, give limited meds per protocol, acquire 12-leads.",
-      "protocol_reference": "County Protocol 2025 Section 3.2"
+      "medications_allowed": [
+        "aspirin",
+        "oral_glucose",
+        "activated_charcoal",
+        "epinephrine_auto_injector",
+        "nitroglycerin_assist",
+        "albuterol",
+        "naloxone",
+        "glucose_iv_d10"
+      ],
+      "notes": "Joel's EMTs trained to AEMT level for IV/IO and basic meds. Cannot perform advanced airway beyond BLS adjuncts (OPA/NPA/BVM). Cannot interpret 12-leads independently (acquisition only)."
     },
     "Paramedic": {
       "base": "Paramedic_national",
       "add_skills": [
-        "ventilator_management",
-        "critical_care_medications"
+        "ventilator_management_basic_modes",
+        "critical_care_medications_limited",
+        "continuous_medication_infusions"
       ],
       "remove_skills": [
         "surgical_airway_cricothyrotomy",
-        "ecmo_management"
+        "ecmo_management",
+        "central_line_placement"
       ],
-      "notes": "Paramedics can run vents and administer some critical care medications, but cricothyrotomy and ECMO are not in scope",
-      "protocol_reference": "County Protocol 2025 Section 4.5"
+      "medications_allowed": [
+        "all_paramedic_national",
+        "ketamine",
+        "versed_midazolam",
+        "fentanyl",
+        "dopamine",
+        "epinephrine_infusion",
+        "amiodarone",
+        "lidocaine"
+      ],
+      "notes": "Joel's Paramedics can run ventilators (basic modes: AC, SIMV) and some CC meds (sedation, pressors). Cannot perform surgical crich (King/ETI only). ECMO patients transferred to ACP/CCP teams."
     }
   }
 }
