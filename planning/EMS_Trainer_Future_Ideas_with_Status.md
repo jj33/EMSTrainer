@@ -313,4 +313,21 @@ AI: [creates new file]
 
 ---
 
-*Updated 2025-10-06*
+### First Responders & Multi-Agency Dynamic Presence
+**Purpose:** Add Fire, Police, and First Responders to scenarios for realistic resource management.
+
+**Features:**
+- Dynamic arrival (on-scene, en route, delayed, or student-requested)
+- Fire: Extrication, scene safety, hazmat support
+- Police: Scene control, crowd management, staging requirements
+- First Responders: Basic care, CPR, initial assessment
+- Realistic ETAs (2-15 minutes)
+- Grading: Did student request appropriate resources? Coordinate care? Stage when unsafe?
+
+**Example:** "Fire arrives for extrication: 'We'll have him out in 10 minutes. Vehicle stable. What do you need?'"
+
+**Status:** 📅 Planned (v1.7)
+
+---
+
+*Updated 2025-01-07*
