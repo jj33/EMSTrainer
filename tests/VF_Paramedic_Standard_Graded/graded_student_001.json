@@ -1,0 +1,43 @@
+{
+  "student_id": "student_001",
+  "scenario_id": "cardiac_vf_001",
+  "scenario_hash_match": true,
+  "scores": {
+    "defibrillation_within_2min": 0,
+    "cpr_quality": 12,
+    "epinephrine_timing": 6,
+    "airway_management": 8,
+    "rhythm_checks": 10,
+    "post_ROSC_care": 10,
+    "documentation": 8,
+    "total": 54,
+    "letter_grade": "D"
+  },
+  "hidden_criteria": {
+    "med_safety_5_rights": 10,
+    "AIDET": 8,
+    "scene_safety_reassessment": 15
+  },
+  "timings": {
+    "first_defib_time": "11:35",
+    "epi_time": "09:25",
+    "post_ROSC_time": "03:03"
+  },
+  "outcome": {
+    "ROSC": true,
+    "time_of_ROSC": "03:33",
+    "transport_destination": "Community ED",
+    "status_at_handoff": "Hemodynamically marginal but improving"
+  },
+  "strengths": [
+    "Rhythm checks at proper 2-min intervals"
+  ],
+  "areas_for_improvement": [
+    "Deliver first shock within 2 minutes of arrival",
+    "Reduce hands-off time during shock and airway transitions",
+    "Epinephrine delayed; aim for administration by 5 minutes",
+    "Airway management deficiencies; practice two-person BVM and confirmation steps",
+    "Tighten timing of post-ROSC bundle",
+    "Documentation thin; follow SOAP with times/interventions"
+  ]
+}
