@@ -13,38 +13,31 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
+      - name: Install Pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-latex-extra
+      
       - name: Create PDF directory
         run: mkdir -p docs/pdf
       
-      - name: Convert Instructor Quick Start Guide
-        uses: baileyjm02/markdown-to-pdf@v1
-        with:
-          input_path: docs/Instructor_Quick_Start_Guide.md
-          output_dir: docs/pdf
+      - name: Convert Markdown files to PDF
+        run: |
+          pandoc docs/Instructor_Quick_Start_Guide.md -o docs/pdf/Instructor_Quick_Start_Guide.pdf --pdf-engine=pdflatex
+          pandoc docs/Instructor_Reference_Guide.md -o docs/pdf/Instructor_Reference_Guide.pdf --pdf-engine=pdflatex
+          pandoc docs/Student_Quick_Start_Guide.md -o docs/pdf/Student_Quick_Start_Guide.pdf --pdf-engine=pdflatex
+          pandoc docs/WHATS_NEW_v1.6.0.md -o docs/pdf/WHATS_NEW_v1.6.0.pdf --pdf-engine=pdflatex
+          pandoc README.md -o docs/pdf/README.pdf --pdf-engine=pdflatex
       
-      - name: Convert Instructor Reference Guide
-        uses: baileyjm02/markdown-to-pdf@v1
-        with:
-          input_path: docs/Instructor_Reference_Guide.md
-          output_dir: docs/pdf
+      - name: List generated PDFs
+        run: ls -lh docs/pdf/
       
-      - name: Convert Student Quick Start Guide
-        uses: baileyjm02/markdown-to-pdf@v1
-        with:
-          input_path: docs/Student_Quick_Start_Guide.md
-          output_dir: docs/pdf
-      
-      - name: Convert What's New
-        uses: baileyjm02/markdown-to-pdf@v1
-        with:
-          input_path: docs/WHATS_NEW_v1.6.0.md
-          output_dir: docs/pdf
-      
-      - name: Convert README
-        uses: baileyjm02/markdown-to-pdf@v1
-        with:
-          input_path: README.md
-          output_dir: docs/pdf
+      - name: Move PDFs to pdf directory
+        run: |
+          mkdir -p docs/pdf
+          find docs -maxdepth 1 -name "*.pdf" -exec mv {} docs/pdf/ \;
+          mv README.pdf docs/pdf/ 2>/dev/null || true
+          ls -lh docs/pdf/
       
       - name: Upload PDFs as artifacts
         uses: actions/upload-artifact@v4
