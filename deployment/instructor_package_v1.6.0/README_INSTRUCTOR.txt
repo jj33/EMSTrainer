@@ -3,6 +3,10 @@ EMSTrainer v1.6.0 - Instructor Package
 ================================================================================
 
 Welcome! This package contains everything you need to use EMSTrainer as an
+
+Copyright © 2025 Joel Jameson
+FREE for individual instructors. Institutional licensing available.
+
 EMS instructor.
 
 ================================================================================
