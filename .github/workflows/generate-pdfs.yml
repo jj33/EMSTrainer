@@ -41,16 +41,25 @@ jobs:
       - name: Collect and rename PDFs
         run: |
           mkdir -p docs/pdf
-          # The markdown-to-pdf action creates files with "built" prefix in various locations
+          # The markdown-to-pdf action creates files with "built" prefix (sometimes)
           # Find all built PDFs and move/rename them
-          find . -name "built*.pdf" -o -name "*built*.pdf" | while read pdf; do
-            # Extract the base filename without "built" prefix
+          find . -name "built*.pdf" 2>/dev/null | while read pdf; do
             basename=$(basename "$pdf" | sed 's/^built//')
             mv "$pdf" "docs/pdf/$basename"
             echo "Moved $pdf -> docs/pdf/$basename"
           done
-          # Also move README.pdf if it exists
-          find . -maxdepth 2 -name "README.pdf" -not -path "./docs/pdf/*" -exec mv {} docs/pdf/ \; 2>/dev/null || true
+          # Also find PDFs in docs directory without "built" prefix
+          find docs -maxdepth 1 -name "*.pdf" -not -name "EMSTrainer_*.pdf" -not -path "./docs/pdf/*" 2>/dev/null | while read pdf; do
+            mv "$pdf" "docs/pdf/"
+            echo "Moved $pdf -> docs/pdf/"
+          done
+          # Move README.pdf from root if it exists
+          find . -maxdepth 1 -name "README.pdf" -exec mv {} docs/pdf/ \; 2>/dev/null || true
+          # Move any other generated PDFs from root
+          find . -maxdepth 1 -name "*Quick_Start*.pdf" -o -name "*Reference*.pdf" -o -name "*WHATS_NEW*.pdf" 2>/dev/null | while read pdf; do
+            mv "$pdf" "docs/pdf/" 2>/dev/null || true
+            echo "Moved $pdf -> docs/pdf/"
+          done
           echo "\nFinal PDFs in docs/pdf/:"
           ls -lh docs/pdf/*.pdf 2>/dev/null || echo "No PDFs found"
       
