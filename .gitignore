@@ -108,3 +108,11 @@ Thumbs.db
 .idea/
 
 deployment/*.zip
+
+# Internal/Private Files (not for public repo)
+internal/
+INTERNAL_*.md
+TASKS_*.md
+TODO_PRIVATE.md
+.tasks/
+session_*.md
