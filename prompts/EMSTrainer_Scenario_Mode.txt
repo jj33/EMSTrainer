@@ -700,3 +700,106 @@ What do you do?
 
 Load EMSTrainer_Core.txt first, then this file.
 Version: 1.6.0 | Scenario Mode Complete
+
+=== SUBMISSION EXPORT (For Students) ===
+
+After completing the debrief, provide the student with their submission file in an easy-to-save format:
+
+**Format:**
+
+```
+================================================================================
+YOUR SUBMISSION IS READY
+================================================================================
+
+📥 SAVE THIS AS: scenario_{scenario_id}_{student_name}_{date}.json
+
+INSTRUCTIONS:
+1. Look for the "Copy" button at the top-right of the code block below
+2. Click "Copy" to copy the entire JSON
+3. Open TextEdit (Mac) or Notepad (Windows)
+4. Paste the JSON
+5. File → Save As
+   - Mac: Save as "scenario_{scenario_id}_{student_name}_{date}.json"
+   - Windows: Change "Save as type" to "All Files", then save
+6. Email the file to your instructor
+
+FILENAME EXAMPLE: scenario_cardiac_vf_JohnSmith_2025-01-07.json
+
+================================================================================
+
+```json
+{
+  "student_id": "{student_name}",
+  "scenario_id": "{scenario_id}",
+  "scenario_hash": "{hash from original scenario}",
+  "completion_date": "YYYY-MM-DD",
+  "completion_time_seconds": {total_time},
+  "difficulty": "{Easy|Standard|Hard|Monica}",
+  "score": {
+    "total": {score}/100,
+    "letter_grade": "{A|B|C|D|F}",
+    "categories": {
+      "scene_safety": {points}/15,
+      "airway": {points}/20,
+      "breathing": {points}/20,
+      "circulation": {points}/20,
+      "communication": {points}/10,
+      "documentation": {points}/15
+    },
+    "hidden_criteria": {
+      "med_safety_5_rights": {points}/10,
+      "aidet": {points}/10,
+      "scene_safety_reassessment": {points}/15
+    }
+  },
+  "vitals_log": [
+    {
+      "time": "14:30",
+      "HR": 120,
+      "BP": "88/54",
+      "SpO2": 90,
+      "note": "Initial vitals"
+    }
+    // ... all vitals checks throughout scenario
+  ],
+  "action_log": [
+    {
+      "time": "14:10",
+      "actor": "Student",
+      "action": "Initial assessment",
+      "detail": "Airway patent, breathing labored"
+    }
+    // ... all actions timestamped
+  ],
+  "soap_note": {
+    "subjective": "{student's subjective assessment}",
+    "objective": "{student's objective findings}",
+    "assessment": "{student's clinical impression}",
+    "plan": "{student's treatment and transport plan}"
+  },
+  "outcome": {
+    "patient_status": "Alive|Deceased",
+    "final_vitals": { ... },
+    "transport_destination": "{facility}",
+    "status_at_handoff": "{description}"
+  },
+  "debrief_summary": {
+    "strengths": ["strength1", "strength2"],
+    "areas_for_improvement": ["area1", "area2"],
+    "critical_actions_missed": ["action1", "action2"],
+    "timing_performance": "excellent|good|needs_improvement|poor"
+  }
+}
+```
+
+================================================================================
+
+✅ Your submission is ready to send to your instructor!
+
+If you have trouble saving:
+- Ask your instructor for help
+- Take a screenshot as backup
+- Copy and paste into an email if file save doesn't work
+
+================================================================================

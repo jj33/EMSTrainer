@@ -2,6 +2,9 @@
 EMSTrainer v1.6.0 - Student Package
 ================================================================================
 
+Copyright © 2025 Joel Jameson
+FREE for individual students. See LICENSE for institutional licensing.
+
 Welcome! This package contains everything you need to practice EMS scenarios
 and improve your skills.
 
@@ -11,7 +14,7 @@ QUICK START (5 minutes)
 
 Step 1: Open GPT-5
   - Use GitHub Copilot (recommended) or ChatGPT
-  - Make sure GPT-5 is enabled (medical accuracy required)
+  - Make sure GPT-5 is enabled (see below for HOW)
 
 Step 2: Load the prompts (drag and drop into chat)
   a) Drag: EMSTrainer_Core.txt
@@ -25,6 +28,69 @@ Step 4: Run the scenario!
   Type: "Start scenario"
   
 That's it! Follow the prompts and practice your skills.
+
+================================================================================
+HOW TO ENABLE GPT-5
+================================================================================
+
+GPT-5 IS REQUIRED - Do not skip this step!
+
+IN GITHUB COPILOT:
+  1. Open Copilot chat window
+  2. Look for the model selector (usually shows "GPT-4" or similar)
+  3. Click it and select "GPT-5" or "o1" 
+  4. Verify it says "GPT-5" or "o1" before proceeding
+
+IN CHATGPT (Web/App):
+  1. Open ChatGPT
+  2. Click your profile icon (bottom left)
+  3. Settings → Model → Select "GPT-5" or "o1"
+  4. Close settings
+
+WHY GPT-5?
+  - Medical accuracy and knowledge depth
+  - GPT-4 and earlier models make clinical errors
+  - Required for realistic scenarios and grading
+
+IF YOU DON'T HAVE GPT-5:
+  - Ask your instructor for access
+  - Some schools provide free access
+  - ChatGPT Plus includes GPT-5 ($20/month)
+  - GitHub Copilot may include it (check your plan)
+
+================================================================================
+HOW TO DRAG AND DROP FILES
+================================================================================
+
+STEP-BY-STEP:
+
+1. OPEN THE CHAT:
+   - Open GitHub Copilot chat panel (in VS Code or browser)
+   - Or open ChatGPT in your browser
+
+2. LOCATE THE FILE:
+   - Unzip this package on your computer
+   - Find the file: EMSTrainer_Core.txt
+
+3. DRAG THE FILE:
+   - Click and HOLD the file with your mouse
+   - Drag it over the chat window
+   - You'll see a highlight or "Drop file here" message
+   - Release the mouse button
+
+4. WAIT FOR UPLOAD:
+   - File uploads (takes 1-2 seconds)
+   - You'll see "Uploaded: EMSTrainer_Core.txt" or similar
+
+5. REPEAT:
+   - Do the same for EMSTrainer_Scenario_Mode.txt
+   - Then for your scenario file from instructor
+
+TROUBLESHOOTING:
+- Can't drag? Try: Copy file contents, paste into chat, say "This is the prompt"
+- File too large? Email instructor - shouldn't happen with our files
+- Wrong file type? Files should be .txt or .json
+
 
 ================================================================================
 WHAT'S INCLUDED
@@ -68,260 +134,48 @@ UPLOAD TEST RESULTS:
   "Generate targeted practice questions on my weak areas"
 
 ================================================================================
-HOW TO USE
+HOW TO SAVE YOUR SUBMISSION
 ================================================================================
 
-STEP 1 - LOAD SCENARIO:
-  Instructor sends you a scenario file (scenario_xxx.json)
-  Drag it into your GPT-5 chat
+After you complete a scenario, the AI will give you a JSON file to submit.
 
-STEP 2 - START:
-  Type: "Start scenario"
-  Read the initial patient presentation
+WHAT IT LOOKS LIKE:
+  - A code block with "Copy" button at top-right
+  - Contains your scores, actions, and vitals
+  - Looks like: {"student_id": "Your Name", "scenario_id": ...}
 
-STEP 3 - MAKE DECISIONS:
-  The AI asks: "What would you like to do?"
-  You respond with your clinical actions:
-    - "Assess airway, breathing, circulation"
-    - "Apply oxygen via NRB at 15 LPM"
-    - "Start IV, normal saline"
-    - "Check vitals"
-    - "Document findings"
+HOW TO SAVE IT:
 
-STEP 4 - FOLLOW THE FLOW:
-  - Patient vitals update based on your care
-  - Time passes (scenarios have time limits!)
-  - Equipment may fail (depending on difficulty)
-  - Scene may change
-  - You must adapt and treat
+1. CLICK "COPY" BUTTON
+   - Look for Copy button at top-right of the code block
+   - Or manually select all the JSON and copy (Cmd+C / Ctrl+C)
 
-STEP 5 - DOCUMENT:
-  When ready to complete:
-    "I want to document and submit"
-  
-  Write your SOAP note:
-    S: Subjective (what patient/bystanders say)
-    O: Objective (vitals, findings)
-    A: Assessment (your clinical impression)
-    P: Plan (what you did, transport decision)
+2. OPEN TEXT EDITOR:
+   - Mac: TextEdit (in Applications)
+   - Windows: Notepad (Start → Notepad)
 
-STEP 6 - GET FEEDBACK:
-  AI provides:
-    - Your score and grade
-    - What you did well
-    - What to improve
-    - Timing analysis
-    - Export file for instructor
+3. PASTE THE JSON:
+   - Paste what you copied (Cmd+V / Ctrl+V)
 
-STEP 7 - SUBMIT:
-  Copy the JSON output
-  Save as a file
-  Email to your instructor
+4. SAVE AS .JSON FILE:
+   Mac:
+     - File → Save
+     - Name it: scenario_cardiac_JohnSmith_2025-01-07.json
+     - Make sure it ends in .json
+   
+   Windows:
+     - File → Save As
+     - Change "Save as type" dropdown to "All Files"
+     - Name it: scenario_cardiac_JohnSmith_2025-01-07.json
+     - Click Save
 
-================================================================================
-DIFFICULTY MODES
-================================================================================
+5. EMAIL TO INSTRUCTOR:
+   - Attach the .json file to email
+   - Subject: "EMSTrainer Submission - [Scenario Name]"
+   - Send!
 
-EASY MODE (Learning):
-  ✓ Hints when you're stuck
-  ✓ No time penalties
-  ✓ Supportive feedback
-  ✓ Forgiving vitals
-  ✓ No equipment failures
-  → Perfect for first time learning
-
-STANDARD MODE (NREMT-level):
-  ✓ Realistic timing graded
-  ✓ Balanced support
-  ✓ Realistic vitals
-  ✓ 10-15% equipment failure rate
-  → Normal practice and certification prep
-
-HARD MODE (Challenge):
-  ✓ Strict timing with penalties
-  ✓ Minimal hints
-  ✓ Challenging vitals
-  ✓ 20-25% equipment failure rate
-  → Advanced practice and pre-test
-
-MONICA MODE (Extreme):
-  ✓ Hard fail on timeout
-  ✓ No hints
-  ✓ Aggressive decompensation
-  ✓ 30-35% equipment failure rate
-  ✓ Guaranteed curveballs
-  → For experienced providers only!
-
-================================================================================
-GRADING
-================================================================================
-
-Your performance is scored on:
-
-INTERVENTIONS (40-50 points):
-  - Did you take appropriate actions?
-  - Were they timely?
-  - Did you follow protocols?
-
-ASSESSMENT (15-20 points):
-  - Did you assess the patient thoroughly?
-  - Did you identify critical findings?
-
-COMMUNICATION (10-15 points):
-  - Did you give clear orders to your partner?
-  - Did you contact medical control when needed?
-
-DOCUMENTATION (15 points):
-  - Is your SOAP note complete?
-  - Did you document times and interventions?
-
-HIDDEN CRITERIA (35 points):
-  - Some grading criteria aren't told to you upfront
-  - You'll discover them through feedback
-  - Examples: 5 Rights, AIDET, scene safety reassessment
-
-TOTAL: 100 points possible
-
-================================================================================
-TIPS FOR SUCCESS
-================================================================================
-
-BEFORE STARTING:
-  ✓ Review protocols for scenario type
-  ✓ Have reference materials handy
-  ✓ Find a quiet place to focus
-  ✓ Budget enough time (scenarios: 10-30 minutes)
-
-DURING SCENARIO:
-  ✓ Scene safety FIRST (and reassess continuously!)
-  ✓ Follow systematic assessment (ABC's)
-  ✓ Verbalize your actions clearly
-  ✓ Check vitals regularly
-  ✓ Communicate with your partner
-  ✓ Document as you go (mental notes)
-  ✓ Watch the clock
-
-COMMUNICATION:
-  ✓ Use AIDET: Acknowledge, Introduce, Duration, Explanation, Thank you
-  ✓ Give clear orders to partner
-  ✓ Use closed-loop communication
-  ✓ Consider patient/family
-
-MEDICATIONS:
-  ✓ Always check 5 Rights:
-    - Right Patient
-    - Right Drug
-    - Right Dose
-    - Right Route
-    - Right Time
-  ✓ Verbalize each check
-
-DOCUMENTATION:
-  ✓ Use proper SOAP format
-  ✓ Include times for key interventions
-  ✓ Be thorough but concise
-  ✓ Document your clinical reasoning
-
-AFTER SCENARIO:
-  ✓ Review your debrief carefully
-  ✓ Note what you did well
-  ✓ Focus on areas for improvement
-  ✓ Ask instructor questions
-  ✓ Practice weak areas
-
-================================================================================
-TIMING STANDARDS
-================================================================================
-
-Know these critical time windows:
-
-IMMEDIATE (<60 seconds):
-  - CPR initiation
-
-URGENT (<2-3 minutes):
-  - Defibrillation
-  - Oxygen for hypoxia
-  - Epinephrine for anaphylaxis
-
-IMPORTANT (<5 minutes):
-  - IV access (critical patients)
-  - Advanced airway (if needed)
-  - Blood glucose check (altered mental status)
-
-SCENE TIME:
-  - Medical: ≤10 minutes target, 15 max
-  - Trauma (load-and-go): <10 minutes
-
-Note: Timing enforced based on difficulty mode
-
-================================================================================
-COMMON MISTAKES TO AVOID
-================================================================================
-
-✗ Skipping scene safety assessment
-✗ Not reassessing scene safety during care
-✗ Forgetting to check vitals regularly
-✗ Missing critical timing windows
-✗ Not verbalizing 5 Rights for medications
-✗ Incomplete SOAP documentation
-✗ Not giving partner clear directions
-✗ Forgetting to update patient/family
-✗ Tunnel vision (missing other problems)
-✗ Not adapting when equipment fails
-
-================================================================================
-NEED HELP?
-================================================================================
-
-1. Read: Student_Quick_Start_Guide.md (detailed instructions)
-2. Ask: Your instructor for guidance
-3. Review: What's New doc for v1.6.0 features
-4. Practice: Start with Easy mode, work up to Standard
-
-Common questions:
-  "What should I do next?" → Think systematically (ABC's)
-  "How much time do I have left?" → AI will tell you
-  "Can I restart?" → Ask your instructor for permission
-  "What if equipment fails?" → Adapt! Use backup equipment/techniques
-
-================================================================================
-TROUBLESHOOTING
-================================================================================
-
-Q: Can't load scenario file?
-A: Make sure using GPT-5. Drag file (don't copy/paste). Load Core.txt first.
-
-Q: AI won't start scenario?
-A: Check you loaded both prompt files. Type exact command: "Start scenario"
-
-Q: Lost my place in scenario?
-A: Type: "Where am I in the scenario? What just happened?"
-
-Q: Don't know what to do?
-A: Think systematically. Start with ABCs. Ask AI for hints (Easy mode).
-
-Q: Time ran out?
-A: That's part of learning! Review debrief, focus on efficiency next time.
-
-================================================================================
-VERSION INFORMATION
-================================================================================
-
-Version: 1.6.0
-Released: January 2025
-Tested: 30-student stress test (100% validation)
-
-Features in this version:
-  ✓ 4 difficulty modes
-  ✓ Dynamic vitals that respond to your care
-  ✓ Equipment failures (realistic scenarios)
-  ✓ Continuous scene safety assessment
-  ✓ Hidden grading criteria
-  ✓ Detailed feedback and debriefs
-  ✓ Study guide generation
-  ✓ Practice question generation
-
-================================================================================
-
-Good luck with your training! 🚑 You've got this!
+CAN'T SAVE FILE?
+  - Take a screenshot of the JSON as backup
+  - Or copy/paste the entire JSON into the email body
+  - Your instructor can work with either
 
