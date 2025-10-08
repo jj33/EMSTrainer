@@ -38,6 +38,11 @@ jobs:
         with:
           input_path: README.md
       
+      - name: Debug - List all PDFs before collection
+        run: |
+          echo "All PDFs in workspace:"
+          find . -name "*.pdf" -type f 2>/dev/null
+      
       - name: Collect and rename PDFs
         run: |
           mkdir -p docs/pdf
