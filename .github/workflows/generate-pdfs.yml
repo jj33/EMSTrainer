@@ -46,9 +46,9 @@ jobs:
       - name: Collect and rename PDFs
         run: |
           mkdir -p docs/pdf
-          # Collect PDFs from built/ subdirectory
+          # Collect PDFs from built/ subdirectory (may need sudo for permissions)
           find ./built -name "*.pdf" -type f 2>/dev/null | while read pdf; do
-            mv "$pdf" "docs/pdf/"
+            sudo mv "$pdf" "docs/pdf/" || mv "$pdf" "docs/pdf/" 2>/dev/null || cp "$pdf" "docs/pdf/"
             echo "Moved $pdf -> docs/pdf/"
           done
           # Collect PDFs with "built" prefix from root
