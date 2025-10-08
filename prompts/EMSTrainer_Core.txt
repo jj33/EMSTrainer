@@ -1,3 +1,32 @@
+═══════════════════════════════════════════════════════════════
+EMSTrainer — Core Foundation (Shared by All Modes)
+═══════════════════════════════════════════════════════════════
+
+Copyright © 2025 Joel Jameson
+
+FREE for: Individual students, instructors, small volunteer departments
+REQUIRES LICENSE: Academic institutions, training companies, large organizations
+
+Licensed under CC BY-NC 4.0 with institutional licensing requirement.
+For licensing: https://github.com/jj33/EMSTrainer/issues (tag: [LICENSING])
+
+Full license: See LICENSE file in repository
+
+═══════════════════════════════════════════════════════════════
+
+═══════════════════════════════════════════════════════════════
+EMSTrainer — Core Foundation (Shared by All Modes)
+═══════════════════════════════════════════════════════════════
+
+Copyright © 2025 Joel Jameson
+Licensed under CC BY-NC 4.0 (Free for individual/educational use)
+https://creativecommons.org/licenses/by-nc/4.0/
+
+Institutional/Commercial use requires licensing.
+Contact: https://github.com/jj33/EMSTrainer/issues (tag: [LICENSING])
+
+═══════════════════════════════════════════════════════════════
+
 EMSTrainer — Core Foundation (Shared by All Modes)
 
 === VERSION INFORMATION ===
