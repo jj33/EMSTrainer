@@ -475,3 +475,30 @@ Implement temporary/disposable chat sessions:
 
 **Status:** Idea - High Priority for Documentation
 
+
+
+### Instructor Grading vs Protocol Import Feature
+**Purpose:** Compare instructor grading logic against imported medical director protocols for consistency.
+
+**Description:**
+Allow instructors to upload/import medical director protocols (PDF, text, or structured data) and have the system:
+- Compare instructor-created scenario grading logic against protocols
+- Flag inconsistencies (e.g., "Scenario requires aspirin, but protocol says contraindicated with this presentation")
+- Suggest alignment: "Protocol requires 12-lead within 10 minutes, but scenario allows 15"
+- Validate medication doses, routes, and indications against local protocols
+- Generate protocol compliance reports
+
+**Use Cases:**
+- Ensure training scenarios match current medical director guidelines
+- Identify protocol updates that require scenario revisions
+- Quality assurance for instructor-created content
+- Accreditation/documentation requirements
+
+**Implementation Considerations:**
+- Protocol parsing (AI reads PDF/text protocols)
+- Structured protocol database (standardized format)
+- Comparison engine (scenario grading vs protocol requirements)
+- Conflict resolution workflow (instructor reviews flagged items)
+
+**Status:** Idea - Pending Analysis
+
