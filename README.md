@@ -1,9 +1,10 @@
 # EMSTrainer
 
-**Branch:** `dev`  
-**Current prompt:** [`prompts/EMSTrainer_Core_Prompt_v1.5.6.1.txt`](prompts/EMSTrainer_Core_Prompt.txt)
-**Current Student Prompt:** [`prompts/EMSTrainer_Core_Prompt.txt`](prompts/EMSTrainer_Core_Prompt.txt)  
-**Current Instructor Prompt:** [`prompts/EMSTrainer_Instructor_Prompt.txt`](prompts/EMSTrainer_Instructor_Prompt.txt) *(In Development)*
+**Version:** v1.6.0  
+**Released:** January 2025  
+**Status:** Production Ready
+
+**Latest Release:** [v1.6.0](https://github.com/jj33/EMSTrainer/releases/tag/v1.6.0)
 
 ## Overview
 EMSTrainer is a Copilot-driven EMS training assistant with three learner modes (Scenario, Test Questions, Study Guide) and an instructor timing overlay. The **student-facing logic** lives entirely in the **core prompt**; **instructor overrides** are supplied via JSON assets.
@@ -29,43 +30,70 @@ EMSTrainer is a Copilot-driven EMS training assistant with three learner modes (
 - Laptop/desktop for best experience
 - Voice-to-text as alternative (though less precise for medical terms)
 
-## Quick Start
+## 🚀 Quick Start
 
 ### For Students:
-1. **Enable GPT-5** in your AI assistant (see Requirements above)
-2. Drag and drop [`prompts/EMSTrainer_Core.txt`](prompts/EMSTrainer_Core.txt) into Copilot/ChatGPT
-3. For scenarios: Also load [`prompts/EMSTrainer_Scenario_Mode.txt`](prompts/EMSTrainer_Scenario_Mode.txt)
-4. Choose your mode: **Test Questions**, **Study Guide**, or **Scenario**
-5. Select difficulty: Easy, Standard, Hard, or **Monica Mode**
+1. **Download:** [Student Package v1.6.0](https://github.com/jj33/EMSTrainer/releases/tag/v1.6.0)
+2. **Enable GPT-5** in Copilot or ChatGPT (see Requirements above)
+3. **Load prompts:** Drag and drop the files into your AI assistant
+4. **Start practicing:** Choose Test Questions, Study Guide, or Scenario mode
+5. **Select difficulty:** Easy, Standard, Hard, or Monica Mode
+
+See [Student Quick Start Guide](docs/Student_Quick_Start_Guide.md) for detailed instructions.
 
 ### For Instructors:
-1. Load [`prompts/EMSTrainer_Instructor_Prompt.txt`](prompts/EMSTrainer_Instructor_Prompt.txt) into your AI assistant.
-2. Create scenarios, deploy to students, and auto-grade submissions.
-3. Review templates in [`docs/imports/EMSTrainer_v1.5.3_Planning_Files/`](docs/imports/EMSTrainer_v1.5.3_Planning_Files/).
+1. **Download:** [Instructor Package v1.6.0](https://github.com/jj33/EMSTrainer/releases/tag/v1.6.0)
+2. **Load prompts:** Drag files into GPT-5
+3. **Create scenarios, tests, and study guides**
+4. **Deploy to students via email**
+5. **Auto-grade submissions and generate class summaries**
 
-## Repository Structure
+See [Instructor Quick Start Guide](docs/Instructor_Quick_Start_Guide.md) and [Instructor Reference Guide](docs/Instructor_Reference_Guide.md) for complete documentation.
 
-**prompts/** - Load these into GPT-5
-- [`EMSTrainer_Core.txt`](prompts/EMSTrainer_Core.txt) (16k) - Foundation + Test/Study
-- [`EMSTrainer_Scenario_Mode.txt`](prompts/EMSTrainer_Scenario_Mode.txt) (23k) - Scenarios
+## 📁 Repository Structure
 
-**docs/** - Quick Start Guides
-- [`Student_Quick_Start_Guide.md`](docs/Student_Quick_Start_Guide.md)
-- [`Instructor_Quick_Start_Guide.md`](docs/Instructor_Quick_Start_Guide.md)
+```
+EMSTrainer/
+├── prompts/                    # AI prompt files
+│   ├── EMSTrainer_Core.txt            (16k) Foundation + Test/Study
+│   ├── EMSTrainer_Scenario_Mode.txt   (23k) Scenario engine
+│   └── EMSTrainer_Instructor_Prompt.txt (21k) Instructor interface
+├── deployment/                # Release packages
+│   ├── instructor_package_v1.6.0/
+│   └── student_package_v1.6.0/
+├── docs/                      # Documentation
+│   ├── Student_Quick_Start_Guide.md
+│   ├── Instructor_Quick_Start_Guide.md
+│   ├── Instructor_Reference_Guide.md
+│   └── WHATS_NEW_v1.6.0.md
+├── examples/                  # Sample scenarios
+│   ├── scenario_cardiac_arrest_vf.json
+│   └── scenario_mvc_trauma_monica.json
+├── tests/                     # Testing & validation
+│   ├── baseline/                  # Regression baseline
+│   └── results/                   # Test reports
+├── scripts/                   # Automation tools
+└── planning/                  # Features & roadmap
+```
 
-**examples/** - Sample Scenarios
-- [`scenario_cardiac_arrest_vf.json`](examples/scenario_cardiac_arrest_vf.json) - Standard
-- [`scenario_mvc_trauma_monica.json`](examples/scenario_mvc_trauma_monica.json) - Monica Mode
+## ✨ What's New in v1.6.0
 
-**assets/** - Config files ([`README`](assets/README.md))
-**planning/** - Feature tracking ([`Features`](planning/EMSTrainer_Feature_Document.md) | [`Roadmap`](planning/EMS_Trainer_Future_Ideas_with_Status.md))
-**schemas/** - JSON validation
+### Major Features:
+- **🏛️ Modular Architecture** - Split into Core, Scenario Mode, and Instructor prompts (no more character limits!)
+- **🎯 4 Difficulty Modes** - Easy (learning), Standard (NREMT-level), Hard (challenge), Monica (extreme)
+- **👨‍🏫 Instructor Tools** - Create scenarios, generate tests/study guides, auto-grade with detailed feedback
+- **👩‍🎓 Student Tools** - Practice scenarios, get targeted study materials, receive comprehensive debriefs
+- **🚨 Continuous Scene Safety** - Not a one-time check; scenarios can start unsafe or degrade dynamically
+- **🔧 Equipment Failures** - Realistic failures (IV, monitor, O2, airway) with probability scaling by difficulty
+- **🔒 Hidden Grading** - 5 Rights, AIDET, scene safety reassessment (students discover through feedback)
+- **✈️ ACP Provider Level** - Air Care Paramedic support with advanced scope
 
-## Monica Mode Highlights (v1.5.6.1)
-- **Deterministic seed** (`module_toggles.monica_seed`) for reproducible runs.
-- **Distractions overlay** forced **ON** in Monica; weighted, cooldown-limited; consumes simulated time only.
-- **Latency tracking** forced **ON** in Monica; **ignored in Normal**; toggleable in Hard.
-- **Objective-only debrief** (auto-redaction) in Monica by default.
+### Quality Assurance:
+- **✅ 100% Validated** - 30-student stress test with perfect grade distribution
+- **📊 Regression Baseline** - Established for future stability testing
+- **📝 Complete Documentation** - Quick Start Guides, Reference Guides, and comprehensive READMEs
+
+See [WHATS_NEW_v1.6.0.md](docs/WHATS_NEW_v1.6.0.md) for complete details.
 
 ## Configure via Assets
 Edit the following as needed (validate with schemas):
@@ -151,7 +179,17 @@ We now have a GitHub Actions workflow (`.github/workflows/validate.yml`) that ru
 - **Update only EMSTrainer_Core_Prompt.txt** for student logic.
 - Instructor configs should be modified via JSON in `assets/`.
 ---
-*Updated 2025-10-05*
+---
+
+## 📜 License & Copyright
+
+**Copyright © 2025 Joel Jameson**
+
+See [LICENSE](LICENSE) for complete terms.
+
+---
+
+*Last Updated: January 7, 2025*
 ### What it does
 - **Validate job**: Runs `make validate` to check all JSON, CSV, and Markdown files under `examples/` and `exports/`.
 - **Exports smoke test**: Runs `make exports` to generate demo ACS export files (MD + CSV) and uploads them as artifacts.
