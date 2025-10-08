@@ -1,16 +1,84 @@
-Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+# EMSTrainer License
 
-You are free to:
+Copyright © 2025 Joel
 
-- Share — copy and redistribute the material in any medium or format
-- Adapt — remix, transform, and build upon the material
+## Mission Statement
 
-Under the following terms:
+EMSTrainer is built to improve the pipeline of EMS professionals and benefit emergency medical services across the country. This license reflects that mission by keeping the software free for individual learners and educators while enabling sustainable development through institutional licensing.
 
-- Attribution — You must give appropriate credit, provide a link to the EMSTrainer project, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the project endorses you or your use.
+## License Terms
 
-- NonCommercial — You may not use the material for commercial purposes.
+This software is dual-licensed:
 
-No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+### 1. Free Educational Use (Individuals & Small Groups)
 
-Full license text: https://creativecommons.org/licenses/by-nc/4.0/
+**FREE for:**
+- Individual EMS students studying for certification
+- Individual instructors teaching their own students
+- Small volunteer departments (≤5 users)
+- Personal study and practice
+- Non-profit educational use
+
+**Terms:** Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0)
+- ✅ Share and adapt the material
+- ✅ Use for teaching and learning
+- ✅ Provide attribution to EMSTrainer
+- ❌ No commercial use without license
+
+Full CC BY-NC 4.0 text: https://creativecommons.org/licenses/by-nc/4.0/
+
+### 2. Institutional License (Academic Institutions & Organizations)
+
+**REQUIRES PAID LICENSE for:**
+- Community colleges and universities
+- EMS training academies
+- Hospital-based training programs
+- Commercial training companies
+- Fire departments with formal training programs (>5 users)
+- Any organization using EMSTrainer as part of paid coursework or certification programs
+
+**Why?** Institutional licensing fees support ongoing development, medical accuracy validation, scenario creation, and keeping the software free for individual students.
+
+**Institutional License Benefits:**
+- Unlimited student use within your institution
+- Priority support and bug fixes
+- Custom scenario development assistance
+- Instructor training and onboarding
+- Integration support
+- Influence on feature roadmap
+
+**Pricing:** Contact for institutional licensing rates
+
+### 3. Commercial License
+
+**REQUIRES PAID LICENSE for:**
+- Incorporation into commercial products
+- Resale or redistribution for profit
+- Use in for-profit training offerings
+- Any commercial use not covered above
+
+## Licensing Inquiries
+
+For institutional or commercial licensing:
+- **GitHub Issues:** https://github.com/jj33/EMSTrainer/issues
+- Tag your issue with `[LICENSING]` in the title
+- Include: Organization name, number of users, intended use
+- We'll respond within 2-3 business days
+
+## Enforcement
+
+Unauthorized commercial or institutional use violates this license and applicable copyright law. We prefer to work with organizations to find appropriate licensing arrangements.
+
+## Contributing
+
+Contributions to EMSTrainer are welcome! By contributing, you agree that your contributions will be licensed under the same terms as the project.
+
+## Disclaimer
+
+THIS SOFTWARE IS PROVIDED "AS IS" FOR EDUCATIONAL PURPOSES ONLY. NOT A SUBSTITUTE FOR OFFICIAL EMS PROTOCOLS, MEDICAL DIRECTION, OR HANDS-ON TRAINING. USE AT YOUR OWN RISK.
+
+---
+
+**Version:** 1.0
+**Last Updated:** January 2025
+**Project:** https://github.com/jj33/EMSTrainer
