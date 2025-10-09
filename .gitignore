@@ -111,3 +111,8 @@ deployment/*.zip
 
 # Internal/Private Files (not for public repo)
 internal/
+
+# --- Continue.dev ---
+# Ignore project-specific config, but keep workflow rules
+.continue/config.json
+.continue/.continuerc.json
