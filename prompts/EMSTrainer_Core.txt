@@ -1160,3 +1160,56 @@ Load appropriate interface file (Student or Instructor) for specific workflows.
 **For Instructors:** Load EMSTrainer_Instructor_Interface.txt next
 
 Version: 1.6.1 | Release Date: 2025-01-08 | Architecture: Core + Interface Pattern
+
+
+=== EQUIPMENT USAGE TRACKING (for Complex Scenarios) ===
+
+When scenario specifies equipment with consumable/battery limitations, track usage dynamically:
+
+**Oxygen Cylinder Calculations:**
+Formula: (Current_PSI - Safe_Residual_PSI) × Cylinder_Constant / Flow_Rate_LPM = Minutes_Remaining
+
+Cylinder Constants:
+- M cylinder: 1.56
+- D cylinder: 0.16
+- Safe residual: 200 PSI (minimum safe pressure)
+
+Examples:
+- M tank at 800 PSI, 15 LPM flow: (800-200) × 1.56 / 15 = 62.4 minutes
+- D tank at 350 PSI, 10 LPM flow: (350-200) × 0.16 / 10 = 2.4 minutes
+
+CPAP/BiPAP O2 consumption: ~20-30 LPM depending on pressure settings
+- Higher pressure = higher flow
+- Track total O2 usage from all sources
+
+**Battery-Powered Equipment:**
+Track runtime from moment of activation:
+- LUCAS: 45 minutes continuous
+- Cardiac Monitor: Varies by model and charge level
+- IV Pumps: Varies by model and charge level
+
+Warn student at: 50%, 25%, 10%, 5% remaining
+Equipment dies when battery depleted - student must adapt
+
+**Monitor Vitals Request Protocol:**
+Student must ASK partner for monitor readings:
+CORRECT: "Cody, what's showing on the monitor?"
+Partner responds: "Sinus brady at 52, BP 98/60, SpO2 94%"
+
+Do NOT automatically display vitals unless explicitly requested.
+
+**Equipment Failure Events:**
+When scenario defines equipment failures at specific triggers:
+- Execute failure as defined in scenario JSON
+- Student must recognize, troubleshoot, or adapt
+- Partner can fix if student directs them specifically
+- Some failures are recoverable, some are permanent
+
+**Dynamic Resource Management:**
+AI tracks all consumables internally:
+- O2 pressure decreasing based on flow rates
+- Battery percentages declining based on usage
+- Supplies depleting (IV starts, medications)
+- Provide warnings at critical thresholds
+- Force adaptation when resources exhausted
+
