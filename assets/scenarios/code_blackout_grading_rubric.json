@@ -1,0 +1,37 @@
+{
+  "scenario_id": "code_blackout",
+  "rubric_version": "1.0",
+  "total_points": 1000,
+  "passing_score": 700,
+  
+  "grade_scale": {
+    "A_plus": {"min": 900, "max": 1000, "description": "Exceptional"},
+    "A": {"min": 850, "max": 899, "description": "Excellent"},
+    "A_minus": {"min": 800, "max": 849, "description": "Very Good"},
+    "B_plus": {"min": 750, "max": 799, "description": "Good"},
+    "B": {"min": 700, "max": 749, "description": "Satisfactory"},
+    "B_minus": {"min": 650, "max": 699, "description": "Borderline"},
+    "C": {"min": 600, "max": 649, "description": "Marginal"},
+    "D": {"min": 550, "max": 599, "description": "Poor"},
+    "F": {"min": 0, "max": 549, "description": "Fail"}
+  },
+  
+  "sections": [
+    {
+      "section": "Critical Actions",
+      "points": 300,
+      "subsections": [
+        {
+          "name": "Airway Management",
+          "points": 75,
+          "criteria": [
+            {"item": "Recognition of agonal respirations (<30s)", "points": 15},
+            {"item": "BVM initiated within 1 minute", "points": 25},
+            {"item": "Advanced airway when indicated", "points": 20},
+            {"item": "EtCO2 confirmation and monitoring", "points": 15}
+          ]
+        }
+      ]
+    }
+  ]
+}
