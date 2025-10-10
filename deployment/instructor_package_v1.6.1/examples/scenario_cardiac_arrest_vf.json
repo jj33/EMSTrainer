@@ -1,0 +1,265 @@
+{
+  "scenario_id": "cardiac_arrest_vf_001",
+  "title": "Cardiac Arrest - Ventricular Fibrillation",
+  "version": "1.0",
+  "created_date": "2025-01-06",
+  "created_by": "instructor_demo",
+  "scenario_hash": "sha256:example_hash_would_be_generated_here",
+  
+  "provider_level": "Paramedic",
+  "student_role": "Paramedic",
+  "difficulty": "Standard",
+  "mode": "Scenario",
+  
+  "learning_objectives": [
+    "ACLS protocol execution",
+    "Timely defibrillation",
+    "High-quality CPR technique",
+    "Appropriate medication administration",
+    "Post-ROSC care"
+  ],
+  
+  "dispatch": {
+    "time": "14:32",
+    "location": "Shopping mall, food court area",
+    "chief_complaint": "Male down, CPR in progress",
+    "age": 67,
+    "gender": "Male",
+    "additional_info": "Witnessed collapse, bystander CPR started"
+  },
+  
+  "scene": {
+    "safety_status": "safe",
+    "environment": "Indoor, well-lit, crowded",
+    "bystanders_present": true,
+    "family_present": false
+  },
+  
+  "patient": {
+    "age": 67,
+    "gender": "Male",
+    "appearance": "Unresponsive, supine on floor, cyanotic",
+    "position": "Supine on mall floor",
+    "history": "Unknown - bystanders report sudden collapse",
+    "medications_found": null,
+    "allergies": "Unknown"
+  },
+  
+  "initial_vitals": {
+    "HR": "VF (ventricular fibrillation)",
+    "BP": "Undetectable",
+    "RR": 0,
+    "SpO2": "Undetectable",
+    "temp": "Unknown",
+    "EtCO2": null,
+    "pupils": "Mid-position, sluggish",
+    "skin": "Cyanotic, cool",
+    "GCS": 3
+  },
+  
+  "vitals_trending": {
+    "enabled": true,
+    "decompensation_rate": "rapid_if_delayed",
+    "improvement_conditions": [
+      "CPR_started",
+      "defibrillation_within_2min",
+      "epinephrine_administered",
+      "rhythm_converts"
+    ],
+    "progression": {
+      "no_intervention_2min": {
+        "rhythm": "VF persists",
+        "prognosis": "deteriorating"
+      },
+      "cpr_only_5min": {
+        "rhythm": "VF may degrade to asystole",
+        "EtCO2": "low_perfusion"
+      },
+      "cpr_plus_defib_timely": {
+        "rhythm": "converts_to_sinus_tach",
+        "ROSC": true,
+        "BP": "102/68",
+        "HR": 118
+      },
+      "delayed_defib_over_4min": {
+        "rhythm": "VF_degrades_to_asystole",
+        "prognosis": "poor"
+      }
+    }
+  },
+  
+  "partner": {
+    "name": "Cody",
+    "cert": "Paramedic",
+    "acts_only_on_order": true,
+    "communication_style": "professional_terse",
+    "starting_action": "Bystander CPR in progress when you arrive"
+  },
+  
+  "expected_interventions": [
+    {
+      "action": "scene_safety_assessment",
+      "required": true,
+      "points": 5,
+      "time_window": 10,
+      "grading_note": "Must assess scene before patient contact"
+    },
+    {
+      "action": "verify_arrest_check_pulse",
+      "required": true,
+      "points": 5,
+      "time_window": 30,
+      "grading_note": "Confirm arrest, check pulse/breathing"
+    },
+    {
+      "action": "continue_cpr_or_take_over",
+      "required": true,
+      "points": 10,
+      "time_window": 60,
+      "grading_note": "High-quality CPR must continue"
+    },
+    {
+      "action": "attach_monitor_pads",
+      "required": true,
+      "points": 5,
+      "time_window": 60,
+      "grading_note": "Quick rhythm assessment needed"
+    },
+    {
+      "action": "identify_vf_shockable",
+      "required": true,
+      "points": 10,
+      "time_window": 90,
+      "grading_note": "Recognize shockable rhythm"
+    },
+    {
+      "action": "defibrillation",
+      "required": true,
+      "points": 20,
+      "time_window": 120,
+      "grading_note": "First shock within 2 minutes critical"
+    },
+    {
+      "action": "resume_cpr_immediately",
+      "required": true,
+      "points": 10,
+      "time_window": 10,
+      "grading_note": "Resume CPR immediately after shock"
+    },
+    {
+      "action": "establish_iv_io_access",
+      "required": true,
+      "points": 10,
+      "time_window": 180,
+      "grading_note": "Vascular access for medications"
+    },
+    {
+      "action": "epinephrine_1mg",
+      "required": true,
+      "points": 10,
+      "time_window": 240,
+      "grading_note": "Epi after 2nd rhythm check or earlier"
+    },
+    {
+      "action": "advanced_airway",
+      "required": false,
+      "points": 5,
+      "time_window": 300,
+      "grading_note": "Consider but don't delay CPR/defib"
+    },
+    {
+      "action": "rhythm_checks_every_2min",
+      "required": true,
+      "points": 10,
+      "time_window": null,
+      "grading_note": "Regular rhythm assessment with minimal interruption"
+    },
+    {
+      "action": "post_rosc_care",
+      "required": true,
+      "points": 10,
+      "time_window": null,
+      "grading_note": "12-lead, maintain oxygenation, transport decision"
+    }
+  ],
+  
+  "curveballs": [],
+  
+  "narrative_events": [],
+  
+  "equipment_available": {
+    "monitor_defibrillator": true,
+    "bvm": true,
+    "oxygen": true,
+    "airway_kit": true,
+    "iv_supplies": true,
+    "medications": ["epinephrine", "amiodarone", "lidocaine"],
+    "advanced_airway": ["ETT", "King", "i-gel"]
+  },
+  
+  "grading_rubric": {
+    "scene_safety_assessment": 5,
+    "airway_management": 15,
+    "breathing_oxygenation": 15,
+    "circulation_cpr_quality": 20,
+    "defibrillation_timing": 20,
+    "medication_administration": 10,
+    "communication_teamwork": 10,
+    "documentation": 5,
+    "total": 100
+  },
+  
+  "hidden_grading": {
+    "medication_5_rights": {
+      "enabled": true,
+      "points": 10
+    },
+    "closed_loop_communication": {
+      "enabled": true,
+      "points": 5
+    },
+    "cpr_quality_verbalization": {
+      "enabled": true,
+      "points": 5,
+      "note": "Student should verbalize compression depth/rate"
+    }
+  },
+  
+  "timing_standards": {
+    "on_scene_time": {
+      "target": 600,
+      "hard_max": 900,
+      "enforcement": "standard"
+    },
+    "time_to_first_shock": {
+      "target": 120,
+      "hard_max": 180,
+      "critical": true
+    },
+    "cpr_interruptions": {
+      "max_duration": 10,
+      "note": "Minimize interruptions to <10 seconds"
+    }
+  },
+  
+  "instructor_notes": "Standard ACLS cardiac arrest scenario. Focus on timely defibrillation and high-quality CPR. Post-ROSC care assessment included. Can increase difficulty by adding curveballs (second patient, equipment failure) or changing to Hard/Monica mode.",
+  
+  "success_criteria": {
+    "minimum_score": 70,
+    "critical_actions": [
+      "defibrillation_within_time",
+      "cpr_continuous",
+      "epinephrine_administered"
+    ],
+    "rosc_achievable": true,
+    "patient_survivable": true
+  },
+  
+  "debrief_focus": [
+    "Defibrillation timing and technique",
+    "CPR quality and minimal interruptions",
+    "Medication timing and route",
+    "Post-ROSC care priorities",
+    "Team communication and coordination"
+  ]
+}
