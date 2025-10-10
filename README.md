@@ -133,6 +133,8 @@ EMSTrainer/
 ├── examples/                  # Sample scenarios
 │   ├── scenario_cardiac_arrest_vf.json
 │   └── scenario_mvc_trauma_monica.json
+├── assets/scenarios/          # Advanced scenarios
+│   └── code_blackout_scenario.json    # Monica-level mega-code
 ├── tests/                     # Testing & validation
 │   ├── baseline/                  # Regression baseline
 │   └── results/                   # Test reports
