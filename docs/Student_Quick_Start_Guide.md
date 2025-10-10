@@ -1,7 +1,8 @@
 # EMSTrainer - Student Quick Start Guide
 
-**Version:** 1.6.0  
-**Date:** 2025-01-06  
+
+**Version:** 1.6.1  
+**Date:** October 10, 2025  
 **For:** EMS Students and Practitioners
 
 ---
@@ -20,11 +21,34 @@ EMSTrainer is an AI-powered training system that helps you:
 ### Required:
 - **GPT-5** enabled in Microsoft Copilot or ChatGPT
   - Go to settings and enable GPT-5 (required for medical accuracy)
+  - **Tip:** Use **temporary chat mode** to avoid AI hallucinations and context drift during long scenarios
 - Access to the EMSTrainer prompt files (from your instructor or repository)
 
 ### Helpful:
 - Your most recent test results (PlatinumPlanner, practice exams, etc.)
 - List of topics you're struggling with
+
+---
+
+## Uploading Your Test Results (Optional)
+
+If you have test results from PlatinumPlanner, you can upload them to get personalized training focused on your weak areas.
+
+### How to Download Test Results from PlatinumPlanner:
+
+**Step 1:** Locate the completed **EMSTest** section in the lower-left column of the dashboard and click **"Test Results"**.
+
+![PlatinumPlanner Dashboard](assets/platinumplanner/step1_dashboard.jpeg)
+
+**Step 2:** Click **"Next Page"** twice to proceed to the final results page.
+
+![Next Page Button](assets/platinumplanner/step2_next_button.jpeg)
+
+**Step 3:** Click on the **"National Registry ALS"** tab, then click the **"Export National Registry ALS Results"** button to download your test results.
+
+![Export Results Button](assets/platinumplanner/step3_export.jpeg)
+
+**Step 4:** Save the file and upload it to EMSTrainer to receive personalized training content based on your weakest skill areas.
 
 ---
 
@@ -238,7 +262,10 @@ You'll need to load an additional file first:
 ## Common Questions
 
 **Q: Can I pause a scenario and come back later?**  
-A: In the same chat session, yes. But it's best to complete scenarios in one sitting for realism.
+A: In the same chat session, yes. But it's best to complete scenarios in one sitting for realism. **Pro tip:** Start each scenario in a fresh temporary chat session to prevent AI hallucinations.
+
+**Q: What is temporary chat mode?**  
+A: In Copilot/ChatGPT, you can start a temporary/ephemeral chat that doesn't save history. This prevents the AI from "forgetting" instructions or making things up during long scenarios. It's especially helpful for Scenario Mode.
 
 **Q: What if I disagree with the AI's answer?**  
 A: Ask! Say "I think the answer should be X because..." - the AI will explain or correct itself.
@@ -308,5 +335,5 @@ Good luck with your studies! 🚑📚
 
 ---
 
-*EMSTrainer v1.6.0 - Student Quick Start Guide*  
-*Updated: 2025-01-06*
+*EMSTrainer v1.6.1 - Student Quick Start Guide*  
+*Updated: October 10, 2025*
