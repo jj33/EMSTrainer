@@ -31,10 +31,9 @@ v1.6.1 adds the **Code Blackout** Monica-level mega-code scenario, PlatinumPlann
 **Monica-level mega-code challenge** - A 60-minute cascading medical emergency designed to push experienced providers to their limits.
 
 **Features:**
-- Multi-system patient complexity (hypoglycemia, bradycardia, hypothermia, hypoxia)
-- Equipment realism (limited O2, 20-minute monitor battery)
-- Dynamic wife character (AIDET-responsive)
-- Medical-based arrest triggers (not arbitrary timing)
+- Complex medical presentation with multiple challenges
+- Realistic equipment limitations and constraints
+- Dynamic scene elements requiring adaptability
 - 1000-point grading rubric with timing penalties
 - Instructor guide with setup instructions
 - Student brief (spoiler-free)
