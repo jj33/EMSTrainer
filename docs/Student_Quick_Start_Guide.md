@@ -20,6 +20,7 @@ EMSTrainer is an AI-powered training system that helps you:
 ### Required:
 - **GPT-5** enabled in Microsoft Copilot or ChatGPT
   - Go to settings and enable GPT-5 (required for medical accuracy)
+  - **Tip:** Use **temporary chat mode** to avoid AI hallucinations and context drift during long scenarios
 - Access to the EMSTrainer prompt files (from your instructor or repository)
 
 ### Helpful:
@@ -260,7 +261,10 @@ You'll need to load an additional file first:
 ## Common Questions
 
 **Q: Can I pause a scenario and come back later?**  
-A: In the same chat session, yes. But it's best to complete scenarios in one sitting for realism.
+A: In the same chat session, yes. But it's best to complete scenarios in one sitting for realism. **Pro tip:** Start each scenario in a fresh temporary chat session to prevent AI hallucinations.
+
+**Q: What is temporary chat mode?**  
+A: In Copilot/ChatGPT, you can start a temporary/ephemeral chat that doesn't save history. This prevents the AI from "forgetting" instructions or making things up during long scenarios. It's especially helpful for Scenario Mode.
 
 **Q: What if I disagree with the AI's answer?**  
 A: Ask! Say "I think the answer should be X because..." - the AI will explain or correct itself.
