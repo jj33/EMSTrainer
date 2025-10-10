@@ -1,7 +1,8 @@
 # EMSTrainer - Student Quick Start Guide
 
-**Version:** 1.6.0  
-**Date:** 2025-01-06  
+
+**Version:** 1.6.1  
+**Date:** October 10, 2025  
 **For:** EMS Students and Practitioners
 
 ---
@@ -334,5 +335,5 @@ Good luck with your studies! 🚑📚
 
 ---
 
-*EMSTrainer v1.6.0 - Student Quick Start Guide*  
-*Updated: 2025-01-06*
+*EMSTrainer v1.6.1 - Student Quick Start Guide*  
+*Updated: October 10, 2025*
