@@ -30,8 +30,7 @@
     "additional_info": "Wife called, thinks he fell getting up for bathroom",
     "weather": "Storm brewing, occasional lightning in distance",
     "radio_traffic": "Normal - other units responding to routine calls"
-  }
-,
+  },
   
   "partner": {
     "name": "Cody",
@@ -65,8 +64,7 @@
       "skin": "Cool, mottled, diaphoretic",
       "lung_sounds": "Coarse crackles bilaterally"
     }
-  }
-,
+  },
   
   "equipment_state": {
     "oxygen": {
@@ -94,7 +92,6 @@
         "notes": "Only backup available"
       }
     },
-    
     "lucas_device": {
       "available": true,
       "battery_minutes_full": 45,
@@ -102,7 +99,6 @@
       "status": "ready",
       "notes": "The one thing that works perfectly!"
     },
-    
     "cardiac_monitor": {
       "model": "Zoll X Series",
       "battery_percent": 50,
@@ -112,10 +108,7 @@
       "currently_plugged_in": false,
       "ac_input_status": "working_initially",
       "notes": "Battery self-discharged, not charged during last shift, cold weather reduced capacity"
-    }
-  }
-,
-    
+    },
     "iv_pumps": {
       "pump_1": {
         "battery_status": "charged",
@@ -130,13 +123,11 @@
         "notes": "Dead battery, needs AC power to function"
       }
     },
-    
     "truck_inverters": {
       "initial_status": "working",
       "capacity_watts": 1500,
       "notes": "Have been flaky all week according to Cody"
     },
-    
     "supplies": {
       "iv_start_kits": 2,
       "io_needles": "available",
@@ -144,8 +135,7 @@
       "drug_box_condition": "disorganized",
       "notes": "Failed rig check - limited supplies, disorganized"
     }
-  }
-,
+  },
   
   "timeline_events": [
     {
@@ -168,7 +158,6 @@
         "storm": "intensifying"
       }
     },
-    
     {
       "event_id": "inverter_surge",
       "event_type": "dynamic",
@@ -180,10 +169,7 @@
           "equipment_in_ambulance",
           "monitor_pads_on_patient"
         ]
-      }
-    }
-  ]
-,
+      },
       "narrative": "You've got the patient secured. As Cody walks around to the driver's door, you hear him mutter, 'These damn inverters have been acting up all week...' WHAM! He kicks the inverter cabinet hard. CLICK-WHIRRRR! The inverters roar to life. Then - CRACK! Sparks fly from the monitor. The patient screams and jerks violently. Current surged through the pads. You smell burning flesh. The monitor screen goes black. Cody yells: 'Oh shit! Sorry! I didn't think—'",
       "effects": [
         "electrical_burns_to_patient",
@@ -205,23 +191,18 @@
     "age": "mid-50s",
     "baseline_state": "high anxiety (appropriate)",
     "behavior_model": "dynamic based on student communication",
-    
     "if_ignored": {
       "5_minutes": "Escalating anxiety, asking questions repeatedly",
       "10_minutes": "Active interference, grabbing equipment",
       "15_minutes": "Panic, physical obstacle, may become combative",
       "transport": "Forces way into ambulance, creates dangerous situation"
-    }
-  }
-,
-    
+    },
     "if_aidet_used": {
       "result": "Anxiety manageable, wife helpful",
       "provides": "Medication list, blankets, follows instructions",
       "transport": "Agrees to follow separately or arranges ride",
       "outcome": "Not an obstacle during critical care"
     },
-    
     "if_moderate_communication": {
       "result": "Anxiety elevated but controllable",
       "transport": "May request to ride but accepts boundaries",
@@ -231,7 +212,6 @@
   
   "arrest_triggers": {
     "note": "Arrest is NOT time-based. It occurs based on medical reality and student interventions.",
-    
     "rebound_hypoglycemia": {
       "trigger_if": [
         "D50_given_instead_of_D10",
@@ -242,21 +222,16 @@
       "rhythm": "Seizure leading to PEA or VF",
       "preventable": true
     },
-    
     "bradycardia_progression": {
       "trigger_if": [
         "no_pacing_initiated",
         "atropine_only_without_pacing",
         "delayed_treatment_over_15_minutes"
-      ]
-    }
-  }
-,
+      ],
       "timing": "15-25 minutes without treatment",
       "rhythm": "2nd degree -> 3rd degree -> Asystole",
       "preventable": true
     },
-    
     "hypothermia_induced_vf": {
       "trigger_if": [
         "no_warming_measures",
@@ -266,7 +241,6 @@
       "rhythm": "VF",
       "preventable": true
     },
-    
     "hypoxic_arrest": {
       "trigger_if": [
         "poor_airway_management",
@@ -277,7 +251,6 @@
       "rhythm": "PEA or Asystole",
       "preventable": true
     },
-    
     "mi_extension": {
       "trigger_if": [
         "all_interventions_appropriate",
