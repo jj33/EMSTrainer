@@ -28,7 +28,12 @@ jobs:
         with:
           input_path: docs/Student_Quick_Start_Guide.md
       
-      - name: Convert What's New
+      - name: Convert Release Notes v1.6.1
+        uses: baileyjm02/markdown-to-pdf@v1
+        with:
+          input_path: RELEASE_NOTES_v1.6.1.md
+      
+      - name: Convert What's New v1.6.0 (legacy)
         uses: baileyjm02/markdown-to-pdf@v1
         with:
           input_path: docs/WHATS_NEW_v1.6.0.md
