@@ -28,6 +28,28 @@ EMSTrainer is an AI-powered training system that helps you:
 
 ---
 
+## Uploading Your Test Results (Optional)
+
+If you have test results from PlatinumPlanner, you can upload them to get personalized training focused on your weak areas.
+
+### How to Download Test Results from PlatinumPlanner:
+
+**Step 1:** Locate the completed **EMSTest** section in the lower-left column of the dashboard and click **"Test Results"**.
+
+![PlatinumPlanner Dashboard](assets/platinumplanner/step1_dashboard.jpeg)
+
+**Step 2:** Click **"Next Page"** twice to proceed to the final results page.
+
+![Next Page Button](assets/platinumplanner/step2_next_button.jpeg)
+
+**Step 3:** Click on the **"National Registry ALS"** tab, then click the **"Export National Registry ALS Results"** button to download your test results.
+
+![Export Results Button](assets/platinumplanner/step3_export.jpeg)
+
+**Step 4:** Save the file and upload it to EMSTrainer to receive personalized training content based on your weakest skill areas.
+
+---
+
 ## Getting Started (3 Easy Steps)
 
 ### **Step 1: Load the Core Prompt**
