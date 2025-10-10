@@ -9,29 +9,47 @@
     "A": {"min": 850, "max": 899, "description": "Excellent"},
     "A_minus": {"min": 800, "max": 849, "description": "Very Good"},
     "B_plus": {"min": 750, "max": 799, "description": "Good"},
-    "B": {"min": 700, "max": 749, "description": "Satisfactory"},
+    "B": {"min": 700, "max": 749, "description": "Satisfactory - Pass"},
     "B_minus": {"min": 650, "max": 699, "description": "Borderline"},
     "C": {"min": 600, "max": 649, "description": "Marginal"},
     "D": {"min": 550, "max": 599, "description": "Poor"},
-    "F": {"min": 0, "max": 549, "description": "Fail"}
+    "F": {"min": 0, "max": 549, "description": "Fail - Unsafe"}
   },
   
   "sections": [
     {
       "section": "Critical Actions",
       "points": 300,
-      "subsections": [
-        {
-          "name": "Airway Management",
-          "points": 75,
-          "criteria": [
-            {"item": "Recognition of agonal respirations (<30s)", "points": 15},
-            {"item": "BVM initiated within 1 minute", "points": 25},
-            {"item": "Advanced airway when indicated", "points": 20},
-            {"item": "EtCO2 confirmation and monitoring", "points": 15}
-          ]
-        }
-      ]
+      "description": "Life-threatening interventions and time-critical decisions"
+    },
+    {
+      "section": "Clinical Decision Making",
+      "points": 250,
+      "description": "Prioritization, pharmacology, resource allocation, transport timing"
+    },
+    {
+      "section": "Technical Skills",
+      "points": 200,
+      "description": "Procedural competency and multi-system management"
+    },
+    {
+      "section": "Communication & Leadership",
+      "points": 150,
+      "description": "Partner direction, family interaction, leadership under pressure"
+    },
+    {
+      "section": "Documentation & Handoff",
+      "points": 50,
+      "description": "Hospital report quality and critical details"
+    },
+    {
+      "section": "Hidden Criteria",
+      "points": 50,
+      "description": "Scene safety, medication rights, equipment safety"
     }
-  ]
+  ],
+  
+  "timing_note": "Timing penalties integrated throughout all sections. Delays in recognition and intervention compound into significant point deductions.",
+  
+  "grading_philosophy": "Points awarded for correct actions at appropriate times. Deductions for delays, errors, and omissions. Patient outcomes reflect care quality."
 }
