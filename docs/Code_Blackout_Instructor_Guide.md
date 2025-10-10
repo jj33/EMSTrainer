@@ -3,363 +3,226 @@
 **Scenario Version:** 1.0  
 **EMSTrainer Version:** 1.6.1  
 **Difficulty:** Monica (Extreme)  
-**Duration:** 60 minutes  
 **Provider Level:** Paramedic  
-**Last Updated:** October 9, 2025
+**Last Updated:** October 10, 2025
 
 ---
 
 ## Overview
 
-Code Blackout is the ultimate Monica-level scenario - a 60-minute cascading medical emergency designed to test every aspect of paramedic practice. This is not simply a cardiac arrest scenario; it's a multi-system disaster that compounds with equipment failures, environmental challenges, and human factors.
+Code Blackout is a Monica-level scenario testing complete paramedic competency through a complex medical emergency with resource constraints and environmental challenges.
 
-### What Makes Code Blackout Unique
-
-**Multi-System Medical Emergency:**
-- Critical hypoglycemia (glucometer reads "Low")
-- Symptomatic bradycardia requiring intervention
-- Hypothermia (95.2°F)
-- Agonal respirations requiring immediate airway management
-- Flash pulmonary edema development
-- High probability of cardiac arrest if poorly managed
-
-**Equipment Realism:**
-- Main O2 tank: 800 PSI (only 40% full)
-- Portable tank #1: Empty (failed rig check)
-- Portable tank #2: Full (only backup)
-- Monitor battery: 20 minutes remaining
-- IV Pump #1: Working (only one available)
-- IV Pump #2: Dead battery
-- LUCAS: Full battery (45 minutes - the one thing that works!)
-
-**Complete Isolation:**
-- Lightning strike at T+2:00 cuts all communications
-- No radio, no cell service, no backup units
-- Air transport grounded due to storm
-- Student is completely autonomous
-
-
-**Family Dynamics:**
-- Wife's anxiety level responds to AIDET communication
-- Poor communication → Active interference during care
-- Good communication → Helpful and manageable
-- May force way into ambulance if ignored
-
-**Equipment Failures:**
-- Inverter surge at patient loading (T+22:00)
-- Cody intentionally kicks inverter cabinet (trying to fix it)
-- Monitor shorts → Electrical burns to patient
-- Monitor AC input destroyed (battery only from that point)
-- Forces adaptation and troubleshooting
-
-**Medical Consequences:**
-- Arrest triggers are based on actual medical reality
-- NOT arbitrary time-based events
-- Rebound hypoglycemia if D50 used without recheck
-- Bradycardia progression if untreated
-- Hypoxic arrest if airway delayed
-- Patient may survive OR arrest based on student care quality
+**Typical Duration:** 45-75 minutes depending on student decisions and patient outcome.
 
 ---
 
-## Pre-Scenario Setup
+## Setup Instructions
 
-### Files to Load (In This Order):
+### 1. Load Files in Order
 
-1. **EMSTrainer_Core.txt**
-   - Foundation with equipment tracking rules
-   - O2 calculations, battery management
-   - Monitor vitals request protocol
+Load these files into your AI assistant:
 
-2. **EMSTrainer_Instructor_Interface.txt**
-   - Your instructor interface
+1. `EMSTrainer_Core.txt` (Foundation with equipment tracking)
+2. `EMSTrainer_Instructor_Interface.txt` (Your instructor interface)
+3. `code_blackout_scenario.json` (This scenario)
 
-3. **code_blackout_scenario.json**
-   - This specific scenario with all parameters
+### 2. Verify Loading
 
+After loading, confirm the AI understands the scenario:
 
-### Verify AI Understanding
+**Ask:** "Confirm Code Blackout scenario loaded. Are you tracking equipment dynamically?"
 
-After loading all files, confirm the AI understands:
+**AI Should Respond:** Confirming equipment tracking is enabled (O2, batteries, supplies) and scenario parameters are loaded.
 
-**Ask:** "Confirm you've loaded Code Blackout scenario. What are the key equipment limitations?"
+### 3. Start Scenario
 
-**AI Should Respond With:**
-- Main O2: 800 PSI
-- Monitor battery: 20 minutes
-- Only 1 working IV pump
-- LUCAS: 45 minutes
-- Equipment tracking enabled
-
-**Ask:** "How do arrest triggers work in this scenario?"
-
-**AI Should Respond:**
-- Medical-based, not time-based
-- Triggered by student's interventions (or lack thereof)
-- Multiple possible arrest pathways
-- Patient may survive with excellent care
-
-**Ask:** "How does the wife respond to communication?"
-
-**AI Should Respond:**
-- AIDET reduces anxiety
-- Ignoring her escalates interference
-- May force into ambulance if poorly managed
+Use standard instructor commands:
+- "Start Code Blackout scenario for [student name]"
+- AI will present dispatch and begin scenario
 
 ---
 
-## Scenario Timeline Overview
+## Running the Scenario
 
-### Phase 1: Dispatch & Arrival (T-5:00 to T+1:30)
-**Dispatch:** "03:17 - Lift assist, 58M fell, rural residence"
-- Appears routine BLS call
-- Storm brewing in distance
-- Normal radio traffic
+### AI Handles Automatically
 
-**Arrival:**
-- Wife meets at door: "He just fell!"
-- Walk in, assess patient
-- Reality: This is NOT a lift assist - critical multi-system emergency
+The AI manages:
+- Equipment consumption (O2, batteries)
+- Vitals trending based on interventions
+- Patient response to treatments
+- Environmental events as defined in scenario
+- Arrest triggers based on medical reality (not time-based)
+- Family member behavior based on student communication
 
+**You do not need to calculate or track anything manually.**
 
-### Phase 2: Lightning Strike & Isolation (T+2:00)
-**The Blackout Event:**
-```
-"Right as you recognize how critical he is, a massive BOOM 
-shakes the house. Lightning has struck the transformer down 
-the road. The lights flicker and die. Your radio crackles to 
-static, then silence. Cell phone: No Service. You're cut off."
-```
+### Your Role
 
-**Effects:**
-- Complete darkness (flashlights only)
-- No radio communication
-- No cell service
-- No backup units available
-- Air transport grounded
-- Storm intensifying
-- Student is completely autonomous
+- Observe student performance
+- Take notes for debrief
+- Answer questions about mechanics if needed
+- Do NOT hint or guide during scenario
 
-### Phase 3: Scene Management (T+2:00 to T+20:00)
-**Student Must Manage:**
-- Airway crisis (agonal → intubation)
-- Critical hypoglycemia (glucometer "Low")
-- Symptomatic bradycardia (38 irregular)
-- Hypothermia (95.2°F)
-- Wife's anxiety
-- Limited equipment
-- Monitor battery draining
+---
 
-**Key Decision Points:**
-- D10 vs D50 for glucose (D10 preferred)
-- Which drug on the single working pump?
-- Pacing vs Atropine for bradycardia
-- CPAP for pulmonary edema? (burns O2 fast)
-- When to transport? (load-and-go vs stay-and-play)
-- How to manage wife? (AIDET)
+## Grading
 
+### Rubric Structure
 
-### Phase 4: Loading & Inverter Surge (T+20:00 to T+25:00)
-**Patient Being Loaded:**
-- Moving to ambulance
-- Equipment secured
-- Preparing for transport
+**Total: 1000 points**
 
-**T+22:00 - The Surge Event:**
-```
-"Patient secured. Cody walks to the driver's door, muttering 
-'These damn inverters have been acting up all week...' 
-WHAM! He kicks the inverter cabinet hard.
+1. **Critical Actions (300 points)**
+   - Airway management
+   - Glucose management
+   - Cardiac management
+   - Equipment failure response
 
-CLICK-WHIRRRR! The inverters roar to life.
+2. **Clinical Decision Making (250 points)**
+   - Resource prioritization
+   - Pharmacology
+   - Transport timing
+   - Scene safety
 
-CRACK! Sparks fly from the monitor. The patient screams and 
-jerks violently. Current surged through the pads. You smell 
-burning flesh. The monitor goes black.
+3. **Technical Skills (200 points)**
+   - IV access
+   - LUCAS deployment
+   - Monitoring and reassessment
+   - Multi-system management
 
-Cody: 'Oh shit! Sorry! I didn't think—'"
-```
+4. **Communication & Leadership (150 points)**
+   - Partner direction
+   - Family communication (AIDET)
+   - Leadership under pressure
 
-**Effects:**
-- Electrical burns to patient (2nd degree, pad sites)
-- Monitor AC input destroyed (battery only now)
-- Inverters are now working (good!)
-- Pump #2 now available (if student realizes)
-- New injury to manage
-- Cody feels terrible
+5. **Documentation & Handoff (50 points)**
+   - Hospital report quality
+   - Critical details included
 
-**Student Must:**
-1. Remove pads immediately
-2. Assess and treat burns
-3. Understand monitor battery-only (20 min max)
-4. Decide: Restart monitor or work manually?
-5. Reassure/redirect Cody
-6. Continue with transport
+6. **Hidden Criteria (50 points)**
+   - Scene safety reassessment
+   - Five rights of medication
+   - Equipment safety
 
+### Timing Penalties
 
-### Phase 5: Transport (T+25:00 to T+60:00)
-**Cody Driving, Student Alone in Back:**
-- Managing all interventions solo
-- Monitor battery draining (if restarted)
-- O2 depleting
-- LUCAS available if arrest
-- Bumpy rural roads
-- Dark, stormy conditions
-- 25+ minute transport
+Timing penalties are integrated throughout the rubric for:
+- Delayed recognition of life threats
+- Delayed interventions
+- Excessive scene time
+- Missed reassessment windows
 
-**Possible Complications:**
-- Patient arrests (if interventions poor)
-- Monitor battery dies
-- O2 runs out (must switch to portable)
-- LUCAS battery dies at T+45 (if used from start)
-- Glucose crashes if not rechecked
-- Wife interfering (if in ambulance)
+**The AI tracks timing and applies penalties automatically based on the rubric.**
 
-**If Student Did Well:**
-- Patient remains tenuous but stable
-- Continuous management required
-- May still arrest from MI extension (30% chance)
-- OR survives to hospital (70% chance)
+### Grade Scale
 
-**If Student Made Mistakes:**
-- High probability of arrest
-- Arrest type depends on what was missed:
-  - Rebound hypoglycemia → Seizure → PEA
-  - Untreated bradycardia → Complete block → Asystole
-  - Poor airway → Hypoxia → PEA/Asystole
-  - Hypothermia → VF
-  - MI extension → VF
+- 900-1000: A+ (Exceptional)
+- 850-899: A (Excellent)
+- 800-849: A- (Very Good)
+- 750-799: B+ (Good)
+- 700-749: B (Satisfactory - Pass)
+- 650-699: B- (Borderline)
+- 600-649: C (Marginal)
+- 550-599: D (Poor)
+- <550: F (Fail)
 
-### Phase 6: Hospital Arrival (T+60:00)
-**Student Gives Report:**
-- Complete patient information
-- All interventions performed
-- Current status
-- Ongoing needs
+---
 
-**Outcome Determined By:**
+## Debrief Structure
+
+### Opening
+
+"Let's review Code Blackout. This scenario tested your complete skill set under extreme pressure. Take a moment, then let's discuss what happened."
+
+### Key Discussion Areas
+
+**Initial Assessment:**
+- What were your first impressions?
+- How did you prioritize the multiple problems?
+- What was your decision-making process?
+
+**Critical Interventions:**
+- Walk me through your airway management
+- Explain your pharmacology choices
+- How did you manage the cardiac issues?
+
+**Resource Management:**
+- How did you handle equipment limitations?
+- What was your thinking on resource allocation?
+- How did equipment failures affect your plan?
+
+**Communication:**
+- How did you communicate with family?
+- How did you direct your partner?
+- What happened with that dynamic?
+
+**Transport Decision:**
+- When did you decide to transport?
+- What factored into that decision?
+- Looking back, was the timing appropriate?
+
+**Complications:**
+- [If arrest occurred] What led to the arrest?
+- How did you manage the code?
+- What would you do differently?
+
+### Teaching Points
+
+Focus on:
+- Multi-system thinking and prioritization
+- Time-critical interventions
+- Resource conservation strategies
+- Communication as a clinical skill
+- Adaptation to equipment failures
+- Medical consequences of delays
+
+### Grading Review
+
+Provide:
+- Total score and grade
+- Strengths demonstrated
+- Areas for improvement
+- Specific examples from their performance
+- Timing penalties incurred (if significant)
+
+---
+
+## Technical Notes
+
+### Equipment Tracking
+
+The AI automatically tracks:
+- O2 consumption based on flow rates and devices
+- Battery depletion based on equipment usage
+- Supply usage (IV attempts, medications)
+
+The AI will warn students at appropriate thresholds.
+
+### Medical Realism
+
+Patient outcomes are determined by:
 - Quality of interventions
 - Timing of interventions
-- Resource management
-- Communication effectiveness
-- Adaptability to failures
+- Recognition of problems
+- Appropriate pharmacology
 
+Arrest triggers are medical-based, not arbitrary time limits.
 
----
+### Scenario Variability
 
-## Equipment Management Guide
+Each run may differ based on:
+- Student's intervention choices
+- Communication with family
+- Resource management decisions
+- Equipment troubleshooting approaches
 
-### Oxygen Tracking
-
-**Formula:** (Current_PSI - 200) × Cylinder_Constant / Flow_Rate = Minutes
-
-**M Cylinder (Main Tank):**
-- Starting: 800 PSI
-- Constant: 1.56
-- Examples:
-  - 15 LPM (NRB): (800-200) × 1.56 / 15 = 62 minutes
-  - 25 LPM (CPAP): (800-200) × 1.56 / 25 = 37 minutes
-
-**D Cylinder (Portable #2):**
-- Starting: 350 PSI (full)
-- Constant: 0.16
-- Examples:
-  - 15 LPM: (350-200) × 0.16 / 15 = 1.6 minutes (very limited!)
-  - 10 LPM: (350-200) × 0.16 / 10 = 2.4 minutes
-
-**When Student Says:** "Start CPAP at 10 cmH2O"
-- AI calculates flow rate: ~25 LPM
-- Starts O2 depletion timer
-- Warns at 25%, 10%, 5% remaining
-- Forces switch to portable or discontinue CPAP
-
-**Track All Oxygen Use:**
-- BVM ventilation
-- NRB mask
-- CPAP/BiPAP
-- Nasal cannula
-- Cumulative from all sources
-
-
-### Battery Tracking
-
-**Monitor (Zoll X Series):**
-- Starting: 20 minutes remaining
-- Why so low? Not charged, self-discharged, cold weather
-- Continuous monitoring: Drains full 20 minutes
-- Strategic use (on/off): Can extend significantly
-- Heavy use (pacing, defib): Drains faster
-
-**Warn Student:**
-- At 50% (10 min): "Monitor battery 50%"
-- At 25% (5 min): "Monitor battery warning: 25%"
-- At 10% (2 min): "Monitor battery critical: 2 minutes"
-- At 0%: "Monitor screen black. Battery depleted."
-
-**LUCAS:**
-- Starting: 45 minutes full battery
-- Continuous operation from deployment
-- No power-save mode
-- Warn at 10 minutes remaining
-- Dies at 45 minutes (must switch to manual CPR)
-
-**IV Pump #1:**
-- Starting: 120 minutes
-- Only one available (Pump #2 dead until inverters work)
-- Student must choose which drug gets the pump
-- Common choices: D10 continuous, or Dopamine
-
-### Monitor Vitals Request Protocol
-
-**CRITICAL:** Student must ASK for vitals from monitor
-
-**Incorrect:**
-- AI automatically shows vitals
-- Student assumes monitoring happening
-
-**Correct:**
-```
-Student: "Cody, what's the monitor showing?"
-Cody: "Sinus brady at 52, BP 98/60, SpO2 94%"
-```
-
-**If Student Doesn't Ask:**
-- Don't provide vitals automatically
-- They're working with less information
-- Part of monitor battery management decision
-
+**This is intended - no two runs are identical.**
 
 ---
 
-## Wife Character Guide
+## Support
 
-### Playing the Wife Realistically
-
-**Baseline State:**
-- High anxiety (completely appropriate)
-- Loves her husband, terrified
-- Wants to help but doesn't know how
-- Will escalate if ignored
-
-### If Student Uses AIDET
-
-**AIDET Framework:**
-- **A**cknowledge: "I can see you're scared, that's normal"
-- **I**ntroduce: "I'm [name], I'm a paramedic, this is Cody"
-- **D**uration: "We'll work on him a few minutes, then transport"
-- **E**xplanation: "His blood sugar is very low, I'm giving glucose"
-- **T**hank you: "Thank you for calling us, you did the right thing"
-
-**Wife Response (Good Communication):**
-```
-Wife: "His medications... yes, they're in the kitchen. 
-       Is he going to be okay?"
-[Moves out of the way, tries to help with tasks]
-[Still anxious but manageable and helpful]
-
-At transport:
-Student: "I need you to follow in your car or get a ride. 
-          Hospital is St. Mary's, 20 minutes."
-Wife: "Okay... please save him." [Follows separately]
-```
+For questions about scenario mechanics or grading, refer to:
+- `code_blackout_scenario.json` - Full scenario parameters
+- `code_blackout_grading_rubric.json` - Detailed point breakdown
+- `EMSTrainer_Core.txt` - Equipment tracking rules
 
