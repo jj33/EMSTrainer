@@ -1,10 +1,10 @@
 # EMSTrainer
 
-**Version:** v1.6.0  
-**Released:** January 7, 2025  
+**Version:** v1.6.1  
+**Released:** October 10, 2025  
 **Status:** Production Ready
 
-**Latest Release:** [Download v1.6.0](https://github.com/jj33/EMSTrainer/releases/tag/v1.6.0)
+**Latest Release:** [Download v1.6.1](https://github.com/jj33/EMSTrainer/releases/tag/v1.6.1)
 
 ---
 
@@ -37,7 +37,7 @@ EMSTrainer is an AI-powered EMS training system with three modes: **Scenario Pra
 ## 🚀 Quick Start
 
 ### For Students:
-1. **Download:** [Student Package v1.6.0](https://github.com/jj33/EMSTrainer/releases/download/v1.6.0/EMSTrainer_Student_v1.6.0.zip)
+1. **Download:** [Student Package v1.6.1](https://github.com/jj33/EMSTrainer/releases/download/v1.6.1/EMSTrainer_Student_v1.6.1.zip)
 2. **Enable GPT-5** in Copilot or ChatGPT
 3. **Load prompts:** Drag and drop files into your AI assistant
 4. **Start practicing:** Choose your mode and difficulty
@@ -46,7 +46,7 @@ EMSTrainer is an AI-powered EMS training system with three modes: **Scenario Pra
 📖 See [Student Quick Start Guide](docs/Student_Quick_Start_Guide.md) for detailed instructions.
 
 ### For Instructors:
-1. **Download:** [Instructor Package v1.6.0](https://github.com/jj33/EMSTrainer/releases/download/v1.6.0/EMSTrainer_Instructor_v1.6.0.zip)
+1. **Download:** [Instructor Package v1.6.1](https://github.com/jj33/EMSTrainer/releases/download/v1.6.1/EMSTrainer_Instructor_v1.6.1.zip)
 2. **Load prompts:** Drag files into GPT-5
 3. **Create content:** Scenarios, tests, and study guides via natural conversation
 4. **Deploy to students:** Email templates provided
@@ -56,7 +56,26 @@ EMSTrainer is an AI-powered EMS training system with three modes: **Scenario Pra
 
 ---
 
-## ✨ What's New in v1.6.0
+## ✨ What's New in v1.6.1
+
+### 🚨 Code Blackout Scenario
+- Monica-level mega-code (60-minute cascading emergency)
+- Multi-system patient complexity
+- Equipment realism and failures
+- 1000-point grading rubric
+
+### 📊 PlatinumPlanner Integration
+- Step-by-step test export instructions
+- Upload test results for personalized training
+- Focus on weak areas automatically
+
+### 🛠️ Improvements
+- PDF generation using pure Python (reportlab)
+- Temporary chat mode recommendations
+- Enhanced equipment tracking in scenarios
+- Continue.dev workflow rules for contributors
+
+### 📖 What's New in v1.6.0
 
 ### 🏗️ Modular Architecture
 - Split into Core, Scenario Mode, and Instructor prompts
@@ -119,12 +138,12 @@ EMSTrainer is an AI-powered EMS training system with three modes: **Scenario Pra
 ```
 EMSTrainer/
 ├── prompts/                    # AI prompt files
-│   ├── EMSTrainer_Core.txt            (16k) Foundation + Test/Study
-│   ├── EMSTrainer_Scenario_Mode.txt   (23k) Scenario engine
-│   └── EMSTrainer_Instructor_Prompt.txt (21k) Instructor interface
+│   ├── EMSTrainer_Core.txt                  Foundation + Test/Study
+│   ├── EMSTrainer_Student_Interface.txt     Student interface
+│   └── EMSTrainer_Instructor_Interface.txt  Instructor interface
 ├── deployment/                # Release packages
-│   ├── instructor_package_v1.6.0/
-│   └── student_package_v1.6.0/
+│   ├── instructor_package_v1.6.1/
+│   └── student_package_v1.6.1/
 ├── docs/                      # Documentation
 │   ├── Student_Quick_Start_Guide.md
 │   ├── Instructor_Quick_Start_Guide.md
@@ -134,7 +153,8 @@ EMSTrainer/
 │   ├── scenario_cardiac_arrest_vf.json
 │   └── scenario_mvc_trauma_monica.json
 ├── assets/scenarios/          # Advanced scenarios
-│   └── code_blackout_scenario.json    # Monica-level mega-code
+│   ├── code_blackout_scenario.json       # Monica-level mega-code
+│   └── code_blackout_grading_rubric.json # 1000-point rubric
 ├── tests/                     # Testing & validation
 │   ├── baseline/                  # Regression baseline
 │   └── results/                   # Test reports
@@ -171,7 +191,7 @@ python3 scripts/validate_test_results.py
 ```
 
 ### Regression Baseline
-The v1.6.0 release includes a 30-student stress test baseline in `tests/baseline/`.
+The v1.6.1 release includes a 30-student stress test baseline in `tests/baseline/`.
 
 See `tests/TEST_PLAN.md` and `tests/README_TESTING_FRAMEWORK.md` for details.
 
@@ -190,17 +210,17 @@ See `tests/TEST_PLAN.md` and `tests/README_TESTING_FRAMEWORK.md` for details.
 
 ## 🚀 Releases
 
-**Latest:** [v1.6.0](https://github.com/jj33/EMSTrainer/releases/tag/v1.6.0) - January 7, 2025
+**Latest:** [v1.6.1](https://github.com/jj33/EMSTrainer/releases/tag/v1.6.1) - October 10, 2025
 
 ### Download Packages:
-- [Instructor Package (40KB)](https://github.com/jj33/EMSTrainer/releases/download/v1.6.0/EMSTrainer_Instructor_v1.6.0.zip)
-- [Student Package (28KB)](https://github.com/jj33/EMSTrainer/releases/download/v1.6.0/EMSTrainer_Student_v1.6.0.zip)
+- [Instructor Package](https://github.com/jj33/EMSTrainer/releases/download/v1.6.1/EMSTrainer_Instructor_v1.6.1.zip)
+- [Student Package](https://github.com/jj33/EMSTrainer/releases/download/v1.6.1/EMSTrainer_Student_v1.6.1.zip)
 
 All documentation also available as PDFs in the release.
 
 ---
 
-## 🔮 Coming in v1.7
+## 🔮 Coming in v1.7 (Q1 2026)
 
 - Equipment timing delays (LUCAS 30-45s, EtCO₂ 15s calibration)
 - Scenario encryption (AES-256 with digital signatures)
@@ -235,4 +255,4 @@ Contributions welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guideli
 
 ---
 
-*Last Updated: January 7, 2025*
+*Last Updated: October 10, 2025*
