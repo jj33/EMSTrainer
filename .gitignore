@@ -111,8 +111,8 @@ deployment/*.zip
 
 # Internal/Private Files (not for public repo)
 internal/
-INTERNAL_*.md
-TASKS_*.md
-TODO_PRIVATE.md
-.tasks/
-session_*.md
+
+# --- Continue.dev ---
+# Ignore project-specific config, but keep workflow rules
+.continue/config.json
+.continue/.continuerc.json

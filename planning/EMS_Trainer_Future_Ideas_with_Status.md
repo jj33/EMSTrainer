@@ -420,3 +420,85 @@ AI suggests: "Generate Easy mode airway scenario for remediation"
 ---
 
 *Updated 2025-01-07*
+
+
+### Temporary Chat Sessions for Reduced Hallucinations
+**Purpose:** Use temporary/ephemeral chat sessions to reduce AI hallucinations and maintain prompt fidelity.
+
+**Problem:**
+Long chat sessions can lead to:
+- AI "forgetting" or misinterpreting core prompt instructions
+- Hallucinations (inventing features, protocols, or grading criteria not in prompts)
+- Context drift as conversation history grows
+- Inconsistent behavior between early and late responses
+
+**Solution:**
+Implement temporary/disposable chat sessions:
+
+**For Students:**
+- Load prompts fresh for each scenario
+- Complete scenario in one session
+- Generate debrief and submission file
+- End session (don't continue chat)
+- New scenario = new fresh session
+
+**For Instructors:**
+- Load prompts fresh for each task
+- Create scenario OR grade submission OR generate summary
+- Complete task in one focused session
+- End session after task completion
+- New task = new fresh session
+
+**Benefits:**
+- Consistent behavior (AI always working from fresh prompt state)
+- Reduced hallucinations (no accumulated context drift)
+- Clear task boundaries (one session = one deliverable)
+- Easier troubleshooting (reproducible behavior)
+- Better performance (smaller context window)
+
+**Implementation:**
+- Document best practices in Quick Start Guides
+- Add "Start New Session" reminders in prompts
+- Consider session boundary markers in prompts
+- Track session length recommendations (e.g., "Complete within 30 minutes")
+
+**User Education:**
+- "One scenario, one session" guideline
+- "Don't chain multiple tasks in same chat" warning
+- Explain why (reduces hallucinations, maintains accuracy)
+- Show examples of good vs bad session usage
+
+**Potential Enhancements:**
+- Auto-detect long sessions and suggest restart
+- Prompt reminders: "This is a fresh session, core rules active"
+- Session integrity validation (check if AI still following core rules)
+
+**Status:** Idea - High Priority for Documentation
+
+
+
+### Instructor Grading vs Protocol Import Feature
+**Purpose:** Compare instructor grading logic against imported medical director protocols for consistency.
+
+**Description:**
+Allow instructors to upload/import medical director protocols (PDF, text, or structured data) and have the system:
+- Compare instructor-created scenario grading logic against protocols
+- Flag inconsistencies (e.g., "Scenario requires aspirin, but protocol says contraindicated with this presentation")
+- Suggest alignment: "Protocol requires 12-lead within 10 minutes, but scenario allows 15"
+- Validate medication doses, routes, and indications against local protocols
+- Generate protocol compliance reports
+
+**Use Cases:**
+- Ensure training scenarios match current medical director guidelines
+- Identify protocol updates that require scenario revisions
+- Quality assurance for instructor-created content
+- Accreditation/documentation requirements
+
+**Implementation Considerations:**
+- Protocol parsing (AI reads PDF/text protocols)
+- Structured protocol database (standardized format)
+- Comparison engine (scenario grading vs protocol requirements)
+- Conflict resolution workflow (instructor reviews flagged items)
+
+**Status:** Idea - Pending Analysis
+

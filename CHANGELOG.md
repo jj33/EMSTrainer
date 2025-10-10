@@ -2,6 +2,51 @@
 
 All notable changes to EMSTrainer will be documented in this file.
 
+## [1.6.1] - 2025-10-10
+
+### 🚨 Added
+- **Code Blackout Scenario**: Monica-level mega-code (60-minute cascading emergency)
+  - Multi-system patient (hypoglycemia, bradycardia, hypothermia, hypoxia)
+  - Equipment realism (limited O2, 20-min monitor battery)
+  - Wife dynamics (AIDET-responsive)
+  - Medical-based arrest triggers
+  - 1000-point grading rubric with timing penalties
+  - Instructor guide and student brief documents
+
+### 📊 Added
+- **PlatinumPlanner Test Export Instructions**: Step-by-step guide with screenshots
+  - Dashboard navigation (step1_dashboard.jpeg)
+  - Results page navigation (step2_next_button.jpeg)
+  - Export button location (step3_export.jpeg)
+  - Integration into Student Quick Start Guide
+
+### 🏗️ Changed
+- **Architecture Refactor**: Core + Interface pattern (v1.6.1)
+  - `EMSTrainer_Core.txt` - Foundation (Test/Study modes)
+  - `EMSTrainer_Student_Interface.txt` - Student-facing interface
+  - `EMSTrainer_Instructor_Interface.txt` - Instructor-facing interface
+  - Modular design for easier maintenance
+
+### 🛠️ Improved
+- **PDF Generation**: Switched from WeasyPrint to reportlab
+  - Pure Python solution (no system dependencies)
+  - Eliminated Cairo/Pango/GTK requirements
+  - Better error handling and progress reporting
+
+### 📝 Documentation
+- Added temporary chat mode recommendations (prevents AI hallucinations)
+- Added v1.7.0 comprehensive feature planning document
+- Updated future ideas document with implementation status
+- Added Continue.dev workflow rules for contributors
+
+### 🔧 Technical
+- Equipment tracking enhanced in Core.txt
+- Session management workflow documented
+- Git workflow rules established
+- Testing standards documented
+
+---
+
 ## [1.6.0] - 2025-01-06
 
 ### 🎯 Major Changes

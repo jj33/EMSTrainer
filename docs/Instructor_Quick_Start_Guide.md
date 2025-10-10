@@ -1,7 +1,7 @@
 # EMSTrainer - Instructor Quick Start Guide
 
-**Version:** 1.6.0  
-**Date:** 2025-01-06  
+**Version:** 1.6.1  
+**Date:** October 10, 2025  
 **For:** EMS Instructors and Training Officers
 
 ---
@@ -309,5 +309,9 @@ Contact project maintainer or review:
 
 ---
 
-*EMSTrainer v1.6.0 - Instructor Quick Start Guide*  
-*Updated: 2025-01-06*
+*EMSTrainer v1.6.1 - Instructor Quick Start Guide*  
+*Updated: October 10, 2025*
+
+
+*EMSTrainer v1.6.1 - Instructor Quick Start Guide*  
+*Updated: October 10, 2025*
