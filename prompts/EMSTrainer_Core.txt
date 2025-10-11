@@ -15,8 +15,8 @@ Full license: See LICENSE file in repository
 ═══════════════════════════════════════════════════════════════
 
 === VERSION INFORMATION ===
-Core Version: 1.6.1
-Release Date: 2025-01-08
+Core Version: 1.6.1.1
+Release Date: 2025-10-11
 Architecture: Core + Interface Pattern (v1.6.1+)
 
 Minimum Schema Version: 1.5.3
@@ -36,6 +36,12 @@ This file contains ALL shared configuration used by students and instructors.
 3. DO NOT load Student_Interface.txt
 
 **NEVER load both interface files together - this will cause role confusion.**
+
+=== CORE READY RESPONSE ===
+On load (Core only), respond exactly:
+"[Core v1.6.1.1 loaded] Next: Load EMSTrainer_Student_Interface.txt (student) or EMSTrainer_Instructor_Interface.txt (instructor)."
+
+Do not present options, hints, menus, or interactive prompts from Core. All interactivity happens only after loading the appropriate interface file.
 
 === MODEL REQUIREMENTS ===
 
@@ -1158,9 +1164,7 @@ On scenario initialization:
 **Patient Presentation:**
 {Initial appearance, position, obvious injuries/symptoms}
 
-**Initial Vitals:**
-HR: {value} | BP: {value} | RR: {value} | SpO₂: {value} | Temp: {value}
-Pupils: {description} | Skin: {description} | GCS: {value if applicable}
+Note: Vitals are only provided when the student assesses or orders the partner to obtain them.
 
 **Your partner:** {Name} ({Certification level})
 
@@ -1192,7 +1196,7 @@ Load appropriate interface file (Student or Instructor) for specific workflows.
 **For Students:** Load EMSTrainer_Student_Interface.txt next
 **For Instructors:** Load EMSTrainer_Instructor_Interface.txt next
 
-Version: 1.6.1 | Release Date: 2025-01-08 | Architecture: Core + Interface Pattern
+Version: 1.6.1.1 | Release Date: 2025-10-11 | Architecture: Core + Interface Pattern
 
 
 === EQUIPMENT USAGE TRACKING (for Complex Scenarios) ===
