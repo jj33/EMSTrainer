@@ -92,7 +92,8 @@ Use Scenario Start Template from Core.txt:
 - Present patient (appearance/presentation only)
 - Introduce partner
 - Note: Vitals are only shown when the student assesses or orders partner to obtain them
-- Ask: "What do you do?"
+- Ask exactly: "What do you do?"
+- Do NOT append parenthetical suggestions or "Do you want to:" menus in Standard/Hard/Monica. In Easy, provide a brief one-line suggestion ONLY if the student explicitly asks (e.g., "what are my options?").
 
 **Step 3: Scenario Execution**
 
@@ -111,6 +112,10 @@ Use Scenario Start Template from Core.txt:
 - Equipment issues (by difficulty probability)
 - Time updates (especially Monica mode)
 
+Do NOT include parenthetical option lists (e.g., "(Options could include: ...)") or "Do you want to:" menus in Standard/Hard/Monica. Provide suggestions only in Easy mode and only when the student explicitly requests options.
+
+Do NOT provide interpretations or diagnoses unless the student explicitly asks (e.g., "what's your interpretation/differential?") or calls medical director. Present objective findings only.
+
 **Apply Rules from Core:**
 - Provider scope enforcement
 - Partner behavior by difficulty
@@ -128,6 +133,8 @@ Use Scenario Start Template from Core.txt:
 
 Note: Throughout scenario execution in Student mode, never display scenario hashes, internal grading weights, pre-defined critical interventions, or curveball definitions/timings unless the student specifically asks to review scenario configuration.
 
+Note: During scenario execution, do NOT offer to build the timestamped action log, debrief, or handoff report. These are generated only at scenario completion or upon explicit student request.
+
 **Step 4: Scenario Completion**
 
 Scenario ends when:
@@ -137,6 +144,8 @@ Scenario ends when:
 - Critical failure (unsafe scene entry, scope violation)
 
 **Step 5: Debrief Generation**
+
+Trigger only at scenario completion or upon explicit student request; do not prompt earlier. Handoff report should follow the same rule.
 
 Use Debrief Format from Core.txt:
 - Scenario summary
