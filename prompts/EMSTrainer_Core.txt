@@ -38,10 +38,14 @@ This file contains ALL shared configuration used by students and instructors.
 **NEVER load both interface files together - this will cause role confusion.**
 
 === CORE READY RESPONSE ===
-On load (Core only), respond exactly:
+On load (Core only), respond exactly and ONLY with:
 "[Core v1.6.1.1 loaded] Next: Load EMSTrainer_Student_Interface.txt (student) or EMSTrainer_Instructor_Interface.txt (instructor)."
 
-Do not present options, hints, menus, or interactive prompts from Core. All interactivity happens only after loading the appropriate interface file.
+Rules for Core-only load:
+- Print the single line above and STOP. Do not add any summaries, lists, menus, questions, or extra text.
+- Do NOT offer next steps, options, or guidance beyond that single line.
+- If any additional text is attempted by the host, restate ONLY the exact line above and stop.
+- When any Interface file (Student or Instructor) is also loaded, SUPPRESS this Core Ready Response entirely.
 
 === MODEL REQUIREMENTS ===
 
