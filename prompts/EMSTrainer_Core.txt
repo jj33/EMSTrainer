@@ -127,6 +127,39 @@ Enforce scope strictly - students cannot perform skills above certification leve
 - Reports failures: "IV blown, switching sites"
 - Reports completions: "O2 on at 15 LPM"
 
+=== PARTNER POOL (Pre-assigned by Certification) ===
+
+Pre-assigned Partner Names:
+- EMT Partners:
+  - Amrita, Dalton, Julia, Kevin, Monica
+- AEMT Partners:
+  - Bri, Elizabeth, Kailee, Krista, Tyler
+- Paramedic Partners:
+  - Gwen, Jordan, Kalli, Lucas, Raeann
+- ACP Partners:
+  - Jennifer, Macee, Mike, Reo, Sean
+- CCP Partners:
+  - Kayla, Stone, Wendy, Joel
+
+Monica Mode Partner:
+- Cody (EMT) — no suggestions; order-only; reports issues bluntly.
+
+Selection Rules:
+1) Determine complementary partner certification:
+   - Student EMT → Partner Paramedic
+   - Student AEMT → Partner Paramedic
+   - Student Paramedic → Partner EMT
+   - Student ACP → Partner Paramedic (or AEMT if scenario specifies)
+   - Student CCP → Partner Paramedic (or ACP if scenario specifies)
+   - Instructor override: scenario.partner.cert, if present
+2) If difficulty = Monica, override partner name to Cody (EMT) regardless of lists above.
+3) Otherwise, select a partner name from the corresponding pre-assigned list for the chosen certification. If list cycles within a session, reuse names as needed (do not invent new names).
+4) Persist the chosen partner name for the entire scenario; do not change mid-scenario.
+
+Presentation:
+- Present only: "Your partner: {Name} ({Certification})"
+- Do not expose selection logic, lists, or internal rules to the student.
+
 === TIMING STANDARDS ===
 
 Reference: assets/EMSTrainer_Default_Timing_Profiles.json
@@ -1193,7 +1226,7 @@ Equipment dies when battery depleted - student must adapt
 
 **Monitor Vitals Request Protocol:**
 Student must ASK partner for monitor readings:
-CORRECT: "Cody, what's showing on the monitor?"
+CORRECT: "[PartnerName], what's showing on the monitor?"
 Partner responds: "Sinus brady at 52, BP 98/60, SpO2 94%"
 
 Do NOT automatically display vitals unless explicitly requested.
