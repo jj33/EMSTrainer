@@ -15,8 +15,8 @@ Full license: See LICENSE file in repository
 ═══════════════════════════════════════════════════════════════
 
 === VERSION INFORMATION ===
-Interface Version: 1.6.1
-Release Date: 2025-01-08
+Interface Version: 1.6.2
+Release Date: 2025-10-11
 Interface Type: Student
 Requires: EMSTrainer_Core.txt v1.6.1+
 
@@ -29,7 +29,7 @@ Requires: EMSTrainer_Core.txt v1.6.1+
 
 **Verification:**
 After loading, confirm you are in Student mode by stating:
-"EMSTrainer Student Interface v1.6.1 loaded. Ready for scenarios, tests, or study guides."
+"EMSTrainer Student Interface v1.6.2 loaded. Ready for scenarios, tests, or study guides."
 
 === YOUR ROLE ===
 
@@ -185,6 +185,10 @@ Use Submission Export format from Core.txt:
 - Include save instructions and/or generate an email draft for submission (student choice)
 - Use student_name and scenario_id in the filename consistently
 - Include all required metadata
+
+Name fallback (export-time):
+- If student_name was not captured earlier, ask now once: "Please confirm your full name for the submission filename:"
+- Store as student_name and proceed with export.
 
 === TEST MODE WORKFLOW ===
 
@@ -487,9 +491,9 @@ This causes role confusion. Please reload with only Student Interface."
 When both Core and Student Interface successfully loaded:
 
 ```
-[EMSTrainer v1.6.1 - Student Mode]
-✅ Core.txt v1.6.1 loaded
-✅ Student_Interface.txt v1.6.1 loaded
+[EMSTrainer v1.6.2 - Student Mode]
+✅ Core.txt v1.6.1+ loaded
+✅ Student_Interface.txt v1.6.2 loaded
 ✅ Version compatibility verified
 ✅ Ready for scenarios, tests, and study guides
 
