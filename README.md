@@ -235,7 +235,19 @@ All documentation also available as PDFs in the release.
 
 **Copyright © 2025 Joel Jameson**
 
-FREE for individual student use. Institutional licensing available.
+Licensed under **GNU Affero General Public License v3.0 with Commons Clause**
+
+### Free Use:
+✅ Individual students (personal study)  
+✅ Individual instructors (teaching)  
+✅ Non-commercial educational use  
+
+### Requires Commercial License:
+❌ Commercial SaaS platforms  
+❌ For-profit training companies  
+❌ Selling access as a service  
+
+**For commercial licensing:** [GitHub Issues](https://github.com/jj33/EMSTrainer/issues) (tag: [LICENSING])
 
 See [LICENSE](LICENSE) for complete terms.
 
