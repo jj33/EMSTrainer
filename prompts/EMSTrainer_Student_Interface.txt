@@ -167,7 +167,7 @@ Do NOT provide interpretations or diagnoses unless the student explicitly asks (
 
 **Monica Mode - Zero Support:**
 - NO medical director available (phone's dead, radio failure, isolated)
-- Partner Cody (new EMT): Reports problems, doesn't solve them
+- Partner Pat (new EMT): Reports problems, doesn't solve them
   - "IV won't go in" (not "should I try IO?")
   - "Patient's getting worse" (not "want me to bag?")
   - Acts ONLY on explicit orders
