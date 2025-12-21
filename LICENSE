@@ -1,84 +1,234 @@
 # EMSTrainer License
 
-Copyright © 2025 Joel
-
-## Mission Statement
-
-EMSTrainer is built to improve the pipeline of EMS professionals and benefit emergency medical services across the country. This license reflects that mission by keeping the software free for individual learners and educators while enabling sustainable development through institutional licensing.
-
-## License Terms
-
-This software is dual-licensed:
-
-### 1. Free Educational Use (Individuals & Small Groups)
-
-**FREE for:**
-- Individual EMS students studying for certification
-- Individual instructors teaching their own students
-- Small volunteer departments (≤5 users)
-- Personal study and practice
-- Non-profit educational use
-
-**Terms:** Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0)
-- ✅ Share and adapt the material
-- ✅ Use for teaching and learning
-- ✅ Provide attribution to EMSTrainer
-- ❌ No commercial use without license
-
-Full CC BY-NC 4.0 text: https://creativecommons.org/licenses/by-nc/4.0/
-
-### 2. Institutional License (Academic Institutions & Organizations)
-
-**REQUIRES PAID LICENSE for:**
-- Community colleges and universities
-- EMS training academies
-- Hospital-based training programs
-- Commercial training companies
-- Fire departments with formal training programs (>5 users)
-- Any organization using EMSTrainer as part of paid coursework or certification programs
-
-**Why?** Institutional licensing fees support ongoing development, medical accuracy validation, scenario creation, and keeping the software free for individual students.
-
-**Institutional License Benefits:**
-- Unlimited student use within your institution
-- Priority support and bug fixes
-- Custom scenario development assistance
-- Instructor training and onboarding
-- Integration support
-- Influence on feature roadmap
-
-**Pricing:** Contact for institutional licensing rates
-
-### 3. Commercial License
-
-**REQUIRES PAID LICENSE for:**
-- Incorporation into commercial products
-- Resale or redistribution for profit
-- Use in for-profit training offerings
-- Any commercial use not covered above
-
-## Licensing Inquiries
-
-For institutional or commercial licensing:
-- **GitHub Issues:** https://github.com/jj33/EMSTrainer/issues
-- Tag your issue with `[LICENSING]` in the title
-- Include: Organization name, number of users, intended use
-- We'll respond within 2-3 business days
-
-## Enforcement
-
-Unauthorized commercial or institutional use violates this license and applicable copyright law. We prefer to work with organizations to find appropriate licensing arrangements.
-
-## Contributing
-
-Contributions to EMSTrainer are welcome! By contributing, you agree that your contributions will be licensed under the same terms as the project.
-
-## Disclaimer
-
-THIS SOFTWARE IS PROVIDED "AS IS" FOR EDUCATIONAL PURPOSES ONLY. NOT A SUBSTITUTE FOR OFFICIAL EMS PROTOCOLS, MEDICAL DIRECTION, OR HANDS-ON TRAINING. USE AT YOUR OWN RISK.
+Copyright © 2025 Joel Jameson
 
 ---
 
-**Version:** 1.0
-**Last Updated:** January 2025
+## License
+
+EMSTrainer is licensed under the **GNU Affero General Public License v3.0** with **Commons Clause** restriction.
+
+This dual-licensing approach ensures:
+- ✅ Free use for students, educators, and non-commercial purposes
+- ✅ Source code remains open and improvements are shared back
+- ✅ Protection against commercial exploitation without permission
+- ✅ Sustainable development through commercial licensing
+
+---
+
+## What This Means
+
+### ✅ You CAN (Free):
+
+- **Use** EMSTrainer for personal study and learning
+- **Use** as individual instructor teaching students
+- **Modify** the code for your own use
+- **Share** with other students and educators
+- **Deploy** internally for educational purposes
+- **Study** how it works and improve it
+
+### ❌ You CANNOT (Without Commercial License):
+
+- **Sell** access to EMSTrainer as a service
+- **Build** a commercial product using EMSTrainer
+- **Offer** EMSTrainer as a hosted/SaaS platform for profit
+- **Use** in for-profit training programs without license
+- **Commercialize** in any way without permission
+
+### 📋 Commons Clause Addition:
+
+**"You may not use the Licensed Work to provide a commercial service to third parties."**
+
+This means you cannot use EMSTrainer to sell services, but you CAN:
+- Use it internally for your own organization (even if organization is commercial)
+- Use it for teaching your own students (non-profit education)
+- Modify and improve it for your own purposes
+- Share improvements with the community
+
+---
+
+## Free Use Examples
+
+✅ **Individual Student:** "I'm studying for NREMT-Paramedic, using EMSTrainer to practice scenarios"
+
+✅ **Instructor:** "I teach at a community college and use EMSTrainer in my EMS class"
+
+✅ **Volunteer Department:** "Our 5-person volunteer fire department uses it for training"
+
+✅ **Study Group:** "My paramedic cohort shares it for test prep"
+
+✅ **Internal Use:** "Our hospital uses it to train our EMS continuing education"
+
+---
+
+## Commercial License Required Examples
+
+❌ **Training Company:** "We sell EMS certification courses and want to include EMSTrainer"
+
+❌ **SaaS Platform:** "We're building MedicTrainer.com using EMSTrainer code"
+
+❌ **Paid Program:** "Our for-profit EMS academy wants to use this for students"
+
+❌ **Consulting:** "We provide EMS training consulting and want to use EMSTrainer"
+
+❌ **Resale:** "We want to white-label this and sell to fire departments"
+
+---
+
+## Institutional Licensing
+
+**Academic institutions, large organizations, and commercial entities:**
+
+If your use case requires a commercial license, we offer reasonable institutional licensing:
+
+**Benefits:**
+- Unlimited users within your organization
+- Commercial use rights
+- Priority support
+- Custom scenario development
+- Protocol integration assistance
+- Feature requests prioritization
+
+**Contact for licensing:**
+- GitHub Issues: https://github.com/jj33/EMSTrainer/issues
+- Tag: `[LICENSING]` in issue title
+- Include: Organization name, number of users, intended use
+
+**Pricing:** Contact for quote based on organization size and use case
+
+---
+
+## Network Use Requirement (AGPL v3)
+
+**IMPORTANT:** If you modify EMSTrainer and deploy it as a network service (web app, API, hosted platform), you MUST:
+
+1. **Make your modified source code available** to users of your service
+2. **License your modifications** under the same AGPL v3 license
+3. **Provide attribution** to the original EMSTrainer project
+4. **Include license and copyright notices** in your modified version
+
+This is the "network use" clause that closes the SaaS loophole. You can't take this code, modify it, host it as a service, and keep your improvements private.
+
+**If you provide EMSTrainer as a service to others, they must be able to get the source code.**
+
+---
+
+## Mission Statement
+
+EMSTrainer was built to help EMS students succeed where traditional education failed them. It remains free for students and educators because that's the mission.
+
+Commercial licensing ensures sustainable development while keeping the core educational purpose intact.
+
+**Original motivation:** "My instructor made an impossible test. I built something better to help my classmates pass."
+
+That mission continues.
+
+---
+
+## Full License Text
+
+### GNU Affero General Public License v3.0
+
+The full text of the GNU AGPL v3.0 is available at:
+- Official: https://www.gnu.org/licenses/agpl-3.0.txt
+- SPDX: https://spdx.org/licenses/AGPL-3.0-or-later.html
+
+**SPDX Identifier:** AGPL-3.0-or-later
+
+### Commons Clause License Condition v1.0
+
+**"Commons Clause" License Condition v1.0**
+
+The Software is provided to you by the Licensor under the License, as defined below, subject to the following condition.
+
+Without limiting other conditions in the License, the grant of rights under the License will not include, and the License does not grant to you, the right to Sell the Software.
+
+For purposes of the foregoing, "Sell" means practicing any or all of the rights granted to you under the License to provide to third parties, for a fee or other consideration (including without limitation fees for hosting or consulting/ support services related to the Software), a product or service whose value derives, entirely or substantially, from the functionality of the Software. Any license notice or attribution required by the License must also include this Commons Clause License Condition notice.
+
+**Software:** EMSTrainer  
+**License:** GNU Affero General Public License v3.0  
+**Licensor:** Joel Jameson
+
+---
+
+## Contributing
+
+Contributions are welcome! By contributing to EMSTrainer, you agree that:
+
+1. Your contributions will be licensed under the same AGPL v3.0 + Commons Clause license
+2. You have the right to contribute the code (it's your original work or properly licensed)
+3. You understand the mission of keeping EMSTrainer free for students
+
+**How to contribute:**
+- Fork the repository
+- Make improvements
+- Submit pull request with clear description
+- Include tests if applicable
+- Maintain medical accuracy
+
+---
+
+## Disclaimer
+
+**EDUCATIONAL USE ONLY - NOT MEDICAL ADVICE**
+
+THIS SOFTWARE IS PROVIDED "AS IS" FOR EDUCATIONAL PURPOSES ONLY.
+
+EMSTrainer is NOT:
+- ❌ A substitute for official EMS protocols
+- ❌ A substitute for medical direction
+- ❌ A substitute for hands-on training
+- ❌ Medical advice or treatment guidance
+- ❌ Certified or accredited training
+
+EMSTrainer IS:
+- ✅ Educational simulation software
+- ✅ Study aid for EMS certification
+- ✅ Practice tool for scenario training
+- ✅ Supplement to formal education
+
+**Use at your own risk. Always follow your agency protocols and medical director guidance.**
+
+---
+
+## Enforcement
+
+Violations of this license (unauthorized commercial use, failure to share source code of modified networked versions, etc.) may result in:
+
+1. Takedown requests
+2. License revocation
+3. Legal action if necessary
+
+We prefer to work with organizations to find appropriate licensing arrangements. If you're unsure whether your use requires a commercial license, please ask.
+
+---
+
+## Questions?
+
+**For licensing questions:**
+- GitHub Issues: https://github.com/jj33/EMSTrainer/issues (tag: [LICENSING])
+
+**For technical questions:**
+- GitHub Issues: https://github.com/jj33/EMSTrainer/issues (tag: [SUPPORT])
+
+**For contributions:**
+- GitHub Pull Requests: https://github.com/jj33/EMSTrainer/pulls
+
+---
+
+**Version:** 2.0 (AGPL v3.0 + Commons Clause)  
+**Effective Date:** December 21, 2025  
+**Previous Version:** 1.0 (CC BY-NC 4.0 Dual License)  
 **Project:** https://github.com/jj33/EMSTrainer
+
+---
+
+## Summary (TL;DR)
+
+**License:** AGPL v3.0 + Commons Clause  
+**Free for:** Students, educators, non-commercial use  
+**Requires license for:** Commercial services, SaaS platforms, for-profit training  
+**Network requirement:** If you deploy modified version as service, share your source code  
+**Contact:** GitHub Issues with [LICENSING] tag
+
+**Built by a paramedic student who was tired of bad instructors. Kept free for students who need it. Licensed commercially for those who can afford to support development.**

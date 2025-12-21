@@ -4,13 +4,16 @@ EMSTrainer — Student Interface
 
 Copyright © 2025 Joel Jameson
 
-FREE for: Individual students, instructors, small volunteer departments
-REQUIRES LICENSE: Academic institutions, training companies, large organizations
+Licensed under GNU Affero General Public License v3.0 with Commons Clause
 
-Licensed under CC BY-NC 4.0 with institutional licensing requirement.
+FREE for: Individual students, instructors, non-commercial educational use
+REQUIRES LICENSE: Commercial services, SaaS platforms, for-profit training
+
+Commercial use prohibited without license.
 For licensing: https://github.com/jj33/EMSTrainer/issues (tag: [LICENSING])
 
 Full license: See LICENSE file in repository
+SPDX-License-Identifier: AGPL-3.0-or-later
 
 ═══════════════════════════════════════════════════════════════
 
