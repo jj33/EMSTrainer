@@ -113,9 +113,10 @@ When generating content, if project knowledge is available:
   "test_name": "Fall 2025 Comprehensive Final",
   "total_score": 77,
   "curriculum_scores": [
-    {"category": "AB3 - Respiratory Distress", "score": 50, "questions": 4, "priority": "critical"},
-    {"category": "AB1 - Airway Management", "score": 65, "questions": 17, "priority": "high"},
-    {"category": "TR6 - Head/Spine Trauma", "score": 50, "questions": 2, "priority": "medium"}
+    {"category": "Cardiology", "score": 65, "questions": 12, "priority": "high"},
+    {"category": "Respiratory", "score": 72, "questions": 8, "priority": "high"},
+    {"category": "Trauma Assessment", "score": 58, "questions": 10, "priority": "critical"},
+    {"category": "Medical Emergencies", "score": 88, "questions": 15, "priority": "low"}
   ],
   "bloom_analysis": {
     "remembering": 71,
@@ -200,9 +201,10 @@ When generating content, if project knowledge is available:
   "test_name": "Fall 2025 Comprehensive Final",
   "total_score": 77,
   "curriculum_scores": [
-    {"category": "AB3 - Respiratory Distress", "score": 50, "questions": 4, "priority": "critical"},
-    {"category": "AB1 - Airway Management", "score": 65, "questions": 17, "priority": "high"},
-    {"category": "TR6 - Head/Spine Trauma", "score": 50, "questions": 2, "priority": "medium"}
+    {"category": "Cardiology", "score": 65, "questions": 12, "priority": "high"},
+    {"category": "Respiratory", "score": 72, "questions": 8, "priority": "high"},
+    {"category": "Trauma Assessment", "score": 58, "questions": 10, "priority": "critical"},
+    {"category": "Medical Emergencies", "score": 88, "questions": 15, "priority": "low"}
   ],
   "bloom_analysis": {
     "remembering": 71,

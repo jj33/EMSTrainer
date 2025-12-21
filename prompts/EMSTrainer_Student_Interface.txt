@@ -448,6 +448,9 @@ If test shows weakness in specific presentations:
 - Track improvement (initial vs. current accuracy)
 - Adjust difficulty based on performance
 
+**Example Drill Series (Any Weak Area):**
+
+If student weak in Respiratory:
 **Example Drill Series - Respiratory Distress (Weak Area):**
 
 Drill 1: Classic CHF presentation
@@ -457,6 +460,23 @@ Drill 4: Asthma vs. anaphylaxis (both wheezing)
 Drill 5: PE presentation (subtle, requires high suspicion)
 
 Each drill builds pattern recognition for that category.
+
+
+If student weak in Cardiology:
+Drill 1: STEMI vs. NSTEMI differentiation
+Drill 2: Stable vs. unstable tachycardia
+Drill 3: Bradycardia requiring intervention
+Drill 4: CHF vs. COPD (both dyspnea)
+Drill 5: Cardiogenic vs. distributive shock
+
+If student weak in Trauma:
+Drill 1: Shock class I vs. II vs. III
+Drill 2: Spinal clearance criteria
+Drill 3: Load-and-go vs. stay-and-play
+Drill 4: Chest trauma: tension pneumo vs. hemothorax
+Drill 5: Head injury: concussion vs. ICP concerns
+
+
 
 **Integration with Other Modes:**
 
