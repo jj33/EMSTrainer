@@ -3,10 +3,11 @@
 This document outlines proposed enhancements for EMS Trainer, along with their implementation status.
 
 ## Version Roadmap
-- **v1.5.6** - Current release with difficulty modes and Monica Mode
-- **v1.6** - Instructor features (chat-based scenario creation and grading)
-- **v1.7** - Security and encryption
-- **v1.8+** - Advanced instructor tools and web dashboard
+- **v1.5.6** - Difficulty modes and Monica Mode
+- **v1.6.0-1.6.1** - Instructor features (chat-based scenario creation and grading)
+- **v1.6.2-1.6.3** - Pattern Recognition Mode, Weak Area Tracking, Guidelines Integration (Current)
+- **v1.7** - Equipment timing, protocol loading, multi-agency dynamics
+- **v1.8+** - Advanced instructor tools (if needed)
 
 ---
 
@@ -58,6 +59,53 @@ Simulates real-world online medical control.
 **Status:** ✅ Implemented in v1.5.2
 
 ---
+
+
+---
+
+## ✅ Implemented in v1.6.2/v1.6.3
+
+### Pattern Recognition Mode for Differential Diagnosis
+**Description:**  
+Rapid-fire drills presenting 2-4 clinical findings, student provides differential, system guides assessment and reveals findings iteratively. Teaches clinical reasoning and pattern recognition across all difficulty levels.
+
+**Impact:**  
+Directly addresses test performance gaps in differential diagnosis. Builds speed in recognizing presentations (CHF vs COPD vs pneumonia, STEMI vs NSTEMI, shock classification).
+
+**Status:** ✅ Implemented in v1.6.3 (Student Interface)
+
+---
+
+### Weak Area Tracking with Test Result Integration
+**Description:**  
+Accepts test results from any source (EMSTesting.com, classroom exams, NREMT practice tests), auto-generates weighted practice focusing 50% on critical areas (<60%), 30% on high priority (60-75%), 20% maintenance. Tracks improvement over time.
+
+**Impact:**  
+Personalizes learning to individual gaps. Efficient study by targeting weaknesses rather than random practice.
+
+**Status:** ✅ Implemented in v1.6.2 (Core)
+
+---
+
+### National Model EMS Guidelines Integration
+**Description:**  
+When knowledge search capability available, automatically references National Model EMS Guidelines in study guides, scenario validation, and test questions. Cites protocol sections, shows decision trees, validates interventions against evidence-based care.
+
+**Impact:**  
+Grounds training in current national standards. Students learn protocols in context, not just memorization.
+
+**Status:** ✅ Implemented in v1.6.2 (Core)
+
+---
+
+### Enhanced Hint Policy by Difficulty Mode
+**Description:**  
+Refined guidance system: Easy mode actively teaches with scaffolding, Standard mode waits to be asked, Hard mode medical director only, Monica mode phone's dead with unhelpful green partner.
+
+**Impact:**  
+Clear progression from teaching to testing. Students know what support to expect at each level.
+
+**Status:** ✅ Implemented in v1.6.3 (Student Interface)
 
 ## ❌ Not Yet Implemented
 
@@ -419,7 +467,117 @@ AI suggests: "Generate Easy mode airway scenario for remediation"
 
 ---
 
-*Updated 2025-01-07*
+
+
+---
+
+## 🚫 Won't Do (With Rationale)
+
+### NREMT Pass Prediction Algorithm
+**Description:**  
+Statistical model predicting NREMT pass probability based on scenario performance.
+
+**Why Not:**  
+- Creates liability risk (students relying on inaccurate predictions)
+- Outside scope of educational tool (not a testing service)
+- Requires extensive validation data we don't have
+- False confidence/anxiety based on algorithm
+- **Alternative:** Track performance trends, identify weak areas, let student/instructor interpret
+
+**Status:** 🚫 Won't Do - Liability/Scope
+
+---
+
+### Adaptive Difficulty with AI Learning
+**Description:**  
+System learns student patterns and auto-adjusts scenario difficulty mid-scenario based on performance.
+
+**Why Not:**  
+- Overly complex for chat-based architecture
+- Reduces transparency (student doesn't know why difficulty changed)
+- Instructor loses control of difficulty setting
+- Better served by explicit difficulty selection
+- **Alternative:** Manual difficulty progression, weak area tracking guides topic selection
+
+**Status:** 🚫 Won't Do - Complexity/Control
+
+---
+
+### Technical Licensing Enforcement (DRM)
+**Description:**  
+Software-based license key system, user accounts, usage limits, technical restrictions.
+
+**Why Not:**  
+- Against open-source educational spirit
+- Creates support burden (license management, key resets)
+- Easily bypassed (prompts are text files)
+- Honor system works for intended users
+- **Alternative:** Clear licensing terms in README, trust-based compliance, contact for institutional use
+
+**Status:** 🚫 Won't Do - Philosophy/Practicality
+
+---
+
+### Mobile App or Web Dashboard
+**Description:**  
+Standalone mobile app or web interface for scenario delivery.
+
+**Why Not:**  
+- Chat-based interface works everywhere (Claude, ChatGPT, Copilot, etc.)
+- Web app requires hosting, maintenance, security
+- Mobile app requires platform-specific development
+- Current approach: Zero infrastructure, zero hosting costs
+- **Alternative:** Continue optimizing chat-based workflows, works on any device with AI access
+
+**Status:** 🚫 Won't Do - Maintenance Burden
+
+---
+
+### Voice-Based Scenarios
+**Description:**  
+Students speak commands instead of typing, AI responds with voice.
+
+**Why Not:**  
+- Voice AI still unreliable for medical terminology
+- Typing creates documentation record (important for learning)
+- Voice requires additional API costs
+- Not all environments support voice (clinical rotations, study groups)
+- **Alternative:** Text-based interface proven effective, allows thoughtful responses
+
+**Status:** 🚫 Won't Do - Technology/Practicality
+
+---
+
+### Social Features (Leaderboards, Peer Comparison)
+**Description:**  
+Public leaderboards, scenario sharing with scores, competitive rankings.
+
+**Why Not:**  
+- Discourages learning (focus on scores not understanding)
+- Privacy concerns (student performance visibility)
+- Creates unhealthy competition in educational setting
+- Contradicts "mistakes are learning opportunities" philosophy
+- **Alternative:** Study group scenario sharing (informal, private), individual progress tracking
+
+**Status:** 🚫 Won't Do - Educational Philosophy
+
+---
+
+### Automated Study Schedule Generator
+**Description:**  
+AI creates personalized study schedules based on test dates, weak areas, available time.
+
+**Why Not:**  
+- Students manage their own schedules (real skill)
+- Too many variables (work, clinical rotations, personal life)
+- Generic schedules not useful
+- **Alternative:** Provide guidance on effective study patterns, student controls implementation
+
+**Status:** 🚫 Won't Do - Student Autonomy
+
+
+
+*Updated 2025-12-20*
 
 
 ### Temporary Chat Sessions for Reduced Hallucinations
@@ -477,7 +635,7 @@ Implement temporary/disposable chat sessions:
 
 
 
-### Instructor Grading vs Protocol Import Feature
+### Protocol Loading & Validation (HIGH INTEREST)
 **Purpose:** Compare instructor grading logic against imported medical director protocols for consistency.
 
 **Description:**
@@ -500,5 +658,7 @@ Allow instructors to upload/import medical director protocols (PDF, text, or str
 - Comparison engine (scenario grading vs protocol requirements)
 - Conflict resolution workflow (instructor reviews flagged items)
 
-**Status:** Idea - Pending Analysis
+**Status:** 📋 HIGH PRIORITY - v1.7 Target
+
+**Note:** User has specifically requested this feature. Previously attempted with success. Should be prioritized in next major version.
 

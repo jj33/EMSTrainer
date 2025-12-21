@@ -1,8 +1,9 @@
 {
   "scenario_id": "code_blackout",
   "title": "Code Blackout",
-  "version": "1.0",
+  "version": "1.1",
   "created_date": "2025-10-09",
+  "updated_date": "2025-12-20",
   "created_by": "EMSTrainer Development Team",
   "scenario_type": "Monica",
   
@@ -12,13 +13,27 @@
     "student_role": "Paramedic",
     "estimated_duration_minutes": 60,
     "timer_seconds": 3600,
+    "requires_core_version": "1.6.3",
+    "use_core_time_tracking": true,
+    "use_core_death_pathways": true,
+    "use_core_immersive_adaptation": true,
     "scenario_focus": [
       "Multi-system assessment",
       "Resource management",
       "Equipment troubleshooting",
       "Family communication",
       "Time-critical interventions",
-      "Solo transport management"
+      "Solo transport management",
+      "Decision-making under complete isolation"
+    ],
+    "changelog_v1.1": [
+      "Updated to v1.6.3 Core compliance",
+      "Partner: Cody → Pat (generic EMT)",
+      "Added comprehensive time tracking",
+      "Added immersive sensory elements",
+      "Added adaptive stress escalation",
+      "Added explicit death presentations",
+      "Enhanced partner stress responses"
     ]
   },
   
@@ -33,12 +48,35 @@
   },
   
   "partner": {
-    "name": "Cody",
+    "name": "Pat",
     "certification": "EMT",
     "experience_level": "brand_new",
     "personality": "nervous, eager to help, follows orders",
     "acts_only_on_order": true,
-    "notes": "Just cleared field training, needs specific direction, may make mistakes"
+    "notes": "Just cleared field training, needs specific direction, may make mistakes under pressure",
+    
+    "stress_responses": {
+      "baseline": "Nervous but following orders. Voice slightly shaky: 'What do you need me to do?'",
+      "moderate_stress": "Voice cracking, seeking confirmation: 'You sure about this?' Movements becoming jerky.",
+      "high_stress": "Fumbling equipment, breathing fast: 'Dude, I've never seen this before. What if I mess up?'",
+      "critical_stress": "After inverter incident: Voice breaking, near panic: 'I fucked up. Oh god, I fucked up. I'm sorry. Just... just tell me what to do.'"
+    },
+    
+    "unhelpful_behaviors": [
+      "Reports problems without solutions: 'The IV won't go in' (not 'should I try IO?')",
+      "Needs explicit directions: 'What do you want me to do now?'",
+      "Makes mistakes when rushed: Inverter kick incident shows poor judgment under stress",
+      "Stress increases with complications: Voice pitch rises, hands shake, movements less coordinated",
+      "Seeks reassurance constantly: 'Is this right?' 'Did I do it right?' 'Are you sure?'",
+      "Panics when things go wrong: After monitor surge, nearly freezes up"
+    ],
+    
+    "helpful_if_directed": [
+      "Will execute clear orders accurately if given time",
+      "Good CPR technique when coached",
+      "Can drive safely despite stress",
+      "Genuinely wants to help, just inexperienced"
+    ]
   },
   
   "patient": {
@@ -97,6 +135,7 @@
       "battery_minutes_full": 45,
       "battery_percent": 100,
       "status": "ready",
+      "setup_time_seconds": 45,
       "notes": "The one thing that works perfectly!"
     },
     "cardiac_monitor": {
@@ -107,6 +146,7 @@
       "backup_battery": "missing",
       "currently_plugged_in": false,
       "ac_input_status": "working_initially",
+      "startup_time_seconds": 30,
       "notes": "Battery self-discharged, not charged during last shift, cold weather reduced capacity"
     },
     "iv_pumps": {
@@ -126,7 +166,7 @@
     "truck_inverters": {
       "initial_status": "working",
       "capacity_watts": 1500,
-      "notes": "Have been flaky all week according to Cody"
+      "notes": "Have been flaky all week according to Pat"
     },
     "supplies": {
       "iv_start_kits": 2,
@@ -137,13 +177,233 @@
     }
   },
   
+  "time_tracking": {
+    "enabled": true,
+    "announce_milestones": [300, 600, 900, 1200, 1800, 2400],
+    "milestone_messages": {
+      "300": "Pat glances at watch: 'We've been here 5 minutes...'",
+      "600": "Pat, voice tight: 'Ten minutes. We should probably think about moving.'",
+      "900": "Pat, more urgent: '15 minutes on scene. Hospital's gonna be asking where we are.'",
+      "1200": "Pat: '20 minutes. Dude, this is getting long.'",
+      "1800": "Pat: 'Half an hour. I don't know if that's okay or not, but it feels like a long time.'",
+      "2400": "Pat, quietly: '40 minutes. Is this... is this normal?'"
+    },
+    
+    "critical_windows": {
+      "recognition_to_bradycardia_treatment": {
+        "description": "Time from patient contact to addressing symptomatic bradycardia",
+        "target_seconds": 300,
+        "max_acceptable_seconds": 600,
+        "grading_impact": "critical",
+        "interventions": ["pacing", "atropine"]
+      },
+      "recognition_to_glucose": {
+        "description": "Time from recognition of hypoglycemia to glucose administration",
+        "target_seconds": 180,
+        "max_acceptable_seconds": 300,
+        "grading_impact": "critical",
+        "interventions": ["D10", "D50"]
+      },
+      "recognition_to_warming": {
+        "description": "Time from recognition of hypothermia to warming measures",
+        "target_seconds": 300,
+        "max_acceptable_seconds": 600,
+        "grading_impact": "major",
+        "interventions": ["blankets", "warm_IV_fluids", "heat_packs"]
+      },
+      "scene_time_total": {
+        "description": "Total time from arrival to wheels rolling to hospital",
+        "target_seconds": 900,
+        "max_acceptable_seconds": 1200,
+        "grading_impact": "major",
+        "note": "Monica mode: Isolation and complexity may justify longer scene time if managing appropriately"
+      }
+    }
+  },
+  
+  "immersion_elements": {
+    "sensory": {
+      "smell": {
+        "scene_arrival": "Musty old house, slight smell of urine (patient incontinent)",
+        "after_lightning": "Ozone from lightning strike, electrical burning smell faint in air",
+        "after_monitor_surge": "Burning flesh - distinct, nauseating. Patient's chest where pads contacted skin.",
+        "wife_presence": "Perfume - floral, too strong. Makes you slightly nauseous in confined space.",
+        "patient_deterioration": "Smell changes as patient declines - metabolic, slightly sweet (ketones)"
+      },
+      
+      "sound": {
+        "environmental": [
+          "Thunder rumbling constantly, some close enough to shake the house",
+          "Rain pounding on roof - getting louder as storm intensifies",
+          "Wind howling, tree branches scraping siding",
+          "After power loss: Eerie silence except storm - no hum of electricity, no appliances"
+        ],
+        "patient": [
+          "Agonal breathing - gasping, irregular, disturbing sound",
+          "If airway managed: Breath sounds through BVM, resistance you can hear",
+          "If arrest: Silence where breathing should be, only compressions",
+          "After monitor surge: Patient screaming - raw, terrified, pain and fear"
+        ],
+        "equipment": [
+          "Monitor alarms beeping - SpO2, HR, multiple alarms competing",
+          "LUCAS if deployed: Mechanical whir and click, rhythmic compression sounds",
+          "Monitor after surge: Crackling, popping, then nothing - dead silence",
+          "O2 regulator: Hissing, gauge clicking as pressure drops"
+        ],
+        "partner_pat": [
+          "Baseline: Nervous breathing, asking questions voice slightly high",
+          "Stressed: Voice cracking, 'um' and 'uh' increasing, breathing faster",
+          "Panicked: After surge, voice breaking, almost crying: 'I'm sorry, I'm so sorry'",
+          "Critical: Hyperventilating slightly, hands shaking audibly fumbling equipment"
+        ],
+        "wife": [
+          "Crying - soft at first, escalating if ignored",
+          "Asking questions - voice rising in pitch with panic",
+          "If AIDET used: Crying calms, voice steadies, becomes helpful",
+          "If ignored: Screaming, demanding answers, physical interference"
+        ]
+      },
+      
+      "visual": {
+        "patient": [
+          "Cyanotic lips - deep blue, almost purple around mouth",
+          "Mottled skin - patches of purple and pale, map-like pattern on chest and abdomen",
+          "Diaphoretic - sweat beading on forehead despite being cold",
+          "Eyes: Pupils sluggish, unequal - concerning for neuro involvement",
+          "After surge: Burn marks on chest - red, blistered, angry looking at pad sites",
+          "Deteriorating: Color worsening, respirations slowing, eyes unfocusing"
+        ],
+        "environment": [
+          "Small house - cramped, difficult to work in, furniture everywhere",
+          "After power loss: Darkness - flashlight beams cutting through black, shadows dancing",
+          "Storm visible through window: Lightning flashing, trees bending in wind",
+          "Wife's face: Terror, helplessness, mascara running from crying",
+          "Pat's face: Wide eyes, pale, sweating despite cold - fear visible"
+        ],
+        "equipment": [
+          "Monitor screen: Numbers flashing, alarms lighting up display",
+          "After surge: Sparks arcing, screen going black, smoke wisping from vents",
+          "O2 gauge: Needle dropping as you watch, numbers decreasing",
+          "IV bag: Blood flashing in chamber, then stopping if infiltrated"
+        ]
+      },
+      
+      "tactile": {
+        "patient_contact": [
+          "Skin is COLD - shocking how cold when you first touch",
+          "Clammy - wet and slick under fingers",
+          "Pulse weak, thready - hard to find, barely palpable",
+          "Chest resistance during compressions if arrested - cold, stiff",
+          "Placing pads: Skin texture abnormal, not quite right"
+        ],
+        "equipment": [
+          "Monitor surge: Jolt through hands if touching patient when it happens - not dangerous but startling",
+          "IV attempt: Vein rolls, collapses, slippery - cold makes it harder",
+          "LUCAS device: Vibration through patient, through cot",
+          "BVM: Resistance to ventilation - lungs not compliant"
+        ],
+        "environment": [
+          "House getting colder - your breath visible after 20 minutes",
+          "Cramped space - bumping into furniture, walls",
+          "Ambulance: Cold metal, equipment sliding as Pat drives on rural roads",
+          "Darkness: Fumbling for equipment, hands searching without vision"
+        ]
+      }
+    },
+    
+    "environmental_pressure": {
+      "isolation": {
+        "complete_communication_loss": "No radio, no cell, no backup, no medical director. You are completely alone.",
+        "no_help_coming": "Dispatcher doesn't know situation, other units can't be notified, you can't call for ALS backup or helicopter",
+        "decision_weight": "Every decision is yours alone. No one to consult. No one to take over if you're overwhelmed.",
+        "transport_alone": "You'll be in back of ambulance alone with critical patient and green partner driving. No help until hospital."
+      },
+      
+      "darkness": {
+        "scene_difficulty": "Flashlights only - shadows make assessment harder, dropping equipment means searching in dark",
+        "equipment_challenges": "Reading monitor in dark, finding medication in dark drug box, seeing IV flash in dark",
+        "psychological": "Darkness amplifies stress, makes everything feel more threatening, harder to think clearly",
+        "wife_fear": "Wife's panic increases in darkness - primal fear response adds to chaos"
+      },
+      
+      "cold": {
+        "patient_impact": "Patient hypothermic and getting colder - every minute counts for rewarming",
+        "provider_impact": "Your hands getting cold - dexterity decreasing, IV attempts harder, fine motor skills declining",
+        "equipment_impact": "Monitor battery draining faster in cold, medications may be affected by temperature",
+        "psychological": "Cold is uncomfortable, distracting, makes everything feel more desperate"
+      },
+      
+      "storm": {
+        "thunder_timing": "Thunder booms at critical moments - when placing IV, during pacing, makes you jump",
+        "lightning_visibility": "Flashes through windows - disorienting, briefly illuminating scene in harsh light then darkness",
+        "rain_sound": "Pounding on roof makes communication harder - have to raise voice to be heard",
+        "wind_effects": "Ambulance rocks in wind during transport, equipment shifts, patient movement on cot"
+      },
+      
+      "time_pressure": {
+        "patient_critical": "Patient is dying right now - every second matters but you're cut off from help",
+        "transport_distance": "Rural - 35 minutes to hospital on good roads. Storm makes it 45+ minutes.",
+        "no_rendezvous": "Can't meet ALS halfway, can't call helicopter, can't stage for backup",
+        "deterioration_visible": "You can SEE patient getting worse - puts time pressure in your face"
+      }
+    }
+  },
+  
+  "adaptive_events": {
+    "if_student_handling_well": [
+      {
+        "event_id": "wife_interference_escalates",
+        "timing_trigger": "after_5min_minimal_communication",
+        "description": "Wife's anxiety boils over into physical interference",
+        "narrative": "The wife's been standing there, watching, asking questions you haven't answered. Now she grabs your arm - grip tight, desperate: 'WHAT'S WRONG WITH HIM?! Why isn't he waking up?! DO SOMETHING!' She's pulling at you, getting in the way, panic taking over.",
+        "resolution": "Must address directly - AIDET, set boundaries, or have Pat manage her. Ignoring makes it worse."
+      },
+      {
+        "event_id": "equipment_cascade",
+        "timing_trigger": "after_patient_loaded_if_managing_well",
+        "description": "Additional equipment challenge tests resource management",
+        "narrative": "You're in the back with the patient. Pat yells from up front: 'Uh... the heater's not working. Blower's going but it's blowing cold.' The ambulance is getting colder. Patient is already hypothermic. Now you're fighting the environment too.",
+        "impact": "Patient temperature will drop faster, warming measures become more critical, time pressure increases"
+      },
+      {
+        "event_id": "wife_collapses",
+        "timing_trigger": "after_patient_loaded_if_wife_not_managed",
+        "description": "Second patient scenario - wife has panic attack or worse",
+        "narrative": "You're about to close the ambulance doors. The wife suddenly gasps, grabs her chest: 'I can't... I can't breathe... chest hurts...' She's hyperventilating, face pale, starting to collapse. Pat looks at you: 'What do we do?!' Is this panic attack or is she having an MI?",
+        "decision_point": "Leave her (call for another unit - but radio's dead), take her with you (two patients, one critical), or quickly assess and make triage decision",
+        "grading": "Tests prioritization, triage, decision-making under impossible choices"
+      }
+    ],
+    
+    "if_student_struggling": [
+      {
+        "event_id": "hold_complications",
+        "description": "Do not add additional stressors if student is already overwhelmed",
+        "implementation": "Monitor student stress indicators - paralysis, excessive time on simple tasks, multiple failed attempts. If struggling, let them work through current problems without adding cascade."
+      },
+      {
+        "event_id": "provide_space",
+        "description": "Allow time for student to problem-solve without time pressure escalation",
+        "implementation": "Pause milestone announcements, give Pat a moment of calm ('You got this, just tell me what to do'), reduce sensory overload slightly"
+      }
+    ],
+    
+    "stress_amplification_techniques": {
+      "sensory_overload": "Layer sounds: monitor alarms + wife crying + Pat asking questions + thunder + equipment issues all happening simultaneously",
+      "decision_tempo": "Force rapid decisions: 'What do you want me to do?' (from Pat) followed immediately by 'The IV infiltrated' followed by 'Monitor battery warning' - overlapping problems",
+      "equipment_cascade": "One failure leads to discovering another: Monitor battery low → plug in → inverter issue discovered → attempt fix → creates surge → more problems",
+      "partner_stress_reflection": "Pat's stress mirrors and amplifies scene stress - voice rising, movements jerky, fear visible - adds psychological pressure",
+      "time_pressure_layers": "Physical (patient deteriorating), environmental (storm worsening, getting colder), resource (O2 running out, battery dying), isolation (no backup coming)"
+    }
+  },
+  
   "timeline_events": [
     {
       "time_seconds": 120,
       "event_id": "lightning_strike",
       "event_type": "guaranteed",
-      "description": "Lightning strike hits transformer",
-      "narrative": "Right as you recognize how critical the patient is, a massive BOOM shakes the house. Lightning has struck the transformer down the road. The lights flicker and die. Your radio crackles to static, then silence. You check your cell phone - No Service. You're completely cut off.",
+      "description": "Lightning strike hits transformer - complete isolation begins",
+      "narrative": "Right as you recognize how critical the patient is, a massive BOOM shakes the house - so loud it's physical, vibrating in your chest. The flash through the window was blinding.\n\nLightning has struck the transformer down the road.\n\nThe lights flicker... and die. Complete darkness except your flashlight.\n\nYour radio crackles to static, then silence. Dead.\n\nYou check your cell phone: No Service.\n\nPat's voice in the darkness, shaky: 'Are we... are we cut off?'\n\nYou're completely isolated. No radio. No phone. No backup. No medical director. Just you, a green EMT, a dying patient, and a storm.",
       "effects": [
         "power_outage_complete",
         "radio_communications_dead",
@@ -154,34 +414,48 @@
       ],
       "environmental_changes": {
         "lighting": "darkness (flashlights only)",
-        "temperature": "getting colder",
-        "storm": "intensifying"
-      }
+        "temperature": "getting colder (no heat)",
+        "storm": "intensifying",
+        "psychological": "isolation_complete"
+      },
+      "immersion_notes": "Make this moment FEEL like the bottom dropping out. Student should feel the weight of complete isolation."
     },
     {
       "event_id": "inverter_surge",
       "event_type": "dynamic",
       "trigger": {
         "condition": "patient_loaded_in_ambulance",
-        "timing": "cody_walking_to_drivers_door",
+        "timing": "pat_walking_to_drivers_door",
         "estimated_time_seconds": 1320,
         "prerequisites": [
           "equipment_in_ambulance",
           "monitor_pads_on_patient"
         ]
       },
-      "narrative": "You've got the patient secured. As Cody walks around to the driver's door, you hear him mutter, 'These damn inverters have been acting up all week...' WHAM! He kicks the inverter cabinet hard. CLICK-WHIRRRR! The inverters roar to life. Then - CRACK! Sparks fly from the monitor. The patient screams and jerks violently. Current surged through the pads. You smell burning flesh. The monitor screen goes black. Cody yells: 'Oh shit! Sorry! I didn't think—'",
+      "narrative": "You've got the patient secured in the ambulance. Critical but stable for now. Pat walks around to the driver's door.\n\nYou hear Pat mutter: 'These damn inverters have been acting up all week...'\n\nThen - WHAM! The sound of Pat kicking the inverter cabinet. Hard.\n\nCLICK-WHIRRRR! The inverters roar to life.\n\nThen everything happens at once:\n\nCRACK! Sparks fly from the monitor - bright, vicious arcs of electricity.\n\nThe patient SCREAMS - raw, terrified - and jerks violently on the cot. Their back arches, muscles rigid.\n\nThe smell hits you: Burning flesh. Unmistakable.\n\nThe monitor screen flickers... dims... goes black. Smoke wisps from the vents.\n\nThe patient is conscious now - eyes wide, terrified, gasping. You can see the burn marks on their chest where the pads contacted skin. Red. Blistered. Angry.\n\nPat appears at the back door, face white: 'Oh shit. Oh SHIT. I'm sorry! I didn't think— I just wanted to get the inverters working— Is he okay?! Oh god, what did I do?!'\n\nPat is near panic. Patient is screaming in pain and terror. Monitor is dead. You just lost your primary assessment tool.\n\nBut... the inverters ARE working now. Pump 2 is available if you need it.\n\nWhat do you do?",
       "effects": [
         "electrical_burns_to_patient",
         "monitor_AC_input_destroyed",
         "monitor_battery_only",
+        "battery_life_20min_remaining",
         "inverters_now_working",
-        "pump_2_now_available"
+        "pump_2_now_available",
+        "pat_in_crisis",
+        "patient_traumatized"
       ],
       "patient_effects": {
-        "burns": "2nd degree at pad sites (anterior chest)",
+        "burns": "2nd degree at pad sites (anterior chest, approximately 6cm diameter each)",
         "pain_level": "severe (8/10)",
-        "emotional": "terrified, screaming"
+        "emotional": "terrified, screaming, crying, asking what happened",
+        "vital_signs_impact": "HR increases from pain/fear, BP may spike then drop",
+        "consciousness": "now fully conscious from pain - was altered before"
+      },
+      "grading_considerations": {
+        "burn_management": "Does student assess and treat burns appropriately?",
+        "patient_reassurance": "Does student calm terrified patient?",
+        "partner_management": "Does student manage Pat's crisis while maintaining patient care?",
+        "equipment_adaptation": "Does student adapt to monitor loss? Use manual assessment? Ration remaining battery?",
+        "documentation": "Adverse event - must be documented accurately"
       }
     }
   ],
@@ -189,29 +463,49 @@
   "wife_character": {
     "name": "Generated by AI",
     "age": "mid-50s",
-    "baseline_state": "high anxiety (appropriate)",
+    "baseline_state": "high anxiety (appropriate for situation)",
     "behavior_model": "dynamic based on student communication",
+    
     "if_ignored": {
-      "5_minutes": "Escalating anxiety, asking questions repeatedly",
-      "10_minutes": "Active interference, grabbing equipment",
-      "15_minutes": "Panic, physical obstacle, may become combative",
-      "transport": "Forces way into ambulance, creates dangerous situation"
+      "2_minutes": "Asking questions, voice trembling: 'Is he going to be okay? What's wrong?'",
+      "5_minutes": "Escalating anxiety, asking questions repeatedly, getting louder: 'WHY WON'T YOU TELL ME WHAT'S HAPPENING?!'",
+      "10_minutes": "Active interference - grabbing equipment, touching patient, getting in the way: 'I need to know! He's my husband!'",
+      "15_minutes": "Panic, physical obstacle, may become combative: Grabbing your arm, pulling, screaming, making care difficult",
+      "transport": "Forces way into ambulance, creates dangerous situation - may interfere with care during critical transport"
     },
+    
     "if_aidet_used": {
-      "result": "Anxiety manageable, wife helpful",
-      "provides": "Medication list, blankets, follows instructions",
-      "transport": "Agrees to follow separately or arranges ride",
-      "outcome": "Not an obstacle during critical care"
+      "result": "Anxiety manageable, wife becomes helpful asset",
+      "response": "Calms visibly when acknowledged and informed. Crying slows. Breathing steadies.",
+      "provides": [
+        "Medication list (accurate, from bottles)",
+        "Blankets from bedroom for warming",
+        "Medical history details",
+        "Follows instructions exactly",
+        "Stays out of way during procedures"
+      ],
+      "transport": "Agrees to follow separately or arranges ride to hospital. Understands can't ride in ambulance with critical patient.",
+      "outcome": "Not an obstacle during critical care. May even be helpful resource."
     },
+    
     "if_moderate_communication": {
       "result": "Anxiety elevated but controllable",
-      "transport": "May request to ride but accepts boundaries",
-      "outcome": "Minimal interference"
+      "response": "Appreciates being acknowledged even if brief. Still anxious but not interfering.",
+      "transport": "May request to ride along but accepts boundaries when explained",
+      "outcome": "Minimal interference. Manageable distraction."
+    },
+    
+    "emotional_progression": {
+      "after_lightning": "Fear for husband PLUS fear of storm, darkness, isolation. Anxiety spikes.",
+      "after_monitor_surge": "If present, screams when patient screams. May become hysterical. Blames Pat: 'What did you do to him?!'",
+      "during_arrest": "If patient arrests, complete breakdown possible. May interfere with resuscitation if not managed.",
+      "wife_as_pressure": "Wife represents the human cost of failure - this is someone's husband, father, grandfather. Her fear is a mirror of the stakes."
     }
   },
   
   "arrest_triggers": {
-    "note": "Arrest is NOT time-based. It occurs based on medical reality and student interventions.",
+    "note": "Arrest is NOT time-based. It occurs based on medical reality and student interventions. Prevention is possible with appropriate care.",
+    
     "rebound_hypoglycemia": {
       "trigger_if": [
         "D50_given_instead_of_D10",
@@ -219,9 +513,12 @@
         "no_continuous_glucose_support"
       ],
       "timing": "20-30 minutes after initial glucose treatment",
+      "progression": "Gradual deterioration → seizure → arrest",
       "rhythm": "Seizure leading to PEA or VF",
-      "preventable": true
+      "preventable": true,
+      "mechanism": "D50 causes insulin spike, glucose crashes below critical level, brain starves, seizure, arrest"
     },
+    
     "bradycardia_progression": {
       "trigger_if": [
         "no_pacing_initiated",
@@ -229,38 +526,114 @@
         "delayed_treatment_over_15_minutes"
       ],
       "timing": "15-25 minutes without treatment",
-      "rhythm": "2nd degree -> 3rd degree -> Asystole",
-      "preventable": true
+      "progression": "Sinus brady → 2nd degree type II → 3rd degree complete → Asystole",
+      "rhythm": "Progressive conduction block deteriorating to asystole",
+      "preventable": true,
+      "mechanism": "Symptomatic bradycardia from cardiac event, conduction system failing progressively, untreated leads to complete heart block then asystole"
     },
+    
     "hypothermia_induced_vf": {
       "trigger_if": [
         "no_warming_measures",
-        "temperature_drops_below_94F"
+        "temperature_drops_below_94F",
+        "delayed_warming_over_20_minutes"
       ],
       "timing": "25-35 minutes",
-      "rhythm": "VF",
-      "preventable": true
+      "progression": "Gradual cooling → cardiac irritability → VF",
+      "rhythm": "VF (cold-induced cardiac irritability)",
+      "preventable": true,
+      "mechanism": "Hypothermia increases cardiac irritability, myocardium becomes unstable, spontaneous VF"
     },
+    
     "hypoxic_arrest": {
       "trigger_if": [
         "poor_airway_management",
         "delayed_ventilation",
-        "SpO2_sustained_below_80"
+        "SpO2_sustained_below_80_for_10min"
       ],
       "timing": "15-25 minutes",
+      "progression": "Hypoxia → bradycardia → PEA → Asystole",
       "rhythm": "PEA or Asystole",
-      "preventable": true
+      "preventable": true,
+      "mechanism": "Prolonged hypoxia damages myocardium, leads to bradycardia then arrest"
     },
+    
     "mi_extension": {
       "trigger_if": [
         "all_interventions_appropriate",
         "random_occurrence"
       ],
       "timing": "40+ minutes",
+      "progression": "Sudden without warning",
       "rhythm": "VF",
       "probability": 0.30,
       "preventable": false,
-      "notes": "Even perfect care may not save this patient"
+      "mechanism": "Massive MI extension despite appropriate care - sometimes patients die even with perfect treatment",
+      "notes": "Even perfect care may not save this patient. This represents the reality that EMS can't save everyone."
+    }
+  },
+  
+  "death_presentations": {
+    "note": "Use Core v1.6.3 death pathway framework. Presentations should be realistic, educational, never gratuitous.",
+    
+    "rebound_hypoglycemia_death": {
+      "trigger": "D50 given, glucose not rechecked, 25-30 minutes elapsed",
+      "narrative": "The patient suddenly stiffens. Eyes roll back. Jaw clenches - you can hear teeth grinding.\n\nTonic-clonic seizure. Violent. The cot is shaking.\n\nThen the monitor: Rapid wide-complex rhythm... VF.\n\nYou start CPR immediately. Pat's doing compressions - good depth, good rate.\n\nShock delivered. Continue CPR. Epi given.\n\nBut the rhythm won't convert. VF to fine VF to... asystole.\n\n20 minutes of perfect ACLS. No ROSC. No shockable rhythm returns.\n\nTime of death: [time]\n\nThe patient's glucose crashed - rebound hypoglycemia from D50. The brain was starved, triggered the seizure, then arrest.\n\nD10 titrated to effect could have prevented this. Rechecking glucose every 10-15 minutes would have caught the crash before seizure.",
+      "debrief_focus": [
+        "D50 vs D10 in unstable patients",
+        "Rebound hypoglycemia mechanism",
+        "Importance of glucose rechecks",
+        "Recognition: If using D50, MUST monitor glucose frequently"
+      ],
+      "lesson": "D50 causes insulin spike that can crash glucose dangerously low in unstable patients. D10 is safer for titration."
+    },
+    
+    "bradycardia_progression_death": {
+      "trigger": "No pacing, atropine only or no treatment, >15 minutes",
+      "narrative": "The heart rate keeps dropping. You watch it happen on the monitor:\n\n38... 32... 28...\n\nThe rhythm changes. Second-degree Type II block. Then third-degree - complete heart block.\n\n24... 18... 12...\n\nPat's voice: 'It's getting slower...'\n\nThen the rhythm flatlines. Asystole.\n\nYou start CPR immediately. Pat takes over compressions while you get the airway.\n\nEpi. Atropine. Perfect compressions. Perfect ventilations.\n\nBut asystole doesn't respond to anything. 20 minutes of ACLS.\n\nNo change. No pulse. No shockable rhythm.\n\nTime of death: [time]\n\nThis patient had symptomatic bradycardia from a cardiac event. The conduction system was failing progressively - you could see it happening.\n\nTranscutaneous pacing in the first 10 minutes could have saved them. The heart gave you warning - time to act.\n\nAtropine might have helped temporarily, but definitive treatment was pacing.",
+      "debrief_focus": [
+        "Recognition of symptomatic bradycardia",
+        "Pacing indications and timing",
+        "Progressive heart blocks",
+        "Why atropine alone wasn't enough"
+      ],
+      "lesson": "Symptomatic bradycardia with signs of cardiac involvement requires pacing, not just atropine. The window is narrow."
+    },
+    
+    "hypothermia_vf_death": {
+      "trigger": "No warming measures, temp <94°F, >25 minutes",
+      "narrative": "The patient is so cold. You can feel it through the blankets.\n\nThe monitor shows increasing PVCs. The heart is irritable - hypothermia makes the myocardium unstable.\n\nThen: VF.\n\nYou shock immediately. Continue CPR.\n\nBut the heart is too cold. VF won't convert.\n\nShock. CPR. Epi. Amiodarone.\n\nThe patient's core temperature is 92°F now. The myocardium is too cold to respond.\n\n20 minutes of ACLS. Multiple shocks. Perfect CPR.\n\nNo ROSC. Patient remains in VF, then eventually asystole.\n\nTime of death: [time]\n\nThis patient was hypothermic from the start - 95.2°F. The house had no heat after the power failed. The ambulance heater wasn't working.\n\nThe core temperature dropped below the critical threshold. The heart became too irritable, triggered VF, was too cold to defibrillate successfully.\n\nAggressive warming from the start - blankets, heat packs, warm IV fluids - could have prevented this.\n\nYou can't defibrillate a frozen heart.",
+      "debrief_focus": [
+        "Hypothermia and cardiac instability",
+        "Warming measures in field",
+        "Why VF won't convert when too cold",
+        "Prevention through early recognition"
+      ],
+      "lesson": "Hypothermia below 94°F creates cardiac irritability that can trigger VF. Aggressive warming is critical, not optional."
+    },
+    
+    "hypoxic_arrest_death": {
+      "trigger": "Poor airway management, SpO2 <80% sustained >10min",
+      "narrative": "The patient's SpO2 has been in the low 80s for too long. You can see the oxygen debt building.\n\nThe heart rate starts to drop: 38... 32... 24...\n\nHypoxia is damaging the myocardium.\n\nThen: PEA. Organized rhythm on the monitor, but no pulse.\n\nCPR started immediately. Perfect technique.\n\nBut the damage is done. The myocardium has been hypoxic for too long.\n\n20 minutes of ACLS. Epi. Airway secured. Oxygenation good now - but too late.\n\nNo ROSC. Rhythm deteriorates to asystole.\n\nTime of death: [time]\n\nThis patient arrested from prolonged hypoxia. The agonal respirations at the start were a warning - critical airway emergency.\n\nImmediate aggressive airway management - BVM, then consider intubation or supraglottic airway - in the first 5 minutes could have prevented this.\n\nThe brain and heart can only tolerate hypoxia for so long. You had a window. It closed.",
+      "debrief_focus": [
+        "Agonal respirations as critical warning",
+        "Airway management urgency",
+        "Hypoxic cardiac arrest mechanism",
+        "Time windows for intervention"
+      ],
+      "lesson": "Agonal respirations mean critical airway failure. Aggressive airway management must be immediate, not delayed."
+    },
+    
+    "mi_extension_death": {
+      "trigger": "Random (30% probability), all interventions appropriate, >40min",
+      "narrative": "You've done everything right.\n\nPacing initiated within 8 minutes. Glucose corrected carefully with D10. Warming measures started immediately. Oxygen therapy appropriate. Airway managed. Transport started at 12 minutes.\n\nThe patient was stable. Critical, but stable.\n\nThen, 42 minutes into the call:\n\nThe patient gasps. Eyes go wide. Hand to chest.\n\nThe monitor: VF.\n\nShock delivered immediately. CPR perfect. Epi. Amiodarone.\n\nBut this VF won't convert.\n\n20 minutes of perfect ACLS. Every intervention by the book.\n\nNo ROSC.\n\nTime of death: [time]\n\nThis was a massive MI extension. The cardiac event that started this call suddenly extended - a large section of myocardium died all at once.\n\nEven perfect care can't save everyone. Sometimes the heart damage is too extensive. Sometimes patients die despite everything being done right.\n\nYou did everything you could. This is the reality of EMS - we can't save everyone, no matter how good we are.",
+      "debrief_focus": [
+        "Sometimes perfect care isn't enough",
+        "Massive MI can be unsurvivable",
+        "Student did everything correctly",
+        "This represents the reality of EMS"
+      ],
+      "lesson": "This death was not preventable. You did everything right. Sometimes that's not enough. This is the hardest lesson in EMS."
     }
   }
 }

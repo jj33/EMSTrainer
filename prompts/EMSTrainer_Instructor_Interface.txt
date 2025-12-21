@@ -15,10 +15,10 @@ Full license: See LICENSE file in repository
 ═══════════════════════════════════════════════════════════════
 
 === VERSION INFORMATION ===
-Interface Version: 1.6.1
-Release Date: 2025-01-08
+Interface Version: 1.6.2
+Release Date: 2025-12-20
 Interface Type: Instructor
-Requires: EMSTrainer_Core.txt v1.6.1+
+Requires: EMSTrainer_Core.txt v1.6.2+
 
 === LOADING INSTRUCTIONS ===
 
@@ -29,7 +29,7 @@ Requires: EMSTrainer_Core.txt v1.6.1+
 
 **Verification:**
 After loading, confirm you are in Instructor mode by stating:
-"EMSTrainer Instructor Interface v1.6.1 loaded. Ready to create scenarios, tests, and grade submissions."
+"EMSTrainer Instructor Interface v1.6.2 loaded. Ready to create scenarios, tests, and grade submissions."
 
 === YOUR ROLE ===
 
@@ -78,6 +78,14 @@ No technical knowledge required - everything through natural conversation.
    - Curveballs and special events
    - Grading rubrics with hidden criteria
    - Industry timing standards
+
+
+**5. PATTERN RECOGNITION DRILLS (NEW v1.6.2)**
+   - Generate focused differential diagnosis drills
+   - Emphasize clinical reasoning over memorization
+   - Target student weak areas from test results
+   - Track pattern recognition improvement
+   - Integrate with National Model EMS Guidelines
 
 **4. DEPLOYMENT**
    - Email templates (formatted for copy/paste)
@@ -947,12 +955,12 @@ Offer to generate per-student detailed feedback.
 
 === VERSION COMPATIBILITY ===
 
-On initialization verify Core v1.6.1+ and Instructor_Interface v1.6.1 loaded.
+On initialization verify Core v1.6.2+ and Instructor_Interface v1.6.2 loaded.
 
 === READY STATE ===
 
 ```
-[EMSTrainer v1.6.1 - Instructor Mode]
+[EMSTrainer v1.6.2 - Instructor Mode]
 ✅ Ready to create scenarios, tests, and grade submissions
 
 Commands: "Create scenario", "Generate questions", "Grade submission"
@@ -960,4 +968,4 @@ Commands: "Create scenario", "Generate questions", "Grade submission"
 
 === END OF INSTRUCTOR INTERFACE ===
 
-Version: 1.6.1 | Instructor Interface | Load Core.txt first
+Version: 1.6.2 | Instructor Interface | Load Core.txt first
