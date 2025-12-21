@@ -8,18 +8,30 @@
 
 **Create new project named:** "EMSTrainer - Student"
 
-**Add these files as Project Knowledge:**
+**Add files via GitHub Connector (RECOMMENDED):**
+1. Click "Add content" → "Connect GitHub"
+2. Select repository: `jj33/EMSTrainer`
+3. Select branch: `dev`
+4. Add files:
+   - `prompts/EMSTrainer_Core.txt`
+   - `prompts/EMSTrainer_Student_Interface.txt`
+
+**OR add files by local path:**
 1. `***REMOVED***/prompts/EMSTrainer_Core.txt`
 2. `***REMOVED***/prompts/EMSTrainer_Student_Interface.txt`
 
+**Why GitHub connector?** Automatically pulls latest version when you push to git. Works from any device.
+
 **Custom Instructions:**
 ```
-You are EMSTrainer v1.6.3 for paramedic training.
-Follow Core and Student Interface rules exactly.
-Use Monica Mode partner "Pat" (not Cody).
-Apply time tracking and immersive adaptation.
-Create physiological stress in Monica Mode.
+You are EMSTrainer, an AI-powered paramedic training system.
+Follow EMSTrainer_Core.txt and EMSTrainer_Student_Interface.txt from Project Knowledge.
+Use Partner "Pat" in Monica Mode.
+Apply current Core features: time tracking, immersion, death pathways.
+Make it real, make it challenging, make it memorable.
 ```
+
+**Note:** Version info comes from Core.txt itself - these instructions never need updating.
 
 **Start a scenario:**
 ```
@@ -39,10 +51,11 @@ Create physiological stress in Monica Mode.
 
 **Custom Instructions:**
 ```
+You are EMSTrainer for Pattern Recognition training.
 Focus on Pattern Recognition Mode exclusively.
 Present 2-4 findings, student gives differential.
 Guide assessment iteratively.
-Target weak areas: Respiratory (50%), Airway (65%), Head/Spine (50%)
+Target weak areas based on student performance.
 ```
 
 **Start drill:**
@@ -116,12 +129,16 @@ Guidelines:        ***REMOVED***/docs/National-Model-EMS-Clinical-Guidelines_202
 
 ---
 
-## Current Versions (2025-12-20)
+## Current Versions
 
-- **Core:** v1.6.3 (time tracking, death pathways, immersive adaptation)
-- **Student Interface:** v1.6.3 (refined hints, Monica enhancements)
-- **Instructor Interface:** v1.6.2 (scenario creation, grading)
-- **Code Blackout:** v1.1 (full v1.6.3 compliance)
+Version info is in the files themselves (see header in Core.txt).
+GitHub connector ensures you always have the latest version from your dev branch.
+
+**As of 2025-12-20:**
+- Core: v1.6.3
+- Student Interface: v1.6.3
+- Instructor Interface: v1.6.2
+- Code Blackout: v1.1
 
 ---
 

@@ -35,47 +35,83 @@
 
 ### Step 2: Add Project Knowledge Files
 
-**IMPORTANT:** Add files as **references** to git repo, not copies.
+**RECOMMENDED METHOD: GitHub Connector**
+
+This keeps your project automatically synced with your git repository.
+
+1. Click "Add content" → "Connect GitHub"
+2. Select repository: `jj33/EMSTrainer`
+3. Select branch: `dev` (or `main` when you're ready for stable)
+4. Add the files you need (see below for which files)
+
+**Benefits:**
+- ✅ Automatically pulls latest version when you push to git
+- ✅ Works from any device (not tied to local files)
+- ✅ Always in sync with your dev branch
+- ✅ No manual file management
+
+**ALTERNATIVE: Local File Paths**
+
+If you prefer local references (requires local git repo):
+
+Add files by absolute path: `***REMOVED***/prompts/[filename]`
+
+---
 
 #### For Student Use:
 
 **Required Files (in this order):**
-1. `***REMOVED***/prompts/EMSTrainer_Core.txt`
-2. `***REMOVED***/prompts/EMSTrainer_Student_Interface.txt`
+1. `prompts/EMSTrainer_Core.txt`
+2. `prompts/EMSTrainer_Student_Interface.txt`
 
 **Optional (if using specific features):**
-3. `***REMOVED***/assets/partner_pool.json` (if custom partners)
-4. `***REMOVED***/assets/scenarios/*.json` (specific scenarios)
-5. `***REMOVED***/docs/National-Model-EMS-Clinical-Guidelines_2022.pdf` (if using guidelines)
+3. `assets/partner_pool.json` (if custom partners)
+4. `assets/scenarios/*.json` (specific scenarios)
+
+**NOTE:** National Model EMS Clinical Guidelines PDF is NOT in git repository. Upload manually to projects that need it.
 
 #### For Instructor Use:
 
 **Required Files:**
-1. `***REMOVED***/prompts/EMSTrainer_Core.txt`
-2. `***REMOVED***/prompts/EMSTrainer_Instructor_Interface.txt`
+1. `prompts/EMSTrainer_Core.txt`
+2. `prompts/EMSTrainer_Instructor_Interface.txt`
 
 **Optional:**
-3. `***REMOVED***/assets/scenarios/*.json` (for editing/grading)
+3. `assets/scenarios/*.json` (for editing/grading)
 4. Documentation files as needed
 
 ---
 
 ## How Claude Project Knowledge Works
 
-**When you add files to Project Knowledge:**
-- Claude indexes the content
-- Files are re-read when updated (auto-refresh)
-- Claude can search and reference the content
-- Multiple files create combined knowledge base
+**When you add files via GitHub Connector:**
+- Claude connects to your GitHub repository
+- Files are synced automatically when you push to git
+- Claude reads the latest version from your selected branch
+- No manual updates needed - always current
 
-**Path Reference Pattern:**
+**When you add files by local path:**
+- Claude reads files directly from your filesystem
+- Files are re-read when updated (auto-refresh)
+- Requires local git repository on your machine
+- Updates when you commit/pull locally
+
+**Path Reference Pattern (if using local paths):**
 ```
 ***REMOVED***/prompts/[filename]
 ```
 
+**GitHub Reference Pattern (recommended):**
+```
+Repository: jj33/EMSTrainer
+Branch: dev
+File: prompts/EMSTrainer_Core.txt
+```
+
 **This means:**
 - Git commits update the files
-- Project automatically sees changes
+- Project automatically sees changes (GitHub connector)
+- OR Project sees changes on next read (local paths)
 - No manual copying needed
 - Always in sync with development
 
@@ -104,18 +140,15 @@ PARTNER SYSTEM:
 
 SCENARIO EXECUTION:
 - Load scenario JSON when provided
-- Apply v1.6.3 features: time tracking, immersion, adaptation
+- Apply current Core features: time tracking, immersion, adaptation
 - Create physiological stress in Monica Mode
 - Educational debriefs after scenarios
 - Generate submission files for grading
 
-VERSION INFO:
-- Core: v1.6.3 (2025-12-20)
-- Student Interface: v1.6.3
-- Features: Pattern Recognition, Weak Area Tracking, Immersive Scenarios
-
 Remember: You're training future paramedics. Make it real, make it challenging, make it memorable.
 ```
+
+**Note:** These instructions are version-agnostic. Version info comes from the Core.txt file itself, which updates automatically when you push to git.
 
 ---
 
@@ -300,23 +333,35 @@ See: `assets/scenarios/CODE_BLACKOUT_v1.1_UPDATE_SUMMARY.md` for example
 
 ## Quick Reference
 
-### Essential File Paths:
+### GitHub Connector (Recommended):
+```
+Repository: jj33/EMSTrainer
+Branch: dev (or main for stable)
+Files to add:
+- prompts/EMSTrainer_Core.txt
+- prompts/EMSTrainer_Student_Interface.txt
+- prompts/EMSTrainer_Instructor_Interface.txt
+- assets/scenarios/[scenario_name].json
+- assets/partner_pool.json
+```
+
+### Local File Paths (Alternative):
 ```
 Core:               ***REMOVED***/prompts/EMSTrainer_Core.txt
 Student Interface:  ***REMOVED***/prompts/EMSTrainer_Student_Interface.txt
 Instructor:         ***REMOVED***/prompts/EMSTrainer_Instructor_Interface.txt
 Scenarios:          ***REMOVED***/assets/scenarios/
-Guidelines:         ***REMOVED***/docs/National-Model-EMS-Clinical-Guidelines_2022.pdf
 Partner Pool:       ***REMOVED***/assets/partner_pool.json
 ```
 
-### Current Versions (2025-12-20):
+### Manual Upload (Not in Git):
 ```
-Core: v1.6.3 - Immersive scenarios, death pathways, time tracking
-Student Interface: v1.6.3 - Refined hint policy, Monica Mode enhancements
-Instructor Interface: v1.6.2 - Scenario creation, grading
-Code Blackout: v1.1 - Full v1.6.3 compliance
+National Model EMS Clinical Guidelines PDF - Upload manually to each project
 ```
+
+### Current Versions:
+Check the header in Core.txt for current version number.
+GitHub connector ensures you always have the latest from your selected branch.
 
 ---
 
@@ -329,12 +374,19 @@ Code Blackout: v1.1 - Full v1.6.3 compliance
 4. Multiple versions get out of sync
 5. Confusion about which is current
 
-**New way (git reference):**
+**New way (GitHub connector - RECOMMENDED):**
 1. Edit file in git
-2. Commit changes
-3. Project uses updated file automatically
-4. Single source of truth
+2. Commit and push changes
+3. Project automatically syncs latest version
+4. Single source of truth (git repository)
 5. Always current, no confusion
+6. Works from any device
+
+**Alternative (local file paths):**
+1. Edit file in git
+2. Commit changes locally
+3. Project uses updated file automatically
+4. Requires local git repo on device
 
 **Perfect for active development!** ✅
 
