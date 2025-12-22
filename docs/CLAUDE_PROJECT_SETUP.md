@@ -54,7 +54,7 @@ This keeps your project automatically synced with your git repository.
 
 If you prefer local references (requires local git repo):
 
-Add files by absolute path: `***REMOVED***/prompts/[filename]`
+Add files by absolute path: `~/EMSTrainer/prompts/[filename]`
 
 ---
 
@@ -98,7 +98,7 @@ Add files by absolute path: `***REMOVED***/prompts/[filename]`
 
 **Path Reference Pattern (if using local paths):**
 ```
-***REMOVED***/prompts/[filename]
+~/EMSTrainer/prompts/[filename]
 ```
 
 **GitHub Reference Pattern (recommended):**
@@ -190,7 +190,7 @@ Claude will:
 
 1. Make changes in git repo:
    ```bash
-   cd ***REMOVED***
+   cd ~/EMSTrainer
    # Edit files
    git add .
    git commit -m "description"
@@ -286,7 +286,7 @@ You can create multiple projects for different uses:
 
 ### Working Branch Pattern:
 ```bash
-cd ***REMOVED***
+cd ~/EMSTrainer
 
 # Create feature branch
 git checkout -b feature/new-cardiac-scenarios
@@ -347,11 +347,11 @@ Files to add:
 
 ### Local File Paths (Alternative):
 ```
-Core:               ***REMOVED***/prompts/EMSTrainer_Core.txt
-Student Interface:  ***REMOVED***/prompts/EMSTrainer_Student_Interface.txt
-Instructor:         ***REMOVED***/prompts/EMSTrainer_Instructor_Interface.txt
-Scenarios:          ***REMOVED***/assets/scenarios/
-Partner Pool:       ***REMOVED***/assets/partner_pool.json
+Core:               ~/EMSTrainer/prompts/EMSTrainer_Core.txt
+Student Interface:  ~/EMSTrainer/prompts/EMSTrainer_Student_Interface.txt
+Instructor:         ~/EMSTrainer/prompts/EMSTrainer_Instructor_Interface.txt
+Scenarios:          ~/EMSTrainer/assets/scenarios/
+Partner Pool:       ~/EMSTrainer/assets/partner_pool.json
 ```
 
 ### Manual Upload (Not in Git):
@@ -395,9 +395,9 @@ GitHub connector ensures you always have the latest from your selected branch.
 ## Support Resources
 
 **Documentation:**
-- `***REMOVED***/docs/` - Full documentation
-- `***REMOVED***/planning/` - Feature roadmap
-- `***REMOVED***/internal/` - Development notes (local only)
+- `~/EMSTrainer/docs/` - Full documentation
+- `~/EMSTrainer/planning/` - Feature roadmap
+- `~/EMSTrainer/internal/` - Development notes (local only)
 
 **Git Repository:**
 - Branch: `dev` (active development)
