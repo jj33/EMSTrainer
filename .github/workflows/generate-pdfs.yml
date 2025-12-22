@@ -5,9 +5,6 @@ on:
     types: [published]
   workflow_dispatch: # Allow manual trigger
 
-permissions:
-  contents: write
-
 jobs:
   generate-pdfs:
     runs-on: ubuntu-latest
@@ -85,5 +82,5 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: docs/pdf/*.pdf
-          tag_name: ${{ github.ref_name }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
