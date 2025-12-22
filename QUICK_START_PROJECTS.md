@@ -17,8 +17,8 @@
    - `prompts/EMSTrainer_Student_Interface.txt`
 
 **OR add files by local path:**
-1. `***REMOVED***/prompts/EMSTrainer_Core.txt`
-2. `***REMOVED***/prompts/EMSTrainer_Student_Interface.txt`
+1. `~/EMSTrainer/prompts/EMSTrainer_Core.txt`
+2. `~/EMSTrainer/prompts/EMSTrainer_Student_Interface.txt`
 
 **Why GitHub connector?** Automatically pulls latest version when you push to git. Works from any device.
 
@@ -47,7 +47,7 @@ Make it real, make it challenging, make it memorable.
 **Add these files:**
 1. Core.txt
 2. Student_Interface.txt
-3. `***REMOVED***/docs/National-Model-EMS-Clinical-Guidelines_2022.pdf` (optional)
+3. `~/EMSTrainer/docs/National-Model-EMS-Clinical-Guidelines_2022.pdf` (optional)
 
 **Custom Instructions:**
 ```
@@ -72,8 +72,8 @@ Focus on differentiating CHF, COPD, pneumonia, PE."
 
 **Add these files:**
 1. Core.txt
-2. `***REMOVED***/prompts/EMSTrainer_Instructor_Interface.txt`
-3. `***REMOVED***/assets/partner_pool.json` (optional)
+2. `~/EMSTrainer/prompts/EMSTrainer_Instructor_Interface.txt`
+3. `~/EMSTrainer/assets/partner_pool.json` (optional)
 
 **Custom Instructions:**
 ```
@@ -94,14 +94,14 @@ Partner: Dylan (from pool)"
 ## Why This Works
 
 **Git as single source of truth:**
-- Edit files in `***REMOVED***/`
+- Edit files in `~/EMSTrainer/`
 - Commit changes
 - Project automatically uses updated files
 - No copying, no version drift
 
 **When you update EMSTrainer:**
 ```bash
-cd ***REMOVED***
+cd ~/EMSTrainer
 # Make changes
 git add .
 git commit -m "updates"
@@ -115,16 +115,16 @@ git push origin dev
 
 **Core files:**
 ```
-Core:              ***REMOVED***/prompts/EMSTrainer_Core.txt
-Student:           ***REMOVED***/prompts/EMSTrainer_Student_Interface.txt
-Instructor:        ***REMOVED***/prompts/EMSTrainer_Instructor_Interface.txt
+Core:              ~/EMSTrainer/prompts/EMSTrainer_Core.txt
+Student:           ~/EMSTrainer/prompts/EMSTrainer_Student_Interface.txt
+Instructor:        ~/EMSTrainer/prompts/EMSTrainer_Instructor_Interface.txt
 ```
 
 **Assets:**
 ```
-Scenarios:         ***REMOVED***/assets/scenarios/
-Partner Pool:      ***REMOVED***/assets/partner_pool.json
-Guidelines:        ***REMOVED***/docs/National-Model-EMS-Clinical-Guidelines_2022.pdf
+Scenarios:         ~/EMSTrainer/assets/scenarios/
+Partner Pool:      ~/EMSTrainer/assets/partner_pool.json
+Guidelines:        ~/EMSTrainer/docs/National-Model-EMS-Clinical-Guidelines_2022.pdf
 ```
 
 ---
@@ -144,7 +144,7 @@ GitHub connector ensures you always have the latest version from your dev branch
 
 ## Full Documentation
 
-See: `***REMOVED***/docs/CLAUDE_PROJECT_SETUP.md` for complete guide.
+See: `~/EMSTrainer/docs/CLAUDE_PROJECT_SETUP.md` for complete guide.
 
 ---
 
